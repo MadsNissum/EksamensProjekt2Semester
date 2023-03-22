@@ -3,7 +3,9 @@ package gui;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -12,11 +14,11 @@ public class Start extends Application {
     public void start(Stage stage) {
         stage.setTitle("Eksamens projekt");
 
-        GridPane gridPane = new GridPane();
+        BorderPane borderPane = new BorderPane();
 
-        initContent(gridPane);
+        initContent(borderPane);
 
-        Scene scene = new Scene(gridPane);
+        Scene scene = new Scene(borderPane);
 
         stage.setScene(scene);
 
@@ -27,20 +29,23 @@ public class Start extends Application {
     //Nodes for GUI
 
 
-    private void initContent(GridPane gridPane) {
-        //For testing
-        gridPane.setGridLinesVisible(false);
+    private void initContent(BorderPane borderPane) {
+        TabPane tabPane = new TabPane();
+        initTabPane(tabPane);
+        borderPane.setCenter(tabPane);
+    }
 
-        gridPane.setPadding(new Insets(20));
-        gridPane.setHgap(10);
-        gridPane.setVgap(10);
+    private void initTabPane(TabPane tabPane) {
+        tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
+        Tab lagerTab = new Tab("Lager");
+        lagerTab.setContent(new LagerPane());
+        tabPane.getTabs().add(lagerTab);
 
-        Pane pane = new Pane();
+        Tab fadTab = new Tab("Fad");
+        fadTab.setContent(new FadPane());
+        tabPane.getTabs().add(fadTab);
 
-        FadWindow fadWindow = new FadWindow();
-
-        fadWindow.showAndWait();
 
 
     }

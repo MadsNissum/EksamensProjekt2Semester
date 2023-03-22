@@ -2,11 +2,16 @@ package gui;
 
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class FadWindow extends Stage {
+    private TextField txfAdresse,txfKvm, txfKapacitet;
+
+
     public FadWindow() {
         GridPane pane = new GridPane();
 
@@ -25,8 +30,30 @@ public class FadWindow extends Stage {
         pane.setHgap(10);
         pane.setVgap(10);
 
+        Label lblAdresse = new Label("Adresse");
+        pane.add(lblAdresse, 0, 0);
 
-        pane.add(new Label("Test"), 0, 0);
+        txfAdresse = new TextField();
+        pane.add(txfAdresse, 0, 1);
+        txfAdresse.setEditable(true);
+
+        Label lblkvm = new Label("Kvadratkilometer");
+        pane.add(lblAdresse, 0, 2);
+
+        txfKvm = new TextField();
+        pane.add(txfKvm, 0, 3);
+        txfKvm.setEditable(true);
+
+        Label lblKapacitet = new Label("Kapacitet");
+        pane.add(lblKapacitet, 0, 4);
+
+        txfKapacitet = new TextField();
+        pane.add(txfKapacitet, 0, 5);
+        txfKapacitet.setEditable(true);
+
+        Button btnOk = new Button("OK");
+
+
     }
 
 }

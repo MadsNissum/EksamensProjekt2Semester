@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="Tabs added">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/Start.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/storage/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/Storage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/FadWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FadWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/LagerPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LagerPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/LagerWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LagerWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +42,7 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.gui.App">
+  <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="EksamensProjekt2Semester" />

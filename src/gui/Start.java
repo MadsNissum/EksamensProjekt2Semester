@@ -1,5 +1,6 @@
 package gui;
 
+import application.controller.Controller;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -36,6 +37,8 @@ public class Start extends Application {
     }
 
     private void initTabPane(TabPane tabPane) {
+        setup();
+
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
         Tab lagerTab = new Tab("Lager");
@@ -45,8 +48,9 @@ public class Start extends Application {
         Tab fadTab = new Tab("Fad");
         fadTab.setContent(new FadPane());
         tabPane.getTabs().add(fadTab);
+    }
 
-
-
+    private void setup() {
+        Controller.initController();
     }
 }

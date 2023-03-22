@@ -5,11 +5,14 @@ public class Fad {
     private double kapacitet;
     private String oprindelse;
     private Lager lager;
+    private int fadNummer;
+    private static int index = 1;
 
     public Fad(String type, double kapacitet, String oprindelse) {
         this.type = type;
         this.kapacitet = kapacitet;
         this.oprindelse = oprindelse;
+        this.fadNummer = index++;
     }
 
     public String getType() {
@@ -43,4 +46,13 @@ public class Fad {
     public Lager getLager() {
         return lager;
     }
+
+
+
+    @Override
+    public String toString() {
+        return fadNummer + " " + type + " Liter: " + kapacitet;
+
+    }
 }
+

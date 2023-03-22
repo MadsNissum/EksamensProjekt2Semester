@@ -1,6 +1,7 @@
 package application.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Lager {
     private String adresse;
@@ -41,6 +42,13 @@ public class Lager {
 
     public Fad[] getFade() {
         return fade;
+    }
+
+
+
+    @Override
+    public String toString() {
+        return "adresse: " + adresse;
     }
 }
 

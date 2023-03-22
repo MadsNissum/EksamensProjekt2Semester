@@ -57,14 +57,22 @@ public class FadPane extends GridPane {
         FadWindow fadWindow = new FadWindow("Opret fad");
         fadWindow.showAndWait();
 
-        // Wait for the modal dialog to close
-
-        //fadListView.getItems().setAll(Controller.());
+        fadListView.getItems().setAll(Controller.getFade());
         int index = fadListView.getItems().size() - 1;
         fadListView.getSelectionModel().select(index);
     }
 
     private void opdater() {
+        Fad fad = fadListView.getSelectionModel().getSelectedItem();
+        if (fad != null) {
+
+            FadWindow fadWindow = new FadWindow("Opdater fad", fad);
+            fadWindow.showAndWait();
+
+            int selectIndex = fadListView.getSelectionModel().getSelectedIndex();
+            fadListView.getItems().setAll(Controller.getFade());
+            fadListView.getSelectionModel().select(selectIndex);
+        }
     }
 
     private void slet() {

@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="Started window popup">
-      <change beforePath="$PROJECT_DIR$/src/gui/LagerPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LagerPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/Start.java" afterDir="false" />
+    <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="FadPane og FadWindow">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/FadPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FadPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/FadWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FadWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +83,7 @@
     <MESSAGE value="Made project" />
     <MESSAGE value="Added classes" />
     <MESSAGE value="Started window popup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started window popup" />
+    <MESSAGE value="FadPane og FadWindow" />
+    <option name="LAST_COMMIT_MESSAGE" value="FadPane og FadWindow" />
   </component>
 </project>

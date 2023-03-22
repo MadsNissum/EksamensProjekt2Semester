@@ -38,7 +38,9 @@ public class Start extends Application {
 
         Pane pane = new Pane();
 
-        pane.getChildren().add();
+        FadWindow fadWindow = new FadWindow();
+
+        fadWindow.showAndWait();
 
 
     }

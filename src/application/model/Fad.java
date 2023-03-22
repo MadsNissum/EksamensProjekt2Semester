@@ -1,7 +1,6 @@
 package application.model;
 
 public class Fad {
-
     private String type;
     private double kapacitet;
     private String oprindelse;
@@ -39,5 +38,9 @@ public class Fad {
 
     public void setLager(Lager lager) {
         this.lager = lager;
+    }
+
+    public Lager getLager() {
+        return lager;
     }
 }

@@ -6,12 +6,13 @@ public class Lager {
     private String adresse;
     private double kvm;
     private int fadKapacitet;
-    private ArrayList <Fad> fade;
+    private final Fad[] fade;
 
     public Lager(String adresse, double kvm, int fadKapacitet) {
         this.adresse = adresse;
         this.kvm = kvm;
         this.fadKapacitet = fadKapacitet;
+        fade = new Fad[fadKapacitet];
     }
 
     public String getAdresse() {
@@ -38,6 +39,8 @@ public class Lager {
         this.fadKapacitet = fadKapacitet;
     }
 
-
+    public Fad[] getFade() {
+        return fade;
+    }
 }
 

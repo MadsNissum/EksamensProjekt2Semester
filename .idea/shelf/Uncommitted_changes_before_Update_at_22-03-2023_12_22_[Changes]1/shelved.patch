@@ -1,0 +1,202 @@
+Index: src/gui/LagerWindow.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package gui;\r\n\r\npublic class LagerWindow {\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/gui/LagerWindow.java b/src/gui/LagerWindow.java
+--- a/src/gui/LagerWindow.java	
++++ b/src/gui/LagerWindow.java	
+@@ -1,4 +1,32 @@
+ package gui;
+ 
+-public class LagerWindow {
++import javafx.geometry.Insets;
++import javafx.scene.Scene;
++import javafx.scene.control.Label;
++import javafx.scene.layout.GridPane;
++import javafx.stage.Stage;
++
++public class LagerWindow extends Stage {
++    public LagerWindow() {
++        GridPane pane = new GridPane();
++
++        initContent(pane);
++
++        Scene scene = new Scene(pane);
++
++        this.setScene(scene);
++    }
++
++    private void initContent(GridPane pane) {
++        //For testing
++        pane.setGridLinesVisible(false);
++
++        pane.setPadding(new Insets(20));
++        pane.setHgap(10);
++        pane.setVgap(10);
++
++
++        pane.add(new Label("Test"), 0, 0);
++    }
++
+ }
+Index: src/gui/FadWindow.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package gui;\r\n\r\nimport javafx.geometry.Insets;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.layout.GridPane;\r\nimport javafx.stage.Stage;\r\n\r\npublic class FadWindow extends Stage {\r\n    public FadWindow() {\r\n        GridPane pane = new GridPane();\r\n\r\n        initContent(pane);\r\n\r\n        Scene scene = new Scene(pane);\r\n\r\n        this.setScene(scene);\r\n    }\r\n\r\n    private void initContent(GridPane pane) {\r\n        //For testing\r\n        pane.setGridLinesVisible(false);\r\n\r\n        pane.setPadding(new Insets(20));\r\n        pane.setHgap(10);\r\n        pane.setVgap(10);\r\n\r\n\r\n        pane.add(new Label(\"Test\"), 0, 0);\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/gui/FadWindow.java b/src/gui/FadWindow.java
+--- a/src/gui/FadWindow.java	
++++ b/src/gui/FadWindow.java	
+@@ -2,11 +2,16 @@
+ 
+ import javafx.geometry.Insets;
+ import javafx.scene.Scene;
++import javafx.scene.control.Button;
+ import javafx.scene.control.Label;
++import javafx.scene.control.TextField;
+ import javafx.scene.layout.GridPane;
+ import javafx.stage.Stage;
+ 
+ public class FadWindow extends Stage {
++    private TextField txfAdresse,txfKvm, txfKapacitet;
++
++
+     public FadWindow() {
+         GridPane pane = new GridPane();
+ 
+@@ -25,8 +30,30 @@
+         pane.setHgap(10);
+         pane.setVgap(10);
+ 
++        Label lblAdresse = new Label("Adresse");
++        pane.add(lblAdresse, 0, 0);
++
++        txfAdresse = new TextField();
++        pane.add(txfAdresse, 0, 1);
++        txfAdresse.setEditable(true);
++
++        Label lblkvm = new Label("Kvadratkilometer");
++        pane.add(lblAdresse, 0, 2);
++
++        txfKvm = new TextField();
++        pane.add(txfKvm, 0, 3);
++        txfKvm.setEditable(true);
+ 
+-        pane.add(new Label("Test"), 0, 0);
++        Label lblKapacitet = new Label("Kapacitet");
++        pane.add(lblKapacitet, 0, 4);
++
++        txfKapacitet = new TextField();
++        pane.add(txfKapacitet, 0, 5);
++        txfKapacitet.setEditable(true);
++
++        Button btnOk = new Button("OK");
++
++
+     }
+ 
+ }
+Index: src/gui/LagerPane.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package gui;\r\n\r\nimport javafx.geometry.Insets;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.layout.GridPane;\r\n\r\npublic class LagerPane extends GridPane {\r\n\r\n    public LagerPane() {\r\n        this.setHgap(10);\r\n        this.setVgap(10);\r\n        this.setPadding(new Insets(20));\r\n\r\n        this.add(new Label(\"Test111\"), 0, 0);\r\n\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/gui/LagerPane.java b/src/gui/LagerPane.java
+--- a/src/gui/LagerPane.java	
++++ b/src/gui/LagerPane.java	
+@@ -1,17 +1,68 @@
+ package gui;
+ 
++import application.model.Fad;
++import application.model.Lager;
++import javafx.beans.value.ChangeListener;
+ import javafx.geometry.Insets;
++import javafx.scene.control.Button;
+ import javafx.scene.control.Label;
++import javafx.scene.control.ListView;
+ import javafx.scene.layout.GridPane;
+ 
+ public class LagerPane extends GridPane {
++    private ListView<Lager> lvwLager;
++    private ListView<Fad> lvwFade;
++
++
+ 
+     public LagerPane() {
+         this.setHgap(10);
+         this.setVgap(10);
+         this.setPadding(new Insets(20));
++        this.setGridLinesVisible(false);
++
++        Label lblLagere = new Label("Lagere");
++        this.add(lblLagere, 0, 0);
++
++        lvwLager = new ListView<>();
++        this.add(lvwLager, 0, 1, 1, 10);
++        lvwLager.setPrefHeight(200);
++        lvwLager.setPrefWidth(200);
++        /*
++        lvwLager.getItems().setAll(Controller.getLager());
++        ChangeListener<Lager> listener = (ov, oldCompny, newCompany) -> this.selectedLager();
++        lvwLager.getSelectionModel().selectedItemProperty().addListener(listener);
++         */
++
++        Label lblFade = new Label("Fade");
++        this.add(lblFade, 1, 0);
++
++        lvwFade = new ListView<>();
++        this.add(lvwFade, 1, 1, 1, 10);
++        lvwFade.setPrefHeight(200);
++        lvwFade.setPrefWidth(200);
++        /*
++        lvwFade.getItems().setAll(Controller.getFade());
++        ChangeListener<Fade> listener = (ov, oldCompny, newCompany) -> this.selectedFade();
++        lvwFade.getSelectionModel().selectedItemProperty().addListener(listener);
++         */
+ 
+-        this.add(new Label("Test111"), 0, 0);
++        Button btnCreate= new Button("Create");
++        this.add(btnCreate, 2, 1);
++
++        btnCreate.setOnAction(actionEvent -> {
++            LagerWindow lagerWindow = new LagerWindow();
++            lagerWindow.showAndWait();});
++
++        Button btnUpdate= new Button("Update");
++        this.add(btnUpdate, 2, 2);
++
++        Button btnDelete= new Button("Delete");
++        this.add(btnDelete, 2, 3);
++
++
++
++
+ 
+     }
+ 
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_18\" default=\"true\" project-jdk-name=\"openjdk-18\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	
++++ b/.idea/misc.xml	
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" default="true" project-jdk-name="openjdk-18" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="openjdk-18" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file

@@ -16,7 +16,9 @@ public class LagerWindow extends Stage {
     private Lager lager;
     private Label lblError;
     private TextField txfAdresse, txfkvm, txfKapacitet;
-    public LagerWindow() {
+    public LagerWindow(String str, Lager lager) {
+        this.lager = lager;
+        this.setTitle(str);
         GridPane pane = new GridPane();
 
         initContent(pane);
@@ -24,6 +26,9 @@ public class LagerWindow extends Stage {
         Scene scene = new Scene(pane);
 
         this.setScene(scene);
+    }
+    public LagerWindow(String str) {
+        this(str, null);
     }
 
     private void initContent(GridPane pane) {
@@ -101,12 +106,13 @@ public class LagerWindow extends Stage {
         } else if (kapacitet < 0) {
             lblError.setText("Intast et tal i Kapacitet");
         } else {
-            Controller.createLager(adresse, kvm, kapacitet);
+            if (lager != null) {
+                Controller.updateLager(lager, adresse, kvm, kapacitet);
+            } else {
+                Controller.createLager(adresse, kvm, kapacitet);
+            }
             hide();
         }
-
-
-
 
     }
 

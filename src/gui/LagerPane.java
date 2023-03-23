@@ -48,27 +48,38 @@ public class LagerPane extends GridPane {
 
         Button btnCreate= new Button("Create");
         this.add(btnCreate, 2, 1);
-
-        btnCreate.setOnAction(actionEvent -> {
-            LagerWindow lagerWindow = new LagerWindow();
-            lagerWindow.showAndWait();
-            updateControls();
-
-        });
+        btnCreate.setOnAction(actionEvent -> this.opretAction());
 
         Button btnUpdate= new Button("Update");
         this.add(btnUpdate, 2, 2);
+        btnUpdate.setOnAction(actionEvent -> this.updateAction());
 
         Button btnDelete= new Button("Delete");
         this.add(btnDelete, 2, 3);
 
 
-
-
-
     }
 
-    private void updateControls() {
+    private void opretAction() {
+        LagerWindow lagerWindow = new LagerWindow("Opret Lager");
+        lagerWindow.showAndWait();
+
+        updateControls();
+    }
+
+
+    private void updateAction() {
+        Lager lager = lvwLager.getSelectionModel().getSelectedItem();
+        if (lager != null) {
+            LagerWindow lagerWindow = new LagerWindow("Opdatere Lager", lager);
+            lagerWindow.showAndWait();
+
+
+            updateControls();
+        }
+    }
+
+    public void updateControls() {
         lvwLager.getItems().setAll(Controller.getLager());
     }
 

@@ -94,7 +94,7 @@ public class FadPane extends GridPane {
         txfReol.clear();
         txfHylde.clear();
         txfPlads.clear();
-       // lagerComboBox.
+        lagerComboBox.getSelectionModel().clearSelection();
     }
 
     private void opret() {

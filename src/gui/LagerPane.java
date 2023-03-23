@@ -3,6 +3,7 @@ package gui;
 import application.controller.Controller;
 import application.model.Fad;
 import application.model.Lager;
+import application.utility.Utility;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -43,8 +44,6 @@ public class LagerPane extends GridPane {
         lvwFade.setPrefHeight(200);
         lvwFade.setPrefWidth(200);
         lvwFade.getItems().setAll(Controller.getFade());
-        ChangeListener<Fad> listener1 = (ov, oldCompny, newCompany) -> this.selectedFade();
-        lvwFade.getSelectionModel().selectedItemProperty().addListener(listener1);
 
 
         Button btnCreate= new Button("Create");
@@ -65,6 +64,7 @@ public class LagerPane extends GridPane {
     private void deleteAction() {
         Lager lager = lvwLager.getSelectionModel().getSelectedItem();
         if (lager != null) {
+            if (Utility.alert("Slet fad", "Er du sikker på du vil slette dette lager?"))
             Storage.removeLager(lager);
             updateControls();
         }
@@ -93,10 +93,12 @@ public class LagerPane extends GridPane {
         lvwLager.getItems().setAll(Controller.getLager());
     }
 
-    private void selectedFade() {
-    }
 
-    private void selectedLager() {
+
+    public void selectedLager() {
+        if (lvwLager.getSelectionModel().getSelectedItem() != null) {
+            lvwFade.getItems().setAll(lvwLager.getSelectionModel().getSelectedItem().getFade());
+        }
     }
 
 }

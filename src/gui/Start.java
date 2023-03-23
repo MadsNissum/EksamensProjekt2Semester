@@ -41,9 +41,12 @@ public class Start extends Application {
 
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
+        LagerPane lagerPane = new LagerPane();
         Tab lagerTab = new Tab("Lager");
-        lagerTab.setContent(new LagerPane());
+        lagerTab.setContent(lagerPane);
         tabPane.getTabs().add(lagerTab);
+
+        lagerTab.setOnSelectionChanged(event -> lagerPane.selectedLager());
 
         Tab fadTab = new Tab("Fad");
         fadTab.setContent(new FadPane());

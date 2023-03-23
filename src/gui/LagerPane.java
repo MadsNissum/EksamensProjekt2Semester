@@ -51,7 +51,10 @@ public class LagerPane extends GridPane {
 
         btnCreate.setOnAction(actionEvent -> {
             LagerWindow lagerWindow = new LagerWindow();
-            lagerWindow.showAndWait();});
+            lagerWindow.showAndWait();
+            updateControls();
+
+        });
 
         Button btnUpdate= new Button("Update");
         this.add(btnUpdate, 2, 2);
@@ -63,6 +66,10 @@ public class LagerPane extends GridPane {
 
 
 
+    }
+
+    private void updateControls() {
+        lvwLager.getItems().setAll(Controller.getLager());
     }
 
     private void selectedFade() {

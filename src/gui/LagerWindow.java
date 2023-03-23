@@ -1,5 +1,8 @@
 package gui;
 
+import application.controller.Controller;
+import application.model.Lager;
+import application.utility.Number;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,6 +13,8 @@ import javafx.stage.Stage;
 
 public class LagerWindow extends Stage {
 
+    private Lager lager;
+    private Label lblError;
     private TextField txfAdresse, txfkvm, txfKapacitet;
     public LagerWindow() {
         GridPane pane = new GridPane();
@@ -52,8 +57,58 @@ public class LagerWindow extends Stage {
         txfKapacitet.setEditable(true);
 
         Button btnOK = new Button("OK");
-        //btnOK.setOnAction();
+        pane.add(btnOK, 0, 6);
+        btnOK.setOnAction(event -> this.okAction());
+        
+        
+        Button btnCancel = new Button("Cancel");
+        pane.add(btnCancel, 1, 6);
+        btnCancel.setOnAction(event -> this.cancelAction());
+
+        lblError = new Label();
+        pane.add(lblError, 0, 7);
+        lblError.setStyle("-fx-text-fill: red");
+
+        this.initControls();
 
     }
+
+    private void cancelAction() { hide();
+    }
+
+    private void initControls() {
+        if (lager != null) {
+            txfAdresse.setText(lager.getAdresse());
+            txfkvm.setText("" + lager.getKvm());
+            txfKapacitet.setText("" + lager.getFadKapacitet());
+        } else {
+            txfAdresse.clear();
+            txfkvm.clear();
+            txfKapacitet.clear();
+        }
+    }
+
+    private void okAction() {
+        String adresse = txfAdresse.getText().trim();
+        double kvm = Number.checkerDouble(txfkvm.getText().trim());
+        int kapacitet = Number.checkerInt(txfKapacitet.getText().trim());
+
+
+        if (adresse.length() == 0) {
+            lblError.setText("Intast en Adresse");
+        } else if (kvm < 0) {
+            lblError.setText("Indtast et tal i Kvm");
+        } else if (kapacitet < 0) {
+            lblError.setText("Intast et tal i Kapacitet");
+        } else {
+            Controller.createLager(adresse, kvm, kapacitet);
+            hide();
+        }
+
+
+
+
+    }
+
 
 }

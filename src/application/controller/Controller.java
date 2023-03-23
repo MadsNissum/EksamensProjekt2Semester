@@ -7,7 +7,7 @@ import storage.Storage;
 import java.util.ArrayList;
 
 public class Controller {
-    
+
     public static void createFad(String type, double kapacitet, String oprindelse) {
         Fad fad = new Fad(type, kapacitet, oprindelse);
         Storage.addFad(fad);
@@ -59,6 +59,10 @@ public class Controller {
 
     public static void createLagerPlads(Fad fad, String reol, String hylde, String plads) {
         fad.createLagerPlads(reol, hylde, plads);
+    }
+
+    public static void addFadTilLager(Fad fad, Lager lager) {
+        fad.setLager(lager);
     }
 
 

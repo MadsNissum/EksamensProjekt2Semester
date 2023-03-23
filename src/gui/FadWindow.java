@@ -60,14 +60,11 @@ public class FadWindow extends Stage {
 
         Button btnCancel = new Button("Cancel");
         pane.add(btnCancel, 1, 3);
-        btnCancel.setPrefWidth(50);
         btnCancel.setOnAction(event -> this.cancelAction());
 
         Button btnOK = new Button("OK");
         pane.add(btnOK, 2, 3);
-        btnOK.setPrefWidth(50);
         btnOK.setOnAction(event -> this.okAction());
-
 
         lblError = new Label();
         pane.add(lblError, 1, 4);
@@ -95,7 +92,6 @@ public class FadWindow extends Stage {
     }
 
     private void okAction() {
-
         String type = txfType.getText().trim();
         String oprindelse = txfOprindelse.getText().trim();
         double kapacitet = Number.checkerDouble(txfKapacitet.getText().trim());

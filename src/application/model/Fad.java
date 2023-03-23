@@ -49,7 +49,7 @@ public class Fad {
         if (lager == null) {
             this.lager.removeFad(this);
             this.lager = null;
-        } else if (!this.lager.equals(lager)) {
+        } else if (this.lager == null || !this.lager.equals(lager)) {
             this.lager = lager;
             lager.addFad(this);
         }

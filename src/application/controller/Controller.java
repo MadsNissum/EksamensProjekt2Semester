@@ -52,6 +52,13 @@ public class Controller {
 
     //--------------------------------------------------
 
+    public static void updateFad(Fad fad, String type, double kapacitet, String oprindelse) {
+        fad.setType(type);
+        fad.setKapacitet(kapacitet);
+        fad.setOprindelse(oprindelse);
+    }
+
+
     public static void initController() {
         createFad("Burbon", 32, "Texas");
         createFad("Sherry", 64, "England");

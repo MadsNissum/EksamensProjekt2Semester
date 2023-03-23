@@ -52,7 +52,7 @@ public class LagerWindow extends Stage {
         txfKapacitet.setEditable(true);
 
         Button btnOK = new Button("OK");
-        btnOK.setOnAction();
+        //btnOK.setOnAction();
 
     }
 

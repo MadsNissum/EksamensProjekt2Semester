@@ -2,6 +2,7 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Fad;
+import application.model.Lager;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -26,6 +27,7 @@ public class FadWindow extends Stage {
     }
 
     private Fad fad;
+    private Lager lager;
     private TextField txfType, txfKapacitet, txfOprindelse;
     private Label lblError;
 
@@ -78,6 +80,8 @@ public class FadWindow extends Stage {
             txfOprindelse.clear();
         }
     }
+
+
     private void cancelAction() {
         this.hide();
     }
@@ -100,8 +104,10 @@ public class FadWindow extends Stage {
                 if (oprindelse.length() == 0) {
                     lblError.setText("Indtast oprindelse");
                 } else {
-                if (fad == null) {
-                    Controller.createFad(type, kapacitet,oprindelse);
+                if (fad != null) {
+                    Controller.updateFad(fad, type, kapacitet,oprindelse);
+                } else {
+                    Controller.createFad(type,kapacitet,oprindelse);
                 }
                 this.hide();
             }

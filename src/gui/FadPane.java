@@ -10,6 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
+import java.util.Optional;
+
 public class FadPane extends GridPane {
     private ListView<Fad> fadListView;
 
@@ -25,17 +27,19 @@ public class FadPane extends GridPane {
         this.add(fadListView, 0, 1, 1, 10);
         fadListView.setPrefWidth(200);
         fadListView.setPrefHeight(200);
-        // fadListView.getItems().setAll(Controller.);
+        fadListView.getItems().setAll(Controller.getFade());
 
-        ChangeListener<Fad> fadChangeListener = (fad, fad2, fad3) -> this.fadChanged();
+        ChangeListener<Fad> fadChangeListener = (ov, oldValue, newValue) -> this.fadChanged();
         fadListView.getSelectionModel().selectedItemProperty().addListener(fadChangeListener);
 
         ComboBox<Lager> lagerComboBox = new ComboBox<>();
-        //lagerComboBox.setPromptText("Lager");
-        this.add(lagerComboBox,3,1);
+        this.add(lagerComboBox, 3, 1);
+
+        lagerComboBox.getItems().addAll(Controller.getLager());
 
         Button btnTilføj = new Button("Tilføj");
         this.add(btnTilføj,3,2);
+        btnTilføj.setOnAction(event -> this.tilføj());
 
         Button btnOpret = new Button("Opret");
         this.add(btnOpret, 4,1);
@@ -50,6 +54,10 @@ public class FadPane extends GridPane {
         btnSlet.setOnAction(event -> this.slet());
 
 
+
+    }
+
+    private void tilføj() {
 
     }
 
@@ -76,12 +84,26 @@ public class FadPane extends GridPane {
     }
 
     private void slet() {
+        Fad fad = fadListView.getSelectionModel().getSelectedItem();
+        if (fad != null) {
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Slet fad");
+            alert.setHeaderText("Er du sikker på, at du vil slette fadet?");
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if ((result.isPresent()) && (result.get() == ButtonType.OK)) {
+                Controller.removeFad(fad);
+                fadListView.getItems().setAll(Controller.getFade());
+
+                this.updateControls();
+            }
+        }
     }
 
     private void fadChanged() {
             this.updateControls();
         }
-
 
 
         public void updateControls() {

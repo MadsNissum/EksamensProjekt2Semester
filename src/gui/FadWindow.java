@@ -13,6 +13,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class FadWindow extends Stage {
+    private Fad fad;
+    private Lager lager;
     public FadWindow(String title, Fad fad) {
         GridPane pane = new GridPane();
 
@@ -21,13 +23,13 @@ public class FadWindow extends Stage {
         Scene scene = new Scene(pane);
 
         this.setScene(scene);
+
+        this.fad = fad;
     }
     public FadWindow(String title) {
         this(title, null);
     }
 
-    private Fad fad;
-    private Lager lager;
     private TextField txfType, txfKapacitet, txfOprindelse;
     private Label lblError;
 
@@ -38,7 +40,6 @@ public class FadWindow extends Stage {
         pane.setPadding(new Insets(20));
         pane.setHgap(10);
         pane.setVgap(10);
-
 
         pane.add(new Label("Type"), 0, 0);
         pane.add(new Label("Kapacitet"), 0, 1);
@@ -94,7 +95,7 @@ public class FadWindow extends Stage {
         } else {
             double kapacitet = -1;
             try {
-                kapacitet = Integer.parseInt(txfKapacitet.getText().trim());
+                kapacitet = Double.parseDouble(txfKapacitet.getText().trim());
             } catch (NumberFormatException ex) {
                 // do nothing
             }

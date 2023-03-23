@@ -46,7 +46,13 @@ public class Fad {
     }
 
     public void setLager(Lager lager) {
-        this.lager = lager;
+        if (lager == null) {
+            this.lager.removeFad(this);
+            this.lager = null;
+        } else if (!this.lager.equals(lager)) {
+            this.lager = lager;
+            lager.addFad(this);
+        }
     }
 
     public Lager getLager() {

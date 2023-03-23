@@ -2,18 +2,18 @@ package application.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class Lager {
     private String adresse;
     private double kvm;
     private int fadKapacitet;
-    private final Fad[] fade;
+    private final ArrayList<Fad> fade = new ArrayList<>();
 
     public Lager(String adresse, double kvm, int fadKapacitet) {
         this.adresse = adresse;
         this.kvm = kvm;
         this.fadKapacitet = fadKapacitet;
-        fade = new Fad[fadKapacitet];
     }
 
     public String getAdresse() {
@@ -40,10 +40,25 @@ public class Lager {
         this.fadKapacitet = fadKapacitet;
     }
 
-    public Fad[] getFade() {
+    public ArrayList<Fad> getFade() {
         return fade;
     }
 
+    public void addFad(Fad fad) {
+        if (!fade.contains(fad) && fad != null) {
+            if (fade.size() < fadKapacitet) {
+                fade.add(fad);
+                fad.setLager(this);
+            } else {
+                throw new RuntimeException("Der er ikke plads til flere tynder på lageret!");
+            }
+        }
+    }
+
+    public void removeFad(Fad fad) {
+        fade.remove(fad);
+        fad.setLager(null);
+    }
 
 
     @Override

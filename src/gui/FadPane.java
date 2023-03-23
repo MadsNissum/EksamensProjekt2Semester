@@ -25,7 +25,7 @@ public class FadPane extends GridPane {
         this.add(new Label("Fad"), 0, 0);
         fadListView = new ListView<>();
         this.add(fadListView, 0, 1, 1, 10);
-        fadListView.setPrefWidth(200);
+        fadListView.setPrefWidth(250);
         fadListView.setPrefHeight(200);
         fadListView.getItems().setAll(Controller.getFade());
 
@@ -34,7 +34,7 @@ public class FadPane extends GridPane {
 
         ComboBox<Lager> lagerComboBox = new ComboBox<>();
         this.add(lagerComboBox, 3, 1);
-
+        lagerComboBox.setPromptText("Adresser");
         lagerComboBox.getItems().addAll(Controller.getLager());
 
         Button btnTilføj = new Button("Tilføj");
@@ -52,9 +52,6 @@ public class FadPane extends GridPane {
         Button btnSlet = new Button("Slet");
         this.add(btnSlet, 4,3);
         btnSlet.setOnAction(event -> this.slet());
-
-
-
     }
 
     private void tilføj() {

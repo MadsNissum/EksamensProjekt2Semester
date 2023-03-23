@@ -11,20 +11,24 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import application.utility.Number;
 
 public class FadWindow extends Stage {
     private Fad fad;
     private Lager lager;
+
     public FadWindow(String title, Fad fad) {
         GridPane pane = new GridPane();
+        this.fad = fad;
 
         initContent(pane);
+
+        this.setTitle(title);
 
         Scene scene = new Scene(pane);
 
         this.setScene(scene);
 
-        this.fad = fad;
     }
     public FadWindow(String title) {
         this(title, null);
@@ -72,6 +76,7 @@ public class FadWindow extends Stage {
 
     private void initControls() {
         if (fad != null) {
+            System.out.println("test2");
             txfType.setText(fad.getType());
             txfKapacitet.setText("" + fad.getKapacitet());
             txfOprindelse.setText(fad.getOprindelse());
@@ -88,17 +93,13 @@ public class FadWindow extends Stage {
     }
 
     private void okAction() {
+
         String type = txfType.getText().trim();
         String oprindelse = txfOprindelse.getText().trim();
+        double kapacitet = Number.checkerDouble(txfKapacitet.getText().trim());
         if (type.length() == 0) {
             lblError.setText("Indtast type");
         } else {
-            double kapacitet = -1;
-            try {
-                kapacitet = Double.parseDouble(txfKapacitet.getText().trim());
-            } catch (NumberFormatException ex) {
-                // do nothing
-            }
             if (kapacitet < 0) {
                 lblError.setText("Indtast et positiv talt i kapacitet");
             } else {

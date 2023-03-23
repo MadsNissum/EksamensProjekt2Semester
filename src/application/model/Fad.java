@@ -51,7 +51,7 @@ public class Fad {
 
     @Override
     public String toString() {
-        return fadNummer + " " + type + " Liter: " + kapacitet;
+        return fadNummer + " " + type + " Liter: " + kapacitet + " Oprindelse: " + oprindelse ;
 
     }
 }

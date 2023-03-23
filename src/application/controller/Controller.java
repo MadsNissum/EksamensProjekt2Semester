@@ -58,6 +58,10 @@ public class Controller {
         fad.setOprindelse(oprindelse);
     }
 
+    public static void createLagerPlads(Fad fad, String reol, String hylde, String plads) {
+        fad.createLagerPlads(reol, hylde, plads);
+    }
+
 
     public static void initController() {
         createFad("Burbon", 32, "Texas");

@@ -7,12 +7,18 @@ public class Fad {
     private Lager lager;
     private int fadNummer;
     private static int index = 1;
+    private LagerPlads lagerPlads;
 
     public Fad(String type, double kapacitet, String oprindelse) {
         this.type = type;
         this.kapacitet = kapacitet;
         this.oprindelse = oprindelse;
         this.fadNummer = index++;
+    }
+
+    public void createLagerPlads(String reol, String hylde, String plads) {
+        LagerPlads lagerPlads = new LagerPlads(reol, hylde, plads);
+        this.lagerPlads = lagerPlads;
     }
 
     public String getType() {

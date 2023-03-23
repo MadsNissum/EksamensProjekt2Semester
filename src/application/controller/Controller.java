@@ -65,6 +65,12 @@ public class Controller {
         fad.setLager(lager);
     }
 
+    public static void updateLager(Lager lager, String adresse, double kvm, int kapacitet) {
+        lager.setAdresse(adresse);
+        lager.setKvm(kvm);
+        lager.setFadKapacitet(kapacitet);
+    }
+
 
     public static void initController() {
         createFad("Burbon", 32, "Texas");

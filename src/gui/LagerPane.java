@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
+import storage.Storage;
 
 public class LagerPane extends GridPane {
     private ListView<Lager> lvwLager;
@@ -56,8 +57,17 @@ public class LagerPane extends GridPane {
 
         Button btnDelete= new Button("Delete");
         this.add(btnDelete, 2, 3);
+        btnDelete.setOnAction(actionEvent -> this.deleteAction());
 
 
+    }
+
+    private void deleteAction() {
+        Lager lager = lvwLager.getSelectionModel().getSelectedItem();
+        if (lager != null) {
+            Storage.removeLager(lager);
+            updateControls();
+        }
     }
 
     private void opretAction() {

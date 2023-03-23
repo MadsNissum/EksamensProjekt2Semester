@@ -9,7 +9,6 @@ public class Utility {
         alert.setTitle(titel);
         alert.setHeaderText(message);
         Optional<ButtonType> result = alert.showAndWait();
-
         return (result.isPresent()) && (result.get() == ButtonType.OK);
     }
 }

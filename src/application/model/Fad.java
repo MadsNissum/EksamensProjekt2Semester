@@ -5,7 +5,7 @@ public class Fad {
     private double kapacitet;
     private String oprindelse;
     private Lager lager;
-    private int fadNummer;
+    private final int fadNummer;
     private static int index = 1;
     private LagerPlads lagerPlads;
 
@@ -17,7 +17,14 @@ public class Fad {
     }
 
     public void createLagerPlads(String reol, String hylde, String plads) {
-        LagerPlads lagerPlads = new LagerPlads(reol, hylde, plads);
+        this.lagerPlads = new LagerPlads(reol, hylde, plads);
+    }
+
+    public LagerPlads getLagerPlads() {
+        return lagerPlads;
+    }
+
+    public void setLagerPlads(LagerPlads lagerPlads) {
         this.lagerPlads = lagerPlads;
     }
 
@@ -58,8 +65,6 @@ public class Fad {
     public Lager getLager() {
         return lager;
     }
-
-
 
     @Override
     public String toString() {

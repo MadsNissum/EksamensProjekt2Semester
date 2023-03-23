@@ -5,8 +5,11 @@ import application.model.Fad;
 import application.model.Lager;
 import application.utility.Utility;
 import javafx.geometry.Insets;
+import javafx.scene.LightBase;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+
+import javax.swing.text.Utilities;
 
 public class FadPane extends GridPane {
     private final ListView<Fad> fadListView;
@@ -69,7 +72,6 @@ public class FadPane extends GridPane {
         lblError.setStyle("-fx-text-fill: red");
     }
 
-
     private void tilføj() {
         String reol = txfReol.getText().trim();
         String hylde = txfHylde.getText().trim();
@@ -87,7 +89,12 @@ public class FadPane extends GridPane {
         } else {
             Controller.createLagerPlads(fad, reol, hylde, plads);
             Controller.addFadTilLager(fad, lager);
+            Utility.alert("Tilføj fad til lager", "Fadet er tilføjet til: " + lagerComboBox.getSelectionModel().getSelectedItem());
         }
+        txfReol.clear();
+        txfHylde.clear();
+        txfPlads.clear();
+       // lagerComboBox.
     }
 
     private void opret() {

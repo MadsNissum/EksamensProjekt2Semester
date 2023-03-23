@@ -3,7 +3,6 @@ package gui;
 import application.controller.Controller;
 import application.model.Fad;
 import application.model.Lager;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -30,6 +29,7 @@ public class FadWindow extends Stage {
         this.setScene(scene);
 
     }
+
     public FadWindow(String title) {
         this(title, null);
     }
@@ -104,16 +104,15 @@ public class FadWindow extends Stage {
                 if (oprindelse.length() == 0) {
                     lblError.setText("Indtast oprindelse");
                 } else {
-                if (fad != null) {
-                    Controller.updateFad(fad, type, kapacitet,oprindelse);
-                } else {
-                    Controller.createFad(type,kapacitet,oprindelse);
+                    if (fad != null) {
+                        Controller.updateFad(fad, type, kapacitet, oprindelse);
+                    } else {
+                        Controller.createFad(type, kapacitet, oprindelse);
+                    }
+                    this.hide();
                 }
-                this.hide();
             }
         }
-    }
-
     }
 
 }

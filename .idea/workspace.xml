@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="FadPane og FadWindow og controller (updateFad)">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/model/Fad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/model/Fad.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/FadPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FadPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/LagerPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LagerPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/LagerWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LagerWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/FadWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FadWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,11 +24,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>

@@ -60,10 +60,12 @@ public class FadWindow extends Stage {
 
         Button btnCancel = new Button("Cancel");
         pane.add(btnCancel, 1, 3);
+        btnCancel.setPrefWidth(50);
         btnCancel.setOnAction(event -> this.cancelAction());
 
         Button btnOK = new Button("OK");
         pane.add(btnOK, 2, 3);
+        btnOK.setPrefWidth(50);
         btnOK.setOnAction(event -> this.okAction());
 
 

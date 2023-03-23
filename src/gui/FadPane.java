@@ -43,14 +43,17 @@ public class FadPane extends GridPane {
 
         Button btnOpret = new Button("Opret");
         this.add(btnOpret, 4,1);
+        btnOpret.setPrefWidth(100);
         btnOpret.setOnAction(event -> this.opret());
 
         Button btnOpdater = new Button("Opdater");
         this.add(btnOpdater, 4,2);
+        btnOpdater.setPrefWidth(100);
         btnOpdater.setOnAction(event -> this.opdater());
 
         Button btnSlet = new Button("Slet");
         this.add(btnSlet, 4,3);
+        btnSlet.setPrefWidth(100);
         btnSlet.setOnAction(event -> this.slet());
     }
 

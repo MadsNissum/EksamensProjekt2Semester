@@ -30,7 +30,6 @@ public class FadPane extends GridPane {
         fadListView.setPrefHeight(200);
         updateControls();
 
-
         lagerComboBox = new ComboBox<>();
         this.add(lagerComboBox, 3, 1);
         lagerComboBox.setPromptText("Adresser");
@@ -90,11 +89,12 @@ public class FadPane extends GridPane {
             Controller.createLagerPlads(fad, reol, hylde, plads);
             Controller.addFadTilLager(fad, lager);
             Utility.alert("Tilføj fad til lager", "Fadet er tilføjet til: " + lagerComboBox.getSelectionModel().getSelectedItem());
+            txfReol.clear();
+            txfHylde.clear();
+            txfPlads.clear();
+            lagerComboBox.getSelectionModel().clearSelection();
         }
-        txfReol.clear();
-        txfHylde.clear();
-        txfPlads.clear();
-        lagerComboBox.getSelectionModel().clearSelection();
+
     }
 
     private void opret() {

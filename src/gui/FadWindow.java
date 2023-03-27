@@ -2,7 +2,6 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Fad;
-import application.model.Lager;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,8 +13,6 @@ import application.utility.Number;
 
 public class FadWindow extends Stage {
     private Fad fad;
-    private Lager lager;
-
     public FadWindow(String title, Fad fad) {
         GridPane pane = new GridPane();
         this.fad = fad;
@@ -27,6 +24,7 @@ public class FadWindow extends Stage {
         Scene scene = new Scene(pane);
 
         this.setScene(scene);
+        pane.setPrefWidth(350);
 
     }
 
@@ -38,7 +36,7 @@ public class FadWindow extends Stage {
     private Label lblError;
 
     private void initContent(GridPane pane) {
-        //For testing
+
         pane.setGridLinesVisible(false);
 
         pane.setPadding(new Insets(20));
@@ -75,7 +73,6 @@ public class FadWindow extends Stage {
 
     private void initControls() {
         if (fad != null) {
-            System.out.println("test2");
             txfType.setText(fad.getType());
             txfKapacitet.setText("" + fad.getKapacitet());
             txfOprindelse.setText(fad.getOprindelse());
@@ -97,11 +94,9 @@ public class FadWindow extends Stage {
         double kapacitet = Number.checkerDouble(txfKapacitet.getText().trim());
         if (type.length() == 0) {
             lblError.setText("Indtast type");
-        } else {
-            if (kapacitet < 0) {
-                lblError.setText("Indtast et positiv talt i kapacitet");
-            } else {
-                if (oprindelse.length() == 0) {
+        } else if (kapacitet < 0){
+                lblError.setText("Indtast et positivt tal i kapacitet");
+            } else if (oprindelse.length() == 0){
                     lblError.setText("Indtast oprindelse");
                 } else {
                     if (fad != null) {
@@ -113,6 +108,4 @@ public class FadWindow extends Stage {
                 }
             }
         }
-    }
 
-}

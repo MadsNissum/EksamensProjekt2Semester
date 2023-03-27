@@ -104,5 +104,7 @@ public class Controller {
         createLager("Klostertorvet 11", 52, 100);
         createLager("Rosenhøj 60", 20, 50);
         createLager("Randersvej 243", 200, 1000);
+
+        createDestillering(LocalDate.of(2023, 3,27), LocalDate.of(2023,4, 5), "Single malt", "Byg", "Snævar aka Sniper", 500, 80, "Birk", "God whisky" );
     }
 }

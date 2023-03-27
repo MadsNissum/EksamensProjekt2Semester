@@ -5,11 +5,9 @@ import application.model.Fad;
 import application.model.Lager;
 import application.utility.Utility;
 import javafx.geometry.Insets;
-import javafx.scene.LightBase;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
-import javax.swing.text.Utilities;
 
 public class FadPane extends GridPane {
     private final ListView<Fad> fadListView;
@@ -24,6 +22,7 @@ public class FadPane extends GridPane {
         this.setGridLinesVisible(false);
 
         this.add(new Label("Fad"), 0, 0);
+
         fadListView = new ListView<>();
         this.add(fadListView, 0, 1, 1, 10);
         fadListView.setPrefWidth(250);

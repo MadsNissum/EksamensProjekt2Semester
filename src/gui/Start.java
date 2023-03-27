@@ -51,6 +51,10 @@ public class Start extends Application {
         Tab fadTab = new Tab("Fad");
         fadTab.setContent(new FadPane());
         tabPane.getTabs().add(fadTab);
+
+        Tab destilleringTab = new Tab("Destillering");
+        destilleringTab.setContent(new DestilleringsPane());
+        tabPane.getTabs().add(destilleringTab);
     }
 
     private void setup() {

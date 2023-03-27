@@ -121,11 +121,10 @@ public class Destillering {
         tap.setDestillering(null);
     }
 
+    @Override
+    public String toString() {return "Kornsort: " + kornsort + " Mængde: " + mændge;}
 
-
-
-
-/*
+    /*
 
     public void setTap(Tap tap) {
         if (tap == null) {

@@ -1,9 +1,11 @@
 package application.controller;
 
+import application.model.Destillering;
 import application.model.Fad;
 import application.model.Lager;
 import storage.Storage;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Controller {
@@ -18,6 +20,15 @@ public class Controller {
         Storage.addLager(lager);
     }
 
+    public static void createDestillering(LocalDate startDato, LocalDate slutDato, String maltbatch,
+                                          String kornsort, String medarbejder, double mændge, double alkoholProcent,
+                                          String rygemateriale, String kommentar) {
+        Destillering destillering = new Destillering(startDato,slutDato,maltbatch,kornsort, medarbejder, mændge, alkoholProcent, rygemateriale, kommentar);
+        Storage.addDestilleringer(destillering);
+
+    }
+
+
 
     //--------------------------------------------------
 
@@ -27,6 +38,10 @@ public class Controller {
 
     public static void addFad(Fad fad) {
         Storage.addFad(fad);
+    }
+
+    public static void addDestilleringer(Destillering destillering) {
+        Storage.addDestilleringer(destillering);
     }
 
     //--------------------------------------------------
@@ -39,6 +54,10 @@ public class Controller {
         Storage.removeFad(fad);
     }
 
+    public static void removeDestilleringer(Destillering destillering) {
+        Storage.removeDestilleringer(destillering);
+    }
+
     //--------------------------------------------------
 
     public static ArrayList<Lager> getLager() {
@@ -47,6 +66,10 @@ public class Controller {
 
     public static ArrayList<Fad> getFade() {
         return Storage.getFade();
+    }
+
+    public static ArrayList<Destillering> getDestilleringer() {
+        return Storage.getDestilleringer();
     }
 
     //--------------------------------------------------

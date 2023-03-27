@@ -1,5 +1,7 @@
 package application.model;
 
+import java.util.ArrayList;
+
 public class Fad {
     private String type;
     private double kapacitet;
@@ -71,5 +73,29 @@ public class Fad {
         return fadNummer + " " + type + " Liter: " + kapacitet + " Oprindelse: " + oprindelse ;
 
     }
+
+    private final ArrayList <Tap> taps = new ArrayList<>();
+
+    public ArrayList <Tap> getTaps() {
+        return taps;
+    }
+
+    public void addTap(Tap tap) {
+        if (!taps.contains(tap) && tap != null) {
+            if (tap.getMængde() < getKapacitet()) {
+                taps.add(tap);
+                tap.setFad(this);
+            } else {
+                throw new RuntimeException("Der er ikke plads i fadet");
+            }
+        }
+    }
+    public void removeTab(Tap tap) {
+        taps.remove(tap);
+        tap.setDestillering(null);
+
+    }
+
 }
+
 

@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="Fixed small things and merged">
+    <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="DestilleringsPane og DestilleringsWindow">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/DestilleringsPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/DestilleringsPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/DestilleringsWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/DestilleringsWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +101,7 @@
     <MESSAGE value="Added create lagerplads" />
     <MESSAGE value="Added classes" />
     <MESSAGE value="Fixed small things and merged" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed small things and merged" />
+    <MESSAGE value="DestilleringsPane og DestilleringsWindow" />
+    <option name="LAST_COMMIT_MESSAGE" value="DestilleringsPane og DestilleringsWindow" />
   </component>
 </project>

@@ -97,7 +97,10 @@ public class DestilleringsPane extends GridPane {
         this.add(btnDelete, 4, 3);
         btnDelete.setPrefWidth(100);
         btnDelete.setOnAction(actionEvent -> this.slet());
-
+        Button btnTap = new Button("Aftap");
+        this.add(btnTap, 4, 4);
+        btnTap.setPrefWidth(100);
+        btnTap.setOnAction(actionEvent -> this.aftap());
     }
 
     private void opret() {
@@ -131,6 +134,20 @@ public class DestilleringsPane extends GridPane {
                 lvwDestillering.getItems().setAll(Controller.getDestilleringer());
                 updateControls();
             }
+        }
+    }
+    private void aftap() {
+
+        Destillering destillering = destilleringListView.getSelectionModel().getSelectedItem();
+
+        if (destillering != null) {
+            DestilleringsTapWindow destilleringsTapWindow = new DestilleringsTapWindow("Aftap destillat", destillering);
+            destilleringsTapWindow.showAndWait();
+
+
+            updateControls();
+        } else {
+            Utility.message("Ugyldigt input", "Der er ikke valgt et destillat");
         }
     }
 

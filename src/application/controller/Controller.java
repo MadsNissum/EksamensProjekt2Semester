@@ -3,6 +3,7 @@ package application.controller;
 import application.model.Destillering;
 import application.model.Fad;
 import application.model.Lager;
+import application.model.Tap;
 import storage.Storage;
 
 import java.time.LocalDate;
@@ -27,6 +28,11 @@ public class Controller {
         Storage.addDestilleringer(destillering);
     }
 
+    public static void createTap(double mængde) {
+        Tap tap = new Tap(mængde);
+        Storage.addTap(tap);
+    }
+
     //--------------------------------------------------
 
     public static void addLager(Lager lager) {
@@ -41,6 +47,9 @@ public class Controller {
         Storage.addDestilleringer(destillering);
     }
 
+    public static void addTap(Tap tap) {
+        Storage.addTap(tap);
+    }
     //--------------------------------------------------
 
     public static void removeLager(Lager lager) {
@@ -55,6 +64,9 @@ public class Controller {
         Storage.removeDestilleringer(destillering);
     }
 
+    public static void removeTap(Tap tap) {
+        Storage.removeTap(tap);
+    }
     //--------------------------------------------------
 
     public static ArrayList<Lager> getLager() {
@@ -69,6 +81,9 @@ public class Controller {
         return Storage.getDestilleringer();
     }
 
+    public static ArrayList<Tap> getTaps() {
+        return Storage.getTaps();
+    }
     //--------------------------------------------------
 
     public static void updateFad(Fad fad, String type, double kapacitet, String oprindelse) {

@@ -3,6 +3,7 @@ package storage;
 import application.model.Destillering;
 import application.model.Fad;
 import application.model.Lager;
+import application.model.Tap;
 
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ public class Storage {
     private static final ArrayList<Fad> fade = new ArrayList<>();
 
     private static final ArrayList<Destillering> destilleringer = new ArrayList<>();
+    private static final ArrayList<Tap> taps = new ArrayList<>();
 
 
     public static void addLager(Lager lager) {
@@ -32,6 +34,11 @@ public class Storage {
         }
     }
 
+    public static void addTap(Tap tap) {
+        if (!taps.contains(tap)) {
+            taps.add(tap);
+        }
+    }
     //--------------------------------------------------
 
     public static void removeLager(Lager lager) {
@@ -44,6 +51,9 @@ public class Storage {
 
     public static void removeDestilleringer(Destillering destillering) { destilleringer.remove(destillering); }
 
+    public static void removeTap(Tap tap) {
+        taps.remove(tap);
+    }
     //--------------------------------------------------
 
     public static ArrayList<Lager> getLagerer() {
@@ -56,4 +66,7 @@ public class Storage {
 
     public static ArrayList<Destillering> getDestilleringer() {return destilleringer; }
 
+    public static ArrayList<Tap> getTaps() {
+        return taps;
+    }
 }

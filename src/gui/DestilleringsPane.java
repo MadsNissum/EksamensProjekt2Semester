@@ -138,7 +138,7 @@ public class DestilleringsPane extends GridPane {
     }
     private void aftap() {
 
-        Destillering destillering = destilleringListView.getSelectionModel().getSelectedItem();
+        Destillering destillering = lvwDestillering.getSelectionModel().getSelectedItem();
 
         if (destillering != null) {
             DestilleringsTapWindow destilleringsTapWindow = new DestilleringsTapWindow("Aftap destillat", destillering);

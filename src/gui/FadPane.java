@@ -107,13 +107,13 @@ public class FadPane extends GridPane {
         } else {
             Controller.createLagerPlads(fad, reol, hylde, plads);
             Controller.addFadTilLager(fad, lager);
-            Utility.alert("Tilføj fad til lager", "Fadet er tilføjet til: " + lagerComboBox.getSelectionModel().getSelectedItem());
+            Utility.message("Tilføj fad til lager", "Fadet er tilføjet til: " + lagerComboBox.getSelectionModel().getSelectedItem());
             txfReol.clear();
             txfHylde.clear();
             txfPlads.clear();
             lagerComboBox.getSelectionModel().clearSelection();
+            selectedFad();
         }
-
     }
 
     private void opret() {

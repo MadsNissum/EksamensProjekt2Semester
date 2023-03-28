@@ -7,6 +7,7 @@ import application.utility.Number;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -37,9 +38,10 @@ public class DestilleringsWindow extends Stage {
         this(title, null);
     }
 
-    private TextField txfStartDato, txfSlutDato, txfMaltBatch, txfKornSort,
+    private TextField txfMaltBatch, txfKornSort,
             txfMedarbejder, txfMængde, txfAlkoholProcent, txfRygeMateriale, txfKommentar;
     private Label lblError;
+    private DatePicker dpStartDato, dpSlutDato;
     private void initContent(GridPane pane) {
 
         pane.setGridLinesVisible(false);
@@ -58,11 +60,11 @@ public class DestilleringsWindow extends Stage {
         pane.add(new Label("Rygemateriale"), 0, 7);
         pane.add(new Label("Kommentar"), 0, 8);
 
-        txfStartDato = new TextField();
-        pane.add(txfStartDato, 1, 0);
+        dpStartDato = new DatePicker();
+        pane.add(dpStartDato, 1, 0);
 
-        txfSlutDato = new TextField();
-        pane.add(txfSlutDato, 1, 1);
+        dpSlutDato = new DatePicker();
+        pane.add(dpSlutDato, 1, 1);
 
         txfMaltBatch = new TextField();
         pane.add(txfMaltBatch, 1, 2);
@@ -109,8 +111,8 @@ public class DestilleringsWindow extends Stage {
     }
 
     private void okAction() {
-        LocalDate startDato = Date.checkerDate(txfStartDato.getText().trim());
-        LocalDate slutDato = Date.checkerDate(txfSlutDato.getText().trim());
+        LocalDate startDato = dpStartDato.getValue();
+        LocalDate slutDato = dpSlutDato.getValue();
         String maltBatch = txfMaltBatch.getText().trim();
         String kornSort = txfKornSort.getText().trim();
         String medarbejder = txfMedarbejder.getText().trim();

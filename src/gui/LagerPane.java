@@ -13,10 +13,8 @@ import javafx.scene.layout.GridPane;
 import storage.Storage;
 
 public class LagerPane extends GridPane {
-    private ListView<Lager> lvwLager;
-    private ListView<Fad> lvwFade;
-
-
+    private final ListView<Lager> lvwLager;
+    private final ListView<Fad> lvwFade;
 
     public LagerPane() {
         this.setHgap(10);
@@ -32,7 +30,7 @@ public class LagerPane extends GridPane {
         lvwLager.setPrefHeight(200);
         lvwLager.setPrefWidth(200);
         lvwLager.getItems().setAll(Controller.getLager());
-        ChangeListener<Lager> listener = (ov, oldCompny, newCompany) -> this.selectedLager();
+        ChangeListener<Lager> listener = (ov, oldItem, newItem) -> this.selectedLager();
         lvwLager.getSelectionModel().selectedItemProperty().addListener(listener);
 
 
@@ -43,7 +41,6 @@ public class LagerPane extends GridPane {
         this.add(lvwFade, 1, 1, 1, 10);
         lvwFade.setPrefHeight(200);
         lvwFade.setPrefWidth(200);
-        lvwFade.getItems().setAll(Controller.getFade());
 
 
         Button btnCreate= new Button("Create");
@@ -57,16 +54,15 @@ public class LagerPane extends GridPane {
         Button btnDelete= new Button("Delete");
         this.add(btnDelete, 2, 3);
         btnDelete.setOnAction(actionEvent -> this.deleteAction());
-
-
     }
 
     private void deleteAction() {
         Lager lager = lvwLager.getSelectionModel().getSelectedItem();
         if (lager != null) {
-            if (Utility.alert("Slet fad", "Er du sikker på du vil slette dette lager?"))
-            Storage.removeLager(lager);
-            updateControls();
+            if (Utility.alert("Slet lager", "Er du sikker på du vil slette dette lager?")) {
+                Controller.removeLager(lager);
+                updateControls();
+            }
         }
     }
 
@@ -93,12 +89,9 @@ public class LagerPane extends GridPane {
         lvwLager.getItems().setAll(Controller.getLager());
     }
 
-
-
     public void selectedLager() {
         if (lvwLager.getSelectionModel().getSelectedItem() != null) {
             lvwFade.getItems().setAll(lvwLager.getSelectionModel().getSelectedItem().getFade());
         }
     }
-
 }

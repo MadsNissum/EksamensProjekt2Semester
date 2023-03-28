@@ -11,4 +11,11 @@ public class Utility {
         Optional<ButtonType> result = alert.showAndWait();
         return (result.isPresent()) && (result.get() == ButtonType.OK);
     }
+
+    public static void message(String titel, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titel);
+        alert.setHeaderText(message);
+        alert.showAndWait();
+    }
 }

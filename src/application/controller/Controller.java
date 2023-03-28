@@ -23,11 +23,9 @@ public class Controller {
     public static void createDestillering(LocalDate startDato, LocalDate slutDato, String maltbatch,
                                           String kornsort, String medarbejder, double mændge, double alkoholProcent,
                                           String rygemateriale, String kommentar) {
-        Destillering destillering = new Destillering(startDato,slutDato,maltbatch,kornsort, medarbejder, mændge, alkoholProcent, rygemateriale, kommentar);
+        Destillering destillering = new Destillering(startDato, slutDato, maltbatch, kornsort, medarbejder, mændge, alkoholProcent, rygemateriale, kommentar);
         Storage.addDestilleringer(destillering);
-
     }
-
 
     //--------------------------------------------------
 
@@ -104,6 +102,6 @@ public class Controller {
         createLager("Rosenhøj 60", 20, 50);
         createLager("Randersvej 243", 200, 1000);
 
-        createDestillering(LocalDate.of(2023, 3,27), LocalDate.of(2023,4, 5), "Single malt", "Byg", "Snævar aka Sniper", 500, 80, "Birk", "God whisky" );
+        createDestillering(LocalDate.of(2023, 3, 27), LocalDate.of(2023, 4, 5), "Single malt", "Byg", "Snævar aka Sniper", 500, 80, "Birk", "God whisky");
     }
 }

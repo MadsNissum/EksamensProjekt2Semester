@@ -2,6 +2,7 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Fad;
+import application.model.Lager;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -36,7 +37,7 @@ public class FadWindow extends Stage {
     private Label lblError;
 
     private void initContent(GridPane pane) {
-
+        //For testing
         pane.setGridLinesVisible(false);
 
         pane.setPadding(new Insets(20));

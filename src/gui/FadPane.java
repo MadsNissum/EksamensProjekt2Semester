@@ -4,6 +4,7 @@ import application.controller.Controller;
 import application.model.Fad;
 import application.model.Lager;
 import application.utility.Utility;
+import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -13,7 +14,7 @@ public class FadPane extends GridPane {
     private final ListView<Fad> fadListView;
     private final TextField txfReol, txfHylde, txfPlads;
     private final Label lblError;
-    private final ComboBox<Lager> lagerComboBox;
+    private final ComboBox<Lager> lagerComboBox = new ComboBox<>();
 
     public FadPane() {
         this.setHgap(10);
@@ -29,12 +30,14 @@ public class FadPane extends GridPane {
         fadListView.setPrefHeight(200);
         updateControls();
 
-        lagerComboBox = new ComboBox<>();
+        ChangeListener<Fad> listener = (ov, oldCompny, newCompany) -> this.selectedFad();
+        fadListView.getSelectionModel().selectedItemProperty().addListener(listener);
+
         this.add(lagerComboBox, 3, 1);
         lagerComboBox.setPromptText("Adresser");
         lagerComboBox.getItems().addAll(Controller.getLager());
 
-        Button btnTilføj = new Button("Tilføj");
+        Button btnTilføj = new Button("Tilføj / Opdater");
         this.add(btnTilføj, 3, 5);
         btnTilføj.setOnAction(event -> this.tilføj());
 
@@ -68,6 +71,23 @@ public class FadPane extends GridPane {
         lblError = new Label();
         this.add(lblError, 3, 6);
         lblError.setStyle("-fx-text-fill: red");
+    }
+
+    private void selectedFad() {
+        Fad fad = fadListView.getSelectionModel().getSelectedItem();
+        Lager lager = fad.getLager();
+
+        if (lager != null) {
+            lagerComboBox.getSelectionModel().select(lager);
+            txfReol.setText(fad.getLagerPlads().getReol());
+            txfHylde.setText(fad.getLagerPlads().getHylde());
+            txfPlads.setText(fad.getLagerPlads().getPlads());
+        } else {
+            lagerComboBox.getSelectionModel().clearSelection();
+            txfReol.clear();
+            txfHylde.clear();
+            txfPlads.clear();
+        }
     }
 
     private void tilføj() {

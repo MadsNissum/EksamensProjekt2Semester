@@ -29,7 +29,6 @@ public class Controller {
     }
 
 
-
     //--------------------------------------------------
 
     public static void addLager(Lager lager) {

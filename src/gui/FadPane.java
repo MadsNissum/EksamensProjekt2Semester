@@ -27,7 +27,7 @@ public class FadPane extends GridPane {
         fadListView = new ListView<>();
         this.add(fadListView, 0, 1, 1, 10);
         fadListView.setPrefWidth(250);
-        fadListView.setPrefHeight(200);
+        fadListView.setPrefHeight(324);
         updateControls();
 
         ChangeListener<Fad> listener = (ov, oldCompny, newCompany) -> this.selectedFad();

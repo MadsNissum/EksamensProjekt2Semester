@@ -22,7 +22,7 @@ public class DestilleringsPane extends GridPane {
         this.setGridLinesVisible(false);
 
         this.add(new Label("Destillering"), 0, 0);
-        this.add(new Label("Tappe"), 2, 0);
+        this.add(new Label("Tappe"), 3, 0);
 
         destilleringListView = new ListView<>();
         this.add(destilleringListView, 0, 1, 1, 10);
@@ -34,53 +34,53 @@ public class DestilleringsPane extends GridPane {
 
 
         tapListView = new ListView<>();
-        this.add(tapListView, 2, 1, 1, 10);
+        this.add(tapListView, 3, 1, 1, 10);
         tapListView.setPrefWidth(150);
         tapListView.setPrefHeight(150);
 
         txfStartDato = new TextField();
-        this.add(txfStartDato, 1, 1);
-        txfStartDato.setPromptText("Startdato");
+        this.add(new Label("Startdato: "), 1, 1);
+        this.add(txfStartDato, 2, 1);
         txfStartDato.setEditable(false);
 
         txfSlutDato = new TextField();
-        this.add(txfSlutDato, 1, 2);
-        txfSlutDato.setPromptText("Slutdato");
+        this.add(new Label("Slutdato: "), 1, 2);
+        this.add(txfSlutDato, 2, 2);
         txfSlutDato.setEditable(false);
 
         txfMaltBatch = new TextField();
-        this.add(txfMaltBatch, 1, 3);
-        txfMaltBatch.setPromptText("Maltbatch");
+        this.add(new Label("Maltbatch: "), 1, 3);
+        this.add(txfMaltBatch, 2, 3);
         txfMaltBatch.setEditable(false);
 
         txfKornSort = new TextField();
-        this.add(txfKornSort, 1, 4);
-        txfKornSort.setPromptText("Kornsort");
+        this.add(new Label("Kortsort: "), 1, 4);
+        this.add(txfKornSort, 2, 4);
         txfKornSort.setEditable(false);
 
         txfMedarbejder = new TextField();
-        this.add(txfMedarbejder, 1, 5);
-        txfMedarbejder.setPromptText("Medarbejder");
+        this.add(new Label("Medarbejder: "), 1, 5);
+        this.add(txfMedarbejder, 2, 5);
         txfMedarbejder.setEditable(false);
 
         txfMængde = new TextField();
-        this.add(txfMængde, 1, 6);
-        txfMængde.setPromptText("Mængde");
+        this.add(new Label("Mængde: "), 1, 6);
+        this.add(txfMængde, 2, 6);
         txfMængde.setEditable(false);
 
         txfAlkoholProcent = new TextField();
-        this.add(txfAlkoholProcent, 1, 7);
-        txfAlkoholProcent.setPromptText("Alkoholprocent");
+        this.add(new Label("Alkoholprocent: "), 1, 7);
+        this.add(txfAlkoholProcent, 2, 7);
         txfAlkoholProcent.setEditable(false);
 
         txfRygeMateriale = new TextField();
-        this.add(txfRygeMateriale, 1, 8);
-        txfRygeMateriale.setPromptText("Rygemateriale");
+        this.add(new Label("Rygemateriale: "), 1, 8);
+        this.add(txfRygeMateriale, 2, 8);
         txfRygeMateriale.setEditable(false);
 
         txfKommentar = new TextField();
-        this.add(txfKommentar, 1, 9);
-        txfKommentar.setPromptText("Kommentar");
+        this.add(new Label("Kommentar: "), 1, 9);
+        this.add(txfKommentar, 2, 9);
         txfKommentar.setEditable(false);
 
         Button btnOpret = new Button("Opret");
@@ -121,6 +121,8 @@ public class DestilleringsPane extends GridPane {
     private void selectDestillering() {
         Destillering destillering = destilleringListView.getSelectionModel().getSelectedItem();
 
+        System.out.println(destilleringListView.getHeight());
+
         if (destillering != null) {
             txfStartDato.setText("" + destillering.getStartDato());
             txfSlutDato.setText("" + destillering.getSlutDato());
@@ -129,7 +131,7 @@ public class DestilleringsPane extends GridPane {
             txfMedarbejder.setText(destillering.getMedarbejder());
             txfMængde.setText("" + destillering.getMændge());
             txfAlkoholProcent.setText("" + destillering.getAlkoholProcent());
-            txfRygeMateriale.setText("" + destillering.getAlkoholProcent());
+            txfRygeMateriale.setText("" + destillering.getRygemateriale());
             txfKommentar.setText(destillering.getKommentar());
         }
     }

@@ -173,6 +173,7 @@ public class DestilleringsPane extends GridPane {
             txfAlkoholProcent.clear();
             txfRygeMateriale.clear();
             txfKommentar.clear();
+            txfMængde.clear();
         }
     }
 

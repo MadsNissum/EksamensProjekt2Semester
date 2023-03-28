@@ -123,6 +123,7 @@ public class DestilleringsWindow extends Stage {
             txfAlkoholProcent.clear();
             txfRygeMateriale.clear();
             txfKommentar.clear();
+            txfMængde.clear();
         }
     }
 

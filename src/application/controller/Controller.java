@@ -91,6 +91,20 @@ public class Controller {
         lager.setFadKapacitet(kapacitet);
     }
 
+    public static void updateDestillering(Destillering destillering, LocalDate startDato, LocalDate slutDato, String maltbatch,
+                                          String kornsort, String medarbejder, double mængde, double alkoholProcent,
+                                          String rygemateriale, String kommentar) {
+        destillering.setStartDato(startDato);
+        destillering.setSlutDato(slutDato);
+        destillering.setMaltbatch(maltbatch);
+        destillering.setKornsort(kornsort);
+        destillering.setMedarbejder(medarbejder);
+        destillering.setMændge(mængde);
+        destillering.setAlkoholProcent(alkoholProcent);
+        destillering.setRygemateriale(rygemateriale);
+        destillering.setKommentar(kommentar);
+    }
+
 
     public static void initController() {
         createFad("Burbon", 32, "Texas");

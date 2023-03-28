@@ -2,6 +2,7 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Destillering;
+import application.model.Fad;
 import application.model.Tap;
 import application.utility.Utility;
 import javafx.beans.value.ChangeListener;
@@ -91,7 +92,7 @@ public class DestilleringsPane extends GridPane {
         Button btnOpdater = new Button("Opdater");
         this.add(btnOpdater, 4, 2);
         btnOpdater.setPrefWidth(100);
-        //btnUpdate.setOnAction(actionEvent -> this.opdater());
+        btnOpdater.setOnAction(actionEvent -> this.opdater());
 
         Button btnDelete = new Button("Slet");
         this.add(btnDelete, 4, 3);
@@ -102,11 +103,25 @@ public class DestilleringsPane extends GridPane {
     }
 
     private void opret() {
-        DestilleringsWindow destilleringsWindow = new DestilleringsWindow("Opret fad");
+        DestilleringsWindow destilleringsWindow = new DestilleringsWindow("Opret destillering");
         destilleringsWindow.showAndWait();
 
         updateControls();
     }
+
+    private void opdater() {
+        Destillering destillering = destilleringListView.getSelectionModel().getSelectedItem();
+        if (destillering != null) {
+
+            DestilleringsWindow destilleringsWindow = new DestilleringsWindow("Opdater destillering", destillering);
+            destilleringsWindow.showAndWait();
+
+            selectDestillering();
+            updateControls();
+
+        }
+    }
+
 
     private void slet() {
         Destillering destillering = destilleringListView.getSelectionModel().getSelectedItem();
@@ -120,8 +135,6 @@ public class DestilleringsPane extends GridPane {
 
     private void selectDestillering() {
         Destillering destillering = destilleringListView.getSelectionModel().getSelectedItem();
-
-        System.out.println(destilleringListView.getHeight());
 
         if (destillering != null) {
             txfStartDato.setText("" + destillering.getStartDato());

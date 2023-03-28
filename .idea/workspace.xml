@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="Fixed small things and merged">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/model/Tap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/model/Tap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/DestilleringsPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/DestilleringsPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/FadPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FadPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/LagerPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LagerPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/DestilleringsWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/DestilleringsWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

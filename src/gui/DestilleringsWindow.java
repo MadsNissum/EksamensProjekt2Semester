@@ -4,6 +4,7 @@ import application.controller.Controller;
 import application.model.Destillering;
 import application.utility.Date;
 import application.utility.Number;
+import com.sun.prism.shader.DrawPgram_Color_AlphaTest_Loader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -103,7 +104,26 @@ public class DestilleringsWindow extends Stage {
     }
 
     private void initControls() {
-
+        if (destillering != null) {
+            dpStartDato.setValue(destillering.getStartDato());
+            dpSlutDato.setValue(destillering.getSlutDato());
+            txfMaltBatch.setText(destillering.getMaltbatch());
+            txfKornSort.setText(destillering.getKornsort());
+            txfMedarbejder.setText(destillering.getMedarbejder());
+            txfMængde.setText("" + destillering.getMændge());
+            txfAlkoholProcent.setText("" + destillering.getAlkoholProcent());
+            txfRygeMateriale.setText((destillering.getRygemateriale()));
+            txfKommentar.setText(destillering.getKommentar());
+        } else {
+            dpStartDato.setValue(null);
+            dpSlutDato.setValue(null);
+            txfMaltBatch.clear();
+            txfKornSort.clear();
+            txfMedarbejder.clear();
+            txfAlkoholProcent.clear();
+            txfRygeMateriale.clear();
+            txfKommentar.clear();
+        }
     }
 
     private void cancelAction() {
@@ -137,7 +157,9 @@ public class DestilleringsWindow extends Stage {
         } else if (kommentar.isEmpty()) {
             lblError.setText("Indtast kommentar");
                 } else {
-                    if (destillering == null) {
+                    if (destillering != null) {
+                        Controller.updateDestillering(destillering, startDato, slutDato, maltBatch, kornSort, medarbejder, mængde, alkoholProcent, rygeMateriale, kommentar);
+                    } else {
                         Controller.createDestillering(startDato,slutDato,maltBatch,kornSort,medarbejder,mængde,alkoholProcent,rygeMateriale,kommentar);
                     }
                     this.hide();

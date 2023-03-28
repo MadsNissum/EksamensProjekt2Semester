@@ -2,7 +2,6 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Destillering;
-import application.model.Fad;
 import application.model.Tap;
 import application.utility.Utility;
 import javafx.beans.value.ChangeListener;
@@ -11,8 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 public class DestilleringsPane extends GridPane {
-    private ListView<Destillering> destilleringListView;
-    private ListView<Tap> tapListView;
+    private ListView<Destillering> lvwDestillering;
+    private ListView<Tap> lvwTap;
     private TextField txfStartDato, txfSlutDato, txfMaltBatch,
             txfKornSort, txfMedarbejder, txfMængde, txfAlkoholProcent, txfRygeMateriale, txfKommentar;
 
@@ -25,19 +24,19 @@ public class DestilleringsPane extends GridPane {
         this.add(new Label("Destillering"), 0, 0);
         this.add(new Label("Tappe"), 3, 0);
 
-        destilleringListView = new ListView<>();
-        this.add(destilleringListView, 0, 1, 1, 10);
-        destilleringListView.setPrefWidth(200);
-        destilleringListView.setPrefHeight(150);
+        lvwDestillering = new ListView<>();
+        this.add(lvwDestillering, 0, 1, 1, 10);
+        lvwDestillering.setPrefWidth(200);
+        lvwDestillering.setPrefHeight(150);
         updateControls();
         ChangeListener<Destillering> listener = (ov, oldItem, newItem) -> this.selectDestillering();
-        destilleringListView.getSelectionModel().selectedItemProperty().addListener(listener);
+        lvwDestillering.getSelectionModel().selectedItemProperty().addListener(listener);
 
 
-        tapListView = new ListView<>();
-        this.add(tapListView, 3, 1, 1, 10);
-        tapListView.setPrefWidth(150);
-        tapListView.setPrefHeight(150);
+        lvwTap = new ListView<>();
+        this.add(lvwTap, 3, 1, 1, 10);
+        lvwTap.setPrefWidth(150);
+        lvwTap.setPrefHeight(150);
 
         txfStartDato = new TextField();
         this.add(new Label("Startdato: "), 1, 1);
@@ -99,7 +98,6 @@ public class DestilleringsPane extends GridPane {
         btnDelete.setPrefWidth(100);
         btnDelete.setOnAction(actionEvent -> this.slet());
 
-
     }
 
     private void opret() {
@@ -110,32 +108,34 @@ public class DestilleringsPane extends GridPane {
     }
 
     private void opdater() {
-        Destillering destillering = destilleringListView.getSelectionModel().getSelectedItem();
+        Destillering destillering = lvwDestillering.getSelectionModel().getSelectedItem();
         if (destillering != null) {
 
             DestilleringsWindow destilleringsWindow = new DestilleringsWindow("Opdater destillering", destillering);
             destilleringsWindow.showAndWait();
 
+            lvwDestillering.getSelectionModel().select(destillering);
             selectDestillering();
             updateControls();
+
 
         }
     }
 
 
     private void slet() {
-        Destillering destillering = destilleringListView.getSelectionModel().getSelectedItem();
+        Destillering destillering = lvwDestillering.getSelectionModel().getSelectedItem();
         if (destillering != null) {
             if (Utility.alert("Slet destillering", "Er du sikker på, at du vil slette destilleringen?")) {
                 Controller.removeDestilleringer(destillering);
-                destilleringListView.getItems().setAll(Controller.getDestilleringer());
+                lvwDestillering.getItems().setAll(Controller.getDestilleringer());
                 updateControls();
             }
         }
     }
 
     private void selectDestillering() {
-        Destillering destillering = destilleringListView.getSelectionModel().getSelectedItem();
+        Destillering destillering = lvwDestillering.getSelectionModel().getSelectedItem();
 
         if (destillering != null) {
             txfStartDato.setText("" + destillering.getStartDato());
@@ -153,7 +153,6 @@ public class DestilleringsPane extends GridPane {
             txfMaltBatch.clear();
             txfKornSort.clear();
             txfMedarbejder.clear();
-            txfMængde.clear();
             txfAlkoholProcent.clear();
             txfRygeMateriale.clear();
             txfKommentar.clear();
@@ -161,6 +160,7 @@ public class DestilleringsPane extends GridPane {
     }
 
     private void updateControls() {
-        destilleringListView.getItems().setAll(Controller.getDestilleringer());
+        lvwDestillering.getItems().setAll(Controller.getDestilleringer());
+
     }
 }

@@ -3,18 +3,32 @@ package gui;
 import application.controller.Controller;
 import application.model.Fad;
 import application.model.Lager;
+import application.model.Tap;
 import application.utility.Utility;
 import javafx.beans.value.ChangeListener;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 
 public class FadPane extends GridPane {
-    private final ListView<Fad> fadListView;
-    private final TextField txfReol, txfHylde, txfPlads;
-    private final Label lblError;
+    private final ListView<Fad> fadListView = new ListView<>();
+    private final ListView<Tap> tapListView = new ListView<>();
+    private final TextField txfReol = new TextField();
+    private final TextField txfHylde = new TextField();
+    private final TextField txfPlads = new TextField();
+    private final Label lblError = new Label();
     private final ComboBox<Lager> lagerComboBox = new ComboBox<>();
+    private HBox hBox = new HBox();
+
+    private Button btnOpret = new Button("+");
+    private Button btnSlet = new Button("-");
+    private Button btnOpdater = new Button("✎");
 
     public FadPane() {
         this.setHgap(10);
@@ -24,8 +38,19 @@ public class FadPane extends GridPane {
 
         this.add(new Label("Fad"), 0, 0);
 
-        fadListView = new ListView<>();
-        this.add(fadListView, 0, 1, 1, 10);
+        this.add(new Label("Tilføj fad til lager"), 3, 0);
+
+        this.add(new Label("Tappe"), 4, 0);
+
+        this.add(tapListView, 4, 1, 1, 10);
+        tapListView.setPrefWidth(250);
+        tapListView.setPrefHeight(324);
+
+        this.add(hBox, 1, 0);
+        hBox.setSpacing(10);
+        hBox.setAlignment(Pos.BASELINE_RIGHT);
+
+        this.add(fadListView, 0, 1, 2, 10);
         fadListView.setPrefWidth(250);
         fadListView.setPrefHeight(324);
         updateControls();
@@ -38,55 +63,53 @@ public class FadPane extends GridPane {
         lagerComboBox.getItems().addAll(Controller.getLager());
 
         Button btnTilføj = new Button("Tilføj / Opdater");
+        btnTilføj.setPrefWidth(182);
         this.add(btnTilføj, 3, 5);
         btnTilføj.setOnAction(event -> this.tilføj());
 
-        txfReol = new TextField();
         this.add(txfReol, 3, 2);
         txfReol.setPromptText("Reol");
 
-        txfHylde = new TextField();
         this.add(txfHylde, 3, 3);
         txfHylde.setPromptText("Hylde");
 
-        txfPlads = new TextField();
         this.add(txfPlads, 3, 4);
         txfPlads.setPromptText("Plads");
 
-        Button btnOpret = new Button("Opret");
-        this.add(btnOpret, 4, 1);
-        btnOpret.setPrefWidth(100);
+        btnOpret.setPrefWidth(29);
         btnOpret.setOnAction(event -> this.opret());
 
-        Button btnOpdater = new Button("Opdater");
-        this.add(btnOpdater, 4, 2);
-        btnOpdater.setPrefWidth(100);
+        btnOpret.setPrefWidth(29);
         btnOpdater.setOnAction(event -> this.opdater());
 
-        Button btnSlet = new Button("Slet");
-        this.add(btnSlet, 4, 3);
-        btnSlet.setPrefWidth(100);
+        btnSlet.setPrefWidth(29);
         btnSlet.setOnAction(event -> this.slet());
 
-        lblError = new Label();
+        hBox.getChildren().add(btnOpret);
+        hBox.getChildren().add(btnSlet);
+        hBox.getChildren().add(btnOpdater);
+
         this.add(lblError, 3, 6);
         lblError.setStyle("-fx-text-fill: red");
     }
 
     private void selectedFad() {
         Fad fad = fadListView.getSelectionModel().getSelectedItem();
-        Lager lager = fad.getLager();
+        if (fad != null) {
 
-        if (lager != null) {
-            lagerComboBox.getSelectionModel().select(lager);
-            txfReol.setText(fad.getLagerPlads().getReol());
-            txfHylde.setText(fad.getLagerPlads().getHylde());
-            txfPlads.setText(fad.getLagerPlads().getPlads());
-        } else {
-            lagerComboBox.getSelectionModel().clearSelection();
-            txfReol.clear();
-            txfHylde.clear();
-            txfPlads.clear();
+            Lager lager = fad.getLager();
+
+            if (lager != null) {
+                lagerComboBox.getSelectionModel().select(lager);
+                txfReol.setText(fad.getLagerPlads().getReol());
+                txfHylde.setText(fad.getLagerPlads().getHylde());
+                txfPlads.setText(fad.getLagerPlads().getPlads());
+            } else {
+                lagerComboBox.getSelectionModel().clearSelection();
+                txfReol.clear();
+                txfHylde.clear();
+                txfPlads.clear();
+            }
         }
     }
 
@@ -125,6 +148,7 @@ public class FadPane extends GridPane {
 
     private void opdater() {
         Fad fad = fadListView.getSelectionModel().getSelectedItem();
+
         if (fad != null) {
 
             FadWindow fadWindow = new FadWindow("Opdater fad", fad);

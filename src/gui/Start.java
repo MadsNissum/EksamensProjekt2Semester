@@ -2,6 +2,7 @@ package gui;
 
 import application.controller.Controller;
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -43,16 +44,21 @@ public class Start extends Application {
         Tab lagerTab = new Tab("Lager");
         lagerTab.setContent(lagerPane);
         tabPane.getTabs().add(lagerTab);
+        lagerPane.setAlignment(Pos.BASELINE_CENTER);
 
         lagerTab.setOnSelectionChanged(event -> lagerPane.selectedLager());
 
+        FadPane fadPane = new FadPane();
         Tab fadTab = new Tab("Fad");
-        fadTab.setContent(new FadPane());
+        fadTab.setContent(fadPane);
         tabPane.getTabs().add(fadTab);
+        fadPane.setAlignment(Pos.BASELINE_CENTER);
 
+        DestilleringsPane destilleringsPane = new DestilleringsPane();
         Tab destilleringTab = new Tab("Destillering");
-        destilleringTab.setContent(new DestilleringsPane());
+        destilleringTab.setContent(destilleringsPane);
         tabPane.getTabs().add(destilleringTab);
+        destilleringsPane.setAlignment(Pos.BASELINE_CENTER);
     }
 
     private void setup() {

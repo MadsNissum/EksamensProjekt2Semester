@@ -3,7 +3,6 @@ package gui;
 import application.controller.Controller;
 import application.model.Destillering;
 import application.model.Fad;
-import application.model.Lager;
 import application.model.Tap;
 import application.utility.Utility;
 import javafx.beans.value.ChangeListener;
@@ -191,16 +190,13 @@ public class DestilleringsPane extends GridPane {
           lvwTap.getItems().setAll(lvwDestillering.getSelectionModel().getSelectedItem().getTaps());
        }
 
-
     }
 
     private void updateControls() {
         lvwDestillering.getItems().setAll(Controller.getDestilleringer());
-
     }
 
     private void updateTapControls() {
         lvwTap.getItems().setAll(Controller.getTaps());
-
     }
 }

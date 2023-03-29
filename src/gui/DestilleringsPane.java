@@ -136,6 +136,7 @@ public class DestilleringsPane extends GridPane {
         if (destillering != null) {
             if (Utility.alert("Slet destillering", "Er du sikker på, at du vil slette destilleringen?")) {
                 Controller.removeDestilleringer(destillering);
+                clear();
                 lvwDestillering.getItems().setAll(Controller.getDestilleringer());
                 updateControls();
             }
@@ -170,17 +171,19 @@ public class DestilleringsPane extends GridPane {
             txfRygeMateriale.setText("" + destillering.getRygemateriale());
             txfKommentar.setText(destillering.getKommentar());
 
-        } else {
-            txfStartDato.clear();
-            txfSlutDato.clear();
-            txfMaltBatch.clear();
-            txfKornSort.clear();
-            txfMedarbejder.clear();
-            txfAlkoholProcent.clear();
-            txfRygeMateriale.clear();
-            txfKommentar.clear();
-            txfMængde.clear();
         }
+    }
+
+    private void clear() {
+        txfStartDato.clear();
+        txfSlutDato.clear();
+        txfMaltBatch.clear();
+        txfKornSort.clear();
+        txfMedarbejder.clear();
+        txfAlkoholProcent.clear();
+        txfRygeMateriale.clear();
+        txfKommentar.clear();
+        txfMængde.clear();
     }
 
     private void selectedTap() {

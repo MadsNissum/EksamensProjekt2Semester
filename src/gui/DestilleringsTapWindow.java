@@ -3,6 +3,7 @@ package gui;
 import application.controller.Controller;
 import application.model.Destillering;
 import application.model.Fad;
+import application.model.Lager;
 import application.model.Tap;
 import application.utility.Number;
 import javafx.beans.value.ChangeListener;
@@ -11,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 public class DestilleringsTapWindow extends Stage {
 
@@ -21,6 +24,7 @@ public class DestilleringsTapWindow extends Stage {
     public DestilleringsTapWindow(String title, Destillering destillering, Fad fad) {
         GridPane pane = new GridPane();
         this.destillering = destillering;
+        this.fad = fad;
 
         initContent(pane);
 
@@ -84,7 +88,6 @@ public class DestilleringsTapWindow extends Stage {
             lblError.setText("Indtast en korrekt mængde");
         } else {
             Controller.destillatAftap(destillering, mængde);
-
 
 
             Controller.createTap(mængde);

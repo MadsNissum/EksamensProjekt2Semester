@@ -10,6 +10,8 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
+import java.util.ArrayList;
+
 public class DestilleringsPane extends GridPane {
     private Fad fad;
     private ListView<Destillering> lvwDestillering;
@@ -105,6 +107,7 @@ public class DestilleringsPane extends GridPane {
         btnTap.setOnAction(actionEvent -> this.aftap());
     }
 
+
     private void opret() {
         DestilleringsWindow destilleringsWindow = new DestilleringsWindow("Opret destillering");
         destilleringsWindow.showAndWait();
@@ -146,7 +149,6 @@ public class DestilleringsPane extends GridPane {
             DestilleringsTapWindow destilleringsTapWindow = new DestilleringsTapWindow("Aftap destillat", destillering, fad);
             destilleringsTapWindow.showAndWait();
 
-
             updateControls();
         } else {
             Utility.message("Ugyldigt input", "Der er ikke valgt et destillat");
@@ -178,6 +180,7 @@ public class DestilleringsPane extends GridPane {
             txfMængde.clear();
         }
     }
+
 
     private void updateControls() {
         lvwDestillering.getItems().setAll(Controller.getDestilleringer());

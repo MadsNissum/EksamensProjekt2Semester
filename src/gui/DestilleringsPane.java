@@ -2,6 +2,7 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Destillering;
+import application.model.Fad;
 import application.model.Tap;
 import application.utility.Utility;
 import javafx.beans.value.ChangeListener;
@@ -10,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 public class DestilleringsPane extends GridPane {
+    private Fad fad;
     private ListView<Destillering> lvwDestillering;
     private ListView<Tap> lvwTap;
     private TextField txfStartDato, txfSlutDato, txfMaltBatch,
@@ -141,7 +143,7 @@ public class DestilleringsPane extends GridPane {
         Destillering destillering = lvwDestillering.getSelectionModel().getSelectedItem();
 
         if (destillering != null) {
-            DestilleringsTapWindow destilleringsTapWindow = new DestilleringsTapWindow("Aftap destillat", destillering);
+            DestilleringsTapWindow destilleringsTapWindow = new DestilleringsTapWindow("Aftap destillat", destillering, fad);
             destilleringsTapWindow.showAndWait();
 
 

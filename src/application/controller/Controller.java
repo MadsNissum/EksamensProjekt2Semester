@@ -120,6 +120,9 @@ public class Controller {
         destillering.setKommentar(kommentar);
     }
 
+    public static double destillatAftap(Destillering destillering, double mængde) {
+       return destillering.getMændge() - mængde;
+    }
 
     public static void initController() {
         createFad("Burbon", 32, "Texas");

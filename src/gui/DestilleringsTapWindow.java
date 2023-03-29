@@ -16,10 +16,9 @@ public class DestilleringsTapWindow extends Stage {
 
     private Destillering destillering;
     private Tap tap;
-
     private Fad fad;
 
-    public DestilleringsTapWindow(String title, Destillering destillering) {
+    public DestilleringsTapWindow(String title, Destillering destillering, Fad fad) {
         GridPane pane = new GridPane();
         this.destillering = destillering;
 
@@ -35,10 +34,10 @@ public class DestilleringsTapWindow extends Stage {
     }
 
     public DestilleringsTapWindow(String title) {
-        this(title, null);
+        this(title, null, null);
     }
 
-    private ListView lvwFade;
+    private ListView <Fad>lvwFade;
     private TextField txfMængde;
     private Label lblError;
 
@@ -70,6 +69,10 @@ public class DestilleringsTapWindow extends Stage {
         btnTapFad.setPrefWidth(100);
         btnTapFad.setOnAction(actionEvent -> this.tapFad());
 
+        lblError = new Label();
+        pane.add(lblError, 0 , 13);
+        lblError.setStyle("-fx-text-fill: red");
+
 
         this.initControls();
     }
@@ -77,20 +80,31 @@ public class DestilleringsTapWindow extends Stage {
     private void tapFad() {
         double mængde = Number.checkerDouble(txfMængde.getText().trim());
 
-        if (mængde < 0) {
-            lblError.setText("Indtast en mængde");
+        if (mængde < 0 || mængde > destillering.getMændge()) {
+            lblError.setText("Indtast en korrekt mængde");
         } else {
+            Controller.destillatAftap(destillering, mængde);
+
+
+
             Controller.createTap(mængde);
+
+            hide();
         }
-        hide();
+
 
     }
 
     private void selectFade() {
-       // Fad fad = txfFade.getSelectionModel().getSelectedItem();
+       Fad fad = lvwFade.getSelectionModel().getSelectedItem();
+
+       if (fad != null) {
+
+       }
     }
 
     private void initControls() {
+        lvwFade.getSelectionModel().getSelectedItem();
 
 
     }

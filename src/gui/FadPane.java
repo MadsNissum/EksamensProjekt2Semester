@@ -127,6 +127,8 @@ public class FadPane extends GridPane {
             lblError.setText("Indtast en hylde");
         } else if (plads.isEmpty()) {
             lblError.setText("Indtast en plads");
+        } else if (fadListView.getSelectionModel().getSelectedItem() == null) {
+            Utility.message("Vælg fad", "Vælg et fad fra listen");
         } else {
             Controller.createLagerPlads(fad, reol, hylde, plads);
             Controller.addFadTilLager(fad, lager);

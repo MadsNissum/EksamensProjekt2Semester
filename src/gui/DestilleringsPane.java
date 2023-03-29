@@ -40,7 +40,6 @@ public class DestilleringsPane extends GridPane {
         lvwTap.setPrefWidth(150);
         lvwTap.setPrefHeight(150);
 
-
         txfStartDato = new TextField();
         this.add(new Label("Startdato: "), 1, 1);
         this.add(txfStartDato, 2, 1);
@@ -147,8 +146,8 @@ public class DestilleringsPane extends GridPane {
             DestilleringsTapWindow destilleringsTapWindow = new DestilleringsTapWindow("Aftap destillat", destillering, fad);
             destilleringsTapWindow.showAndWait();
 
-
             updateTapControls();
+
         } else {
             Utility.message("Ugyldigt input", "Der er ikke valgt et destillat");
         }

@@ -67,6 +67,9 @@ public class Fad {
     public Lager getLager() {
         return lager;
     }
+    public int getFadNummer() {
+        return fadNummer;
+    }
 
     @Override
     public String toString() {

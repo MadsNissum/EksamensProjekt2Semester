@@ -83,14 +83,17 @@ public class DestilleringsTapWindow extends Stage {
 
     private void tapFad() {
         double mængde = Number.checkerDouble(txfMængde.getText().trim());
+        Fad fad1 = lvwFade.getSelectionModel().getSelectedItem();
+
 
         if (mængde < 0 || mængde > destillering.getMændge()) {
             lblError.setText("Indtast en korrekt mængde");
+        } else if (fad1 == null) {
+            lblError.setText("Vælg et fad at fylde på");
         } else {
             Controller.destillatAftap(destillering, mængde);
-
-
-            Controller.createTap(mængde);
+            updateControls();
+            Controller.createTap(mængde, destillering, fad1);
 
             hide();
         }

@@ -5,8 +5,10 @@ public class Tap {
     private Destillering destillering;
     private Fad fad;
 
-    public Tap(double mængde) {
+    public Tap(double mængde, Destillering destillering, Fad fad) {
         this.mængde = mængde;
+        this.destillering= destillering;
+        this.fad = fad;
 
     }
 
@@ -44,6 +46,11 @@ public class Tap {
             this.fad = fad;
             fad.addTap(this);
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Mængde: " + mængde + " Fadnummer: " + fad.getFadNummer();
     }
 }
 

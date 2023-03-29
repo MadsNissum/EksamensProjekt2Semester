@@ -28,8 +28,8 @@ public class Controller {
         Storage.addDestilleringer(destillering);
     }
 
-    public static void createTap(double mængde) {
-        Tap tap = new Tap(mængde);
+    public static void createTap(double mængde, Destillering destillering, Fad fad) {
+        Tap tap = new Tap(mængde, destillering, fad);
         Storage.addTap(tap);
     }
 

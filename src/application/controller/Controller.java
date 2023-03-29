@@ -124,6 +124,10 @@ public class Controller {
        return destillering.getMændge() - mængde;
     }
 
+    public static double aftapFad(Fad fad, double mængde) {
+        return fad.getKapacitet() - mængde;
+    }
+
     public static void initController() {
         createFad("Burbon", 32, "Texas");
         createFad("Sherry", 64, "England");

@@ -94,8 +94,16 @@ public class DestilleringsTapWindow extends Stage {
             lblError.setText("Der er ikke plads på fadet");
         } else {
             destillering.setMændge(Controller.destillatAftap(destillering, mængde));
+
+            fad.setKapacitet(Controller.aftapFad(fad, mængde));
+
             updateControls();
+
             Controller.createTap(mængde, destillering, fad);
+
+            if (fad.getKapacitet()==0) {
+                Controller.removeFad(fad);
+            }
 
             hide();
         }

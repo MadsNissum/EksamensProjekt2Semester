@@ -37,7 +37,7 @@ public class DestilleringsPane extends GridPane {
 
         lvwTap = new ListView<>();
         this.add(lvwTap, 3, 1, 1, 10);
-        lvwTap.setPrefWidth(150);
+        lvwTap.setPrefWidth(175);
         lvwTap.setPrefHeight(150);
         ChangeListener<Tap> listener1 = (ov, oldItem, newItem) -> this.selectedTap();
         lvwTap.getSelectionModel().selectedItemProperty().addListener(listener1);
@@ -149,7 +149,7 @@ public class DestilleringsPane extends GridPane {
             DestilleringsTapWindow destilleringsTapWindow = new DestilleringsTapWindow("Aftap destillat", destillering, fad);
             destilleringsTapWindow.showAndWait();
 
-
+            updateControls();
             updateTapControls();
         } else {
             Utility.message("Ugyldigt input", "Der er ikke valgt et destillat");
@@ -190,6 +190,7 @@ public class DestilleringsPane extends GridPane {
           lvwTap.getItems().setAll(lvwDestillering.getSelectionModel().getSelectedItem().getTaps());
        }
 
+
     }
 
     private void updateControls() {
@@ -199,4 +200,5 @@ public class DestilleringsPane extends GridPane {
     private void updateTapControls() {
         lvwTap.getItems().setAll(Controller.getTaps());
     }
+
 }

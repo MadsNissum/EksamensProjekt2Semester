@@ -39,8 +39,8 @@ public class DestilleringsPane extends GridPane {
         this.add(lvwTap, 3, 1, 1, 10);
         lvwTap.setPrefWidth(175);
         lvwTap.setPrefHeight(150);
-        ChangeListener<Tap> listener1 = (ov, oldItem, newItem) -> this.selectedTap();
-        lvwTap.getSelectionModel().selectedItemProperty().addListener(listener1);
+        //ChangeListener<Tap> listener1 = (ov, oldItem, newItem) -> this.selectedTap();
+        //lvwTap.getSelectionModel().selectedItemProperty().addListener(listener1);
 
 
         txfStartDato = new TextField();
@@ -142,6 +142,7 @@ public class DestilleringsPane extends GridPane {
             }
         }
     }
+
     private void aftap() {
 
         Destillering destillering = lvwDestillering.getSelectionModel().getSelectedItem();
@@ -186,15 +187,7 @@ public class DestilleringsPane extends GridPane {
         txfMængde.clear();
     }
 
-    private void selectedTap() {
-       Destillering destillering = lvwDestillering.getSelectionModel().getSelectedItem();
 
-       if (lvwDestillering.getSelectionModel().getSelectedItem() != null) {
-          lvwTap.getItems().setAll(lvwDestillering.getSelectionModel().getSelectedItem().getTaps());
-       }
-
-
-    }
 
     private void updateControls() {
         lvwDestillering.getItems().setAll(Controller.getDestilleringer());

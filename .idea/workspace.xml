@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="Fadpane">
-      <change beforePath="$PROJECT_DIR$/src/gui/DestilleringsPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/DestilleringsPane.java" afterDir="false" />
-    </list>
+    <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="DestilleringsPane" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -100,6 +98,7 @@
     <MESSAGE value="Added create lagerplads" />
     <MESSAGE value="Added classes" />
     <MESSAGE value="Fadpane" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fadpane" />
+    <MESSAGE value="DestilleringsPane" />
+    <option name="LAST_COMMIT_MESSAGE" value="DestilleringsPane" />
   </component>
 </project>

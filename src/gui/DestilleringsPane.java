@@ -3,6 +3,7 @@ package gui;
 import application.controller.Controller;
 import application.model.Destillering;
 import application.model.Fad;
+import application.model.Lager;
 import application.model.Tap;
 import application.utility.Utility;
 import javafx.beans.value.ChangeListener;
@@ -39,6 +40,9 @@ public class DestilleringsPane extends GridPane {
         this.add(lvwTap, 3, 1, 1, 10);
         lvwTap.setPrefWidth(150);
         lvwTap.setPrefHeight(150);
+        ChangeListener<Tap> listener1 = (ov, oldItem, newItem) -> this.selectedTap();
+        lvwTap.getSelectionModel().selectedItemProperty().addListener(listener1);
+
 
         txfStartDato = new TextField();
         this.add(new Label("Startdato: "), 1, 1);
@@ -87,21 +91,21 @@ public class DestilleringsPane extends GridPane {
 
         Button btnOpret = new Button("Opret");
         this.add(btnOpret, 4, 1);
-        btnOpret.setPrefWidth(100);
+        btnOpret.setPrefWidth(75);
         btnOpret.setOnAction(actionEvent -> this.opret());
 
         Button btnOpdater = new Button("Opdater");
         this.add(btnOpdater, 4, 2);
-        btnOpdater.setPrefWidth(100);
+        btnOpdater.setPrefWidth(75);
         btnOpdater.setOnAction(actionEvent -> this.opdater());
 
         Button btnDelete = new Button("Slet");
         this.add(btnDelete, 4, 3);
-        btnDelete.setPrefWidth(100);
+        btnDelete.setPrefWidth(75);
         btnDelete.setOnAction(actionEvent -> this.slet());
         Button btnTap = new Button("Aftap");
         this.add(btnTap, 4, 4);
-        btnTap.setPrefWidth(100);
+        btnTap.setPrefWidth(75);
         btnTap.setOnAction(actionEvent -> this.aftap());
     }
 
@@ -146,8 +150,8 @@ public class DestilleringsPane extends GridPane {
             DestilleringsTapWindow destilleringsTapWindow = new DestilleringsTapWindow("Aftap destillat", destillering, fad);
             destilleringsTapWindow.showAndWait();
 
-            updateTapControls();
 
+            updateTapControls();
         } else {
             Utility.message("Ugyldigt input", "Der er ikke valgt et destillat");
         }
@@ -166,6 +170,7 @@ public class DestilleringsPane extends GridPane {
             txfAlkoholProcent.setText("" + destillering.getAlkoholProcent());
             txfRygeMateriale.setText("" + destillering.getRygemateriale());
             txfKommentar.setText(destillering.getKommentar());
+
         } else {
             txfStartDato.clear();
             txfSlutDato.clear();
@@ -177,6 +182,16 @@ public class DestilleringsPane extends GridPane {
             txfKommentar.clear();
             txfMængde.clear();
         }
+    }
+
+    private void selectedTap() {
+       Destillering destillering = lvwDestillering.getSelectionModel().getSelectedItem();
+
+       if (lvwDestillering.getSelectionModel().getSelectedItem() != null) {
+          lvwTap.getItems().setAll(lvwDestillering.getSelectionModel().getSelectedItem().getTaps());
+       }
+
+
     }
 
     private void updateControls() {

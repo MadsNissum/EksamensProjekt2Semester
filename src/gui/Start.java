@@ -59,6 +59,7 @@ public class Start extends Application {
         destilleringTab.setContent(destilleringsPane);
         tabPane.getTabs().add(destilleringTab);
         destilleringsPane.setAlignment(Pos.BASELINE_CENTER);
+
     }
 
     private void setup() {

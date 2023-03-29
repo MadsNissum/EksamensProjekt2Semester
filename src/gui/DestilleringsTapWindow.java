@@ -92,6 +92,7 @@ public class DestilleringsTapWindow extends Stage {
 
     private void initControls() {
 
+
     }
     public void updateControls() {
         lvwFade.getItems().setAll(Controller.getFade());

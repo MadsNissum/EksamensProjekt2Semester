@@ -135,7 +135,9 @@ public class FadPane extends GridPane {
             txfHylde.clear();
             txfPlads.clear();
             lagerComboBox.getSelectionModel().clearSelection();
+            lblError.setText("");
             selectedFad();
+
         }
     }
 

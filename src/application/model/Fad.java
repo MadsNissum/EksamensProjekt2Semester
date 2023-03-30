@@ -55,16 +55,15 @@ public class Fad {
     }
 
     public void setLager(Lager lager) {
-        Lager gammeltLager = null;
         if (this.lager != lager) {
-            gammeltLager = this.lager;
-        }
-        if (gammeltLager != null) {
-            lager.removeFad(this);
-        }
-        this.lager = lager;
-        if (lager != null) {
-            lager.addFad(this);
+            Lager gammeltLager = this.lager;
+            if (gammeltLager != null) {
+                gammeltLager.removeFad(this);
+            }
+            this.lager = lager;
+            if (lager != null) {
+                lager.addFad(this);
+            }
         }
     }
 
@@ -82,20 +81,21 @@ public class Fad {
     public Lager getLager() {
         return lager;
     }
+
     public int getFadNummer() {
         return fadNummer;
     }
 
     @Override
     public String toString() {
-        return fadNummer + " " + type + " Liter: " + kapacitet + " Oprindelse: " + oprindelse ;
+        return fadNummer + " " + type + " Liter: " + kapacitet + " Oprindelse: " + oprindelse;
 
     }
 
     //------------------------------------------------------- Linkattribut til Tap
-    private final ArrayList <Tap> taps = new ArrayList<>();
+    private final ArrayList<Tap> taps = new ArrayList<>();
 
-    public ArrayList <Tap> getTaps() {
+    public ArrayList<Tap> getTaps() {
         return taps;
     }
 
@@ -109,6 +109,7 @@ public class Fad {
             }
         }
     }
+
     public void removeTab(Tap tap) {
         taps.remove(tap);
         tap.setFad(null);
@@ -117,9 +118,9 @@ public class Fad {
 
     //---------------------------------------------------- Linkattribut til WhiskeyFlask
 
-    private final ArrayList <WhiskeyFlaske> whiskeyFlasker = new ArrayList<>();
+    private final ArrayList<WhiskeyFlaske> whiskeyFlasker = new ArrayList<>();
 
-    public ArrayList <WhiskeyFlaske> getWhiskeyFlasker() {
+    public ArrayList<WhiskeyFlaske> getWhiskeyFlasker() {
         return whiskeyFlasker;
     }
 
@@ -129,6 +130,7 @@ public class Fad {
             whiskeyFlaske.setFad(this);
         }
     }
+
     public void removeWhiskeyFlaske(WhiskeyFlaske whiskeyFlaske) {
         whiskeyFlasker.remove(whiskeyFlaske);
         whiskeyFlaske.setFad(null);

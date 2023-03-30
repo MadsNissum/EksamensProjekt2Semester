@@ -26,30 +26,28 @@ public class Tap {
     }
 
     public void setDestillering(Destillering destillering) {
-        Destillering gammeltDestillering = null;
         if (this.destillering != destillering) {
-            gammeltDestillering = this.destillering;
-        }
-        if (gammeltDestillering != null) {
-            destillering.removeTab(this);
-        }
-        this.destillering = destillering;
-        if (destillering != null) {
-            destillering.addTap(this);
+            Destillering gammeltDestillering = this.destillering;
+            if (gammeltDestillering != null) {
+                gammeltDestillering.removeTab(this);
+            }
+            this.destillering = destillering;
+            if (destillering != null) {
+                destillering.addTap(this);
+            }
         }
     }
 
     public void setFad(Fad fad) {
-        Fad gammeltFad = null;
         if (this.fad != fad) {
-            gammeltFad = this.fad;
-        }
-        if (gammeltFad != null) {
-            fad.removeTab(this);
-        }
-        this.fad = fad;
-        if (fad != null) {
-            fad.addTap(this);
+            Fad gammeltFad = this.fad;
+            if (gammeltFad != null) {
+                gammeltFad.removeTab(this);
+            }
+            this.fad = fad;
+            if (fad != null) {
+                fad.addTap(this);
+            }
         }
     }
 

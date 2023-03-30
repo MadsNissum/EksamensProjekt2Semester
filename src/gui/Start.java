@@ -60,6 +60,17 @@ public class Start extends Application {
         tabPane.getTabs().add(destilleringTab);
         destilleringsPane.setAlignment(Pos.BASELINE_CENTER);
 
+        WhiskyPane whiskyPane = new WhiskyPane();
+        Tab whiskyTab = new Tab("Whisky");
+        whiskyTab.setContent(whiskyPane);
+        tabPane.getTabs().add(whiskyTab);
+        whiskyPane.setAlignment(Pos.BASELINE_CENTER);
+
+        FlaskePane flaskePane = new FlaskePane();
+        Tab flaskeTab = new Tab("Flasker");
+        flaskeTab.setContent(flaskePane);
+        tabPane.getTabs().add(flaskeTab);
+        flaskePane.setAlignment(Pos.BASELINE_CENTER);
     }
 
     private void setup() {

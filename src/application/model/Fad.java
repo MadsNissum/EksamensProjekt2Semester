@@ -77,6 +77,7 @@ public class Fad {
 
     }
 
+    //------------------------------------------------------- Linkattribut til Tap
     private final ArrayList <Tap> taps = new ArrayList<>();
 
     public ArrayList <Tap> getTaps() {
@@ -95,10 +96,29 @@ public class Fad {
     }
     public void removeTab(Tap tap) {
         taps.remove(tap);
-        tap.setDestillering(null);
+        tap.setFad(null);
 
     }
 
+    //---------------------------------------------------- Linkattribut til WhiskeyFlask
+
+    private final ArrayList <WhiskeyFlaske> whiskeyFlasker = new ArrayList<>();
+
+    public ArrayList <WhiskeyFlaske> getWhiskeyFlasker() {
+        return whiskeyFlasker;
+    }
+
+    public void addWhiskeyFlaske(WhiskeyFlaske whiskeyFlaske) {
+        if (!whiskeyFlasker.contains(whiskeyFlaske) && whiskeyFlaske != null) {
+            whiskeyFlasker.add(whiskeyFlaske);
+            whiskeyFlaske.setFad(this);
+        }
+    }
+    public void removeWhiskeyFlaske(WhiskeyFlaske whiskeyFlaske) {
+        whiskeyFlasker.remove(whiskeyFlaske);
+        whiskeyFlaske.setFad(null);
+
+    }
 }
 
 

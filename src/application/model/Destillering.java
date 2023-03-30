@@ -15,9 +15,7 @@ public class Destillering {
     private double alkoholProcent;
     private String rygemateriale;
     private String kommentar;
-
     private final ArrayList <Tap> taps = new ArrayList<>();
-    //private Tap tap;
 
 
     public Destillering(LocalDate startDato, LocalDate slutDato, String maltbatch,
@@ -124,17 +122,4 @@ public class Destillering {
     @Override
     public String toString() {return "Kornsort: " + kornsort + " Mængde: " + mændge;}
 
-    /*
-
-    public void setTap(Tap tap) {
-        if (tap == null) {
-            this.tap.removeDestillering(this);
-            this.tap = null;
-        } else if (this.tap == null || !this.tap.equals(tap)) {
-            this.tap = tap;
-            tap.addDestilleringer(this);
-        }
-    }
-
-    */
 }

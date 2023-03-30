@@ -30,7 +30,9 @@ public class Controller {
     }
 
     public static Tap createTap(double mængde, Destillering destillering, Fad fad) {
-        Tap tap = new Tap(mængde, destillering, fad);
+        Tap tap = new Tap(mængde);
+        tap.setDestillering(destillering);
+        tap.setFad(fad);
         Storage.addTap(tap);
         return tap;
     }

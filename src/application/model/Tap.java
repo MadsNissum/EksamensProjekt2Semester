@@ -9,12 +9,6 @@ public class Tap {
         this.mængde = mængde;
     }
 
-    public Tap(double mængde, Destillering destillering, Fad fad) {
-        this.mængde = mængde;
-        this.setDestillering(destillering);
-        this.setFad(fad);
-    }
-
     public double getMængde() {
         return mængde;
     }
@@ -32,21 +26,29 @@ public class Tap {
     }
 
     public void setDestillering(Destillering destillering) {
-        if (destillering == null) {
-            this.destillering.removeTab(this);
-            this.destillering = null;
-        } else if (this.destillering == null || !this.destillering.equals(destillering)) {
-            this.destillering = destillering;
+        Destillering gammeltDestillering = null;
+        if (this.destillering != destillering) {
+            gammeltDestillering = this.destillering;
+        }
+        if (gammeltDestillering != null) {
+            destillering.removeTab(this);
+        }
+        this.destillering = destillering;
+        if (destillering != null) {
             destillering.addTap(this);
         }
     }
 
     public void setFad(Fad fad) {
-        if (fad == null) {
-            this.fad.removeTab(this);
-            this.fad = null;
-        } else if (this.fad == null || !this.fad.equals(fad)) {
-            this.fad = fad;
+        Fad gammeltFad = null;
+        if (this.fad != fad) {
+            gammeltFad = this.fad;
+        }
+        if (gammeltFad != null) {
+            fad.removeTab(this);
+        }
+        this.fad = fad;
+        if (fad != null) {
             fad.addTap(this);
         }
     }

@@ -47,8 +47,8 @@ public class Lager {
     public void addFad(Fad fad) {
         if (!fade.contains(fad) && fad != null) {
             if (fade.size() < fadKapacitet) {
-                fade.add(fad);
                 fad.setLager(this);
+                fade.add(fad);
             } else {
                 throw new RuntimeException("Der er ikke plads til flere tynder på lageret!");
             }

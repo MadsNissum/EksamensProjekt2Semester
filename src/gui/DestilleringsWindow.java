@@ -141,8 +141,10 @@ public class DestilleringsWindow extends Stage {
         double alkoholProcent = Number.checkerDouble(txfAlkoholProcent.getText().trim());
         String rygeMateriale = txfRygeMateriale.getText().trim();
         String kommentar = txfKommentar.getText().trim();
-        if ( startDato == null ||startDato.isAfter(slutDato)) {
-            lblError.setText("Indtast korrekt dato");
+        if (startDato == null || slutDato == null) {
+            lblError.setText("Indtast dato");
+        } else if (startDato.isAfter(slutDato)) {
+            lblError.setText("Indtast korrekt slutdato");
         } else if(maltBatch.isEmpty()) {
                 lblError.setText("Indtast maltbatch");
         } else if(kornSort.isEmpty()) {

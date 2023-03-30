@@ -11,26 +11,28 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    public static void createFad(String type, double kapacitet, String oprindelse) {
+    public static Fad createFad(String type, double kapacitet, String oprindelse) {
         Fad fad = new Fad(type, kapacitet, oprindelse);
         Storage.addFad(fad);
+        return fad;
     }
 
-    public static void createLager(String adresse, double kvm, int fadKapacitet) {
+    public static Lager createLager(String adresse, double kvm, int fadKapacitet) {
         Lager lager = new Lager(adresse, kvm, fadKapacitet);
         Storage.addLager(lager);
+        return lager;
     }
 
-    public static void createDestillering(LocalDate startDato, LocalDate slutDato, String maltbatch,
-                                          String kornsort, String medarbejder, double mændge, double alkoholProcent,
-                                          String rygemateriale, String kommentar) {
+    public static Destillering createDestillering(LocalDate startDato, LocalDate slutDato, String maltbatch, String kornsort, String medarbejder, double mændge, double alkoholProcent, String rygemateriale, String kommentar) {
         Destillering destillering = new Destillering(startDato, slutDato, maltbatch, kornsort, medarbejder, mændge, alkoholProcent, rygemateriale, kommentar);
         Storage.addDestilleringer(destillering);
+        return destillering;
     }
 
-    public static void createTap(double mængde, Destillering destillering, Fad fad) {
+    public static Tap createTap(double mængde, Destillering destillering, Fad fad) {
         Tap tap = new Tap(mængde, destillering, fad);
         Storage.addTap(tap);
+        return tap;
     }
 
     //--------------------------------------------------
@@ -84,6 +86,7 @@ public class Controller {
     public static ArrayList<Tap> getTaps() {
         return Storage.getTaps();
     }
+
     //--------------------------------------------------
 
     public static void updateFad(Fad fad, String type, double kapacitet, String oprindelse) {
@@ -129,15 +132,25 @@ public class Controller {
     }
 
     public static void initController() {
-        createFad("Burbon", 32, "Texas");
-        createFad("Sherry", 64, "England");
-        createFad("Single malt", 120, "USA");
-        createFad("Rødvin", 60, "Tyskland");
+        Fad fad1 = createFad("Burbon", 32, "Texas");
+        Fad fad2 = createFad("Sherry", 64, "England");
+        Fad fad3 = createFad("Single malt", 120, "USA");
+        Fad fad4 = createFad("Rødvin", 60, "Tyskland");
 
-        createLager("Klostertorvet 11", 52, 100);
-        createLager("Rosenhøj 60", 20, 50);
-        createLager("Randersvej 243", 200, 1000);
+        Lager lager1 = createLager("Klostertorvet 11", 52, 100);
+        Lager lager2 = createLager("Rosenhøj 60", 20, 50);
+        Lager lager3 = createLager("Randersvej 243", 200, 1000);
 
-        createDestillering(LocalDate.of(2023, 3, 27), LocalDate.of(2023, 4, 5), "Single malt", "Byg", "Snævar aka Sniper", 500, 80, "Birk", "God whisky");
+        addFadTilLager(fad1, lager1);
+        fad1.createLagerPlads("B", "2", "130");
+        addFadTilLager(fad2, lager3);
+        fad2.createLagerPlads("A", "0", "B14");
+        addFadTilLager(fad3, lager2);
+        fad3.createLagerPlads("Y", "5", "80H");
+
+        Destillering destillering1 = createDestillering(LocalDate.of(2023, 3, 27), LocalDate.of(2023, 4, 5), "Single malt", "Byg", "Snævar aka Sniper", 500, 80, "Birk", "God whisky");
+
+        Tap tap1 = createTap(60,destillering1,fad4);
+        System.out.println(Storage.getTaps());
     }
 }

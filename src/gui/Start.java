@@ -53,6 +53,7 @@ public class Start extends Application {
         fadTab.setContent(fadPane);
         tabPane.getTabs().add(fadTab);
         fadPane.setAlignment(Pos.BASELINE_CENTER);
+        fadTab.setOnSelectionChanged(event -> fadPane.updateControls());
 
         DestilleringsPane destilleringsPane = new DestilleringsPane();
         Tab destilleringTab = new Tab("Destillering");

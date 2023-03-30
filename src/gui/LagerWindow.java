@@ -47,7 +47,7 @@ public class LagerWindow extends Stage {
         pane.add(txfAdresse, 0, 1);
         txfAdresse.setEditable(true);
 
-        Label lblKvm = new Label("Kvadratkilometer");
+        Label lblKvm = new Label("Kvadratmeter");
         pane.add(lblKvm, 0, 2);
 
         txfkvm = new TextField();

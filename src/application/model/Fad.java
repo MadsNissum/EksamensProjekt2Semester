@@ -64,6 +64,33 @@ public class Fad {
         }
     }
 
+    /*
+    NEW:
+    Lager gammeltLager = null;
+        if (this.lager != lager) {
+            gammeltLager = this.lager;
+        }
+        if (gammeltLager != null) {
+            lager.removeFad(this);
+        }
+        this.lager = lager;
+        if (lager != null) {
+            lager.addFad(this);
+        }
+     */
+
+
+    /*
+    OLD:
+    if (lager == null) {
+            this.lager.removeFad(this);
+            this.lager = null;
+        } else if (this.lager == null || !this.lager.equals(lager)) {
+            this.lager = lager;
+            lager.addFad(this);
+        }
+     */
+
     public Lager getLager() {
         return lager;
     }
@@ -86,7 +113,7 @@ public class Fad {
 
     public void addTap(Tap tap) {
         if (!taps.contains(tap) && tap != null) {
-            if (tap.getMængde() < getKapacitet()) {
+            if (tap.getMængde() <= getKapacitet()) {
                 taps.add(tap);
                 tap.setFad(this);
             } else {

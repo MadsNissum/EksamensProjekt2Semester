@@ -4,7 +4,6 @@ import application.model.Destillering;
 import application.model.Fad;
 import application.model.Lager;
 import application.model.Tap;
-
 import java.util.ArrayList;
 
 public class Storage {
@@ -14,6 +13,7 @@ public class Storage {
 
     private static final ArrayList<Destillering> destilleringer = new ArrayList<>();
     private static final ArrayList<Tap> taps = new ArrayList<>();
+
 
 
     public static void addLager(Lager lager) {
@@ -39,6 +39,7 @@ public class Storage {
             taps.add(tap);
         }
     }
+
     //--------------------------------------------------
 
     public static void removeLager(Lager lager) {

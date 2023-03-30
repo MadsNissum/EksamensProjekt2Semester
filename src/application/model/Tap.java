@@ -5,11 +5,14 @@ public class Tap {
     private Destillering destillering;
     private Fad fad;
 
+    public Tap(double mængde) {
+        this.mængde = mængde;
+    }
+
     public Tap(double mængde, Destillering destillering, Fad fad) {
         this.mængde = mængde;
-        this.destillering= destillering;
-        this.fad = fad;
-
+        this.setDestillering(destillering);
+        this.setFad(fad);
     }
 
     public double getMængde() {

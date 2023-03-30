@@ -6,7 +6,7 @@ public class WhiskeyFlaske {
     private static int whiskeyNummerIndex = 1;
     private Fad fad;
 
-    public WhiskeyFlaske(double mængde, int nummer) {
+    public WhiskeyFlaske(double mængde) {
         this.mængde = mængde;
         this.nummer = whiskeyNummerIndex++;
     }
@@ -22,15 +22,6 @@ public class WhiskeyFlaske {
     public int getNummer() {
         return nummer;
     }
-
-    public static int getWhiskeyNummerIndex() {
-        return whiskeyNummerIndex;
-    }
-
-    public static void setWhiskeyNummerIndex(int whiskeyNummerIndex) {
-        WhiskeyFlaske.whiskeyNummerIndex = whiskeyNummerIndex;
-    }
-
 
     //----------------------------------------------------------- Linkattribut til Fad
     public Fad getFad() {

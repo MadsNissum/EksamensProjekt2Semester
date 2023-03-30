@@ -63,7 +63,7 @@ public class Lager {
 
     @Override
     public String toString() {
-        return "adresse: " + adresse;
+        return "Adresse: " + adresse;
     }
 }
 

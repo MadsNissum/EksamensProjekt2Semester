@@ -119,14 +119,14 @@ public class Controller {
         destillering.setMaltbatch(maltbatch);
         destillering.setKornsort(kornsort);
         destillering.setMedarbejder(medarbejder);
-        destillering.setMændge(mængde);
+        destillering.setTotalLiter(mængde);
         destillering.setAlkoholProcent(alkoholProcent);
         destillering.setRygemateriale(rygemateriale);
         destillering.setKommentar(kommentar);
     }
 
     public static double destillatAftap(Destillering destillering, double mængde) {
-       return destillering.getMændge() - mængde;
+       return destillering.getTotalLiter() - mængde;
     }
 
     public static double aftapFad(Fad fad, double mængde) {

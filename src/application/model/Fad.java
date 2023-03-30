@@ -10,6 +10,8 @@ public class Fad {
     private final int fadNummer;
     private static int index = 1;
     private LagerPlads lagerPlads;
+    private final ArrayList<Tap> taps = new ArrayList<>();
+    private final ArrayList<WhiskeyFlaske> whiskeyFlasker = new ArrayList<>();
 
     public Fad(String type, double kapacitet, String oprindelse) {
         this.type = type;
@@ -86,14 +88,8 @@ public class Fad {
         return fadNummer;
     }
 
-    @Override
-    public String toString() {
-        return fadNummer + " " + type + " Liter: " + kapacitet + " Oprindelse: " + oprindelse;
-
-    }
-
     //------------------------------------------------------- Linkattribut til Tap
-    private final ArrayList<Tap> taps = new ArrayList<>();
+
 
     public ArrayList<Tap> getTaps() {
         return taps;
@@ -101,7 +97,7 @@ public class Fad {
 
     public void addTap(Tap tap) {
         if (!taps.contains(tap) && tap != null) {
-            if (tap.getMængde() <= getKapacitet()) {
+            if (tap.getLiter() <= getKapacitet()) {
                 taps.add(tap);
                 tap.setFad(this);
             } else {
@@ -118,8 +114,6 @@ public class Fad {
 
     //---------------------------------------------------- Linkattribut til WhiskeyFlask
 
-    private final ArrayList<WhiskeyFlaske> whiskeyFlasker = new ArrayList<>();
-
     public ArrayList<WhiskeyFlaske> getWhiskeyFlasker() {
         return whiskeyFlasker;
     }
@@ -134,6 +128,12 @@ public class Fad {
     public void removeWhiskeyFlaske(WhiskeyFlaske whiskeyFlaske) {
         whiskeyFlasker.remove(whiskeyFlaske);
         whiskeyFlaske.setFad(null);
+
+    }
+
+    @Override
+    public String toString() {
+        return fadNummer + " " + type + " Liter: " + kapacitet + " Oprindelse: " + oprindelse;
 
     }
 }

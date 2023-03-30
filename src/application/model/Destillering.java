@@ -1,7 +1,5 @@
 package application.model;
 
-import javafx.scene.control.Tab;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -11,7 +9,8 @@ public class Destillering {
     private String maltbatch;
     private String kornsort;
     private String medarbejder;
-    private double mændge;
+    private double totalLiter;
+    private double restLiter;
     private double alkoholProcent;
     private String rygemateriale;
     private String kommentar;
@@ -19,14 +18,15 @@ public class Destillering {
 
 
     public Destillering(LocalDate startDato, LocalDate slutDato, String maltbatch,
-                        String kornsort, String medarbejder, double mændge, double alkoholProcent,
+                        String kornsort, String medarbejder, double liter, double alkoholProcent,
                         String rygemateriale, String kommentar) {
         this.startDato = startDato;
         this.slutDato = slutDato;
         this.maltbatch = maltbatch;
         this.kornsort = kornsort;
         this.medarbejder = medarbejder;
-        this.mændge = mændge;
+        this.totalLiter = liter;
+        this.restLiter = liter;
         this.alkoholProcent = alkoholProcent;
         this.rygemateriale = rygemateriale;
         this.kommentar = kommentar;
@@ -72,12 +72,12 @@ public class Destillering {
         this.medarbejder = medarbejder;
     }
 
-    public double getMændge() {
-        return mændge;
+    public double getTotalLiter() {
+        return totalLiter;
     }
 
-    public void setMændge(double mændge) {
-        this.mændge = mændge;
+    public void setTotalLiter(double totalLiter) {
+        this.totalLiter = totalLiter;
     }
 
     public double getAlkoholProcent() {
@@ -120,6 +120,6 @@ public class Destillering {
     }
 
     @Override
-    public String toString() {return "Kornsort: " + kornsort + " Mængde: " + mændge;}
+    public String toString() {return "Kornsort: " + kornsort + " Mængde: " + totalLiter;}
 
 }

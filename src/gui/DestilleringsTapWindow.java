@@ -3,7 +3,6 @@ package gui;
 import application.controller.Controller;
 import application.model.Destillering;
 import application.model.Fad;
-import application.model.Lager;
 import application.model.Tap;
 import application.utility.Number;
 import javafx.beans.value.ChangeListener;
@@ -12,8 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
 
 public class DestilleringsTapWindow extends Stage {
 
@@ -86,14 +83,14 @@ public class DestilleringsTapWindow extends Stage {
         Fad fad = lvwFade.getSelectionModel().getSelectedItem();
 
 
-        if (mængde < 0 || mængde > destillering.getMændge()) {
+        if (mængde < 0 || mængde > destillering.getTotalLiter()) {
             lblError.setText("Indtast en korrekt mængde");
         } else if (fad == null) {
             lblError.setText("Vælg et fad at fylde på");
         } else if (fad.getKapacitet() < mængde) {
             lblError.setText("Der er ikke plads på fadet");
         } else {
-            destillering.setMændge(Controller.destillatAftap(destillering, mængde));
+            destillering.setTotalLiter(Controller.destillatAftap(destillering, mængde));
 
             fad.setKapacitet(Controller.aftapFad(fad, mængde));
 

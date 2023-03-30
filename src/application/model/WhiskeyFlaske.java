@@ -1,22 +1,22 @@
 package application.model;
 
 public class WhiskeyFlaske {
-    private double mængde;
+    private double kapacitet;
     private final int nummer;
     private static int whiskeyNummerIndex = 1;
     private Fad fad;
 
-    public WhiskeyFlaske(double mængde) {
-        this.mængde = mængde;
+    public WhiskeyFlaske(double kapacitet) {
+        this.kapacitet = kapacitet;
         this.nummer = whiskeyNummerIndex++;
     }
 
-    public double getMængde() {
-        return mængde;
+    public double getKapacitet() {
+        return kapacitet;
     }
 
-    public void setMængde(double mængde) {
-        this.mængde = mængde;
+    public void setKapacitet(double kapacitet) {
+        this.kapacitet = kapacitet;
     }
 
     public int getNummer() {
@@ -42,6 +42,6 @@ public class WhiskeyFlaske {
 
     @Override
     public String toString() {
-        return mængde + " " + nummer + " " + fad;
+        return kapacitet + " " + nummer + " " + fad;
     }
 }

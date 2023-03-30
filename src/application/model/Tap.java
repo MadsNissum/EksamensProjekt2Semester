@@ -1,20 +1,20 @@
 package application.model;
 
 public class Tap {
-    private double mængde;
+    private double liter;
     private Destillering destillering;
     private Fad fad;
 
-    public Tap(double mængde) {
-        this.mængde = mængde;
+    public Tap(double liter) {
+        this.liter = liter;
     }
 
-    public double getMængde() {
-        return mængde;
+    public double getLiter() {
+        return liter;
     }
 
-    public void setMængde(double mængde) {
-        this.mængde = mængde;
+    public void setLiter(double liter) {
+        this.liter = liter;
     }
 
     public Destillering getDestillering() {
@@ -53,7 +53,7 @@ public class Tap {
 
     @Override
     public String toString() {
-        return "Mængde: " + mængde + " Fadnummer: " + fad.getFadNummer();
+        return "Mængde: " + liter + " Fadnummer: " + fad.getFadNummer();
     }
 }
 

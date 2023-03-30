@@ -2,9 +2,7 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Destillering;
-import application.utility.Date;
 import application.utility.Number;
-import com.sun.prism.shader.DrawPgram_Color_AlphaTest_Loader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -110,7 +108,7 @@ public class DestilleringsWindow extends Stage {
             txfMaltBatch.setText(destillering.getMaltbatch());
             txfKornSort.setText(destillering.getKornsort());
             txfMedarbejder.setText(destillering.getMedarbejder());
-            txfMængde.setText("" + destillering.getMændge());
+            txfMængde.setText("" + destillering.getTotalLiter());
             txfAlkoholProcent.setText("" + destillering.getAlkoholProcent());
             txfRygeMateriale.setText((destillering.getRygemateriale()));
             txfKommentar.setText(destillering.getKommentar());

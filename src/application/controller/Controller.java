@@ -156,10 +156,10 @@ public class Controller {
     }
 
     public static void createFlasker(Fad fad, int antal, double liter, String navn) {
-        String UUID = Utility.randomUUID(16);
+        String batchID = Utility.randomUUID(16);
         //TODO daos check data base uuid bombombmo
         for (int i = 0; i < antal; i++) {
-            WhiskeyFlaske whiskeyFlaske = new WhiskeyFlaske(liter, navn, UUID);
+            WhiskeyFlaske whiskeyFlaske = new WhiskeyFlaske(liter, navn, batchID);
             whiskeyFlaske.setFad(fad);
             Storage.addWhiskyflasker(whiskeyFlaske);
 
@@ -170,7 +170,14 @@ public class Controller {
     public static ArrayList<WhiskeyFlaske> getWhiskyflaskerSearch(String str) {
         ArrayList<WhiskeyFlaske> flasker = new ArrayList<>();
 
-        flasker = Storage.getWhiskyFlasker();
+        ArrayList<WhiskeyFlaske> alleFlasker = Storage.getWhiskyFlasker();
+
+        for (WhiskeyFlaske whiskeyFlaske : alleFlasker) {
+            if (whiskeyFlaske.toString().toLowerCase().contains(str.toLowerCase()) || whiskeyFlaske.getBatchID().toLowerCase().contains(str.toLowerCase())) {
+                flasker.add(whiskeyFlaske);
+            }
+        }
+
 
         return flasker;
     }

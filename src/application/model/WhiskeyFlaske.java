@@ -6,12 +6,12 @@ public class WhiskeyFlaske {
     private static int whiskyNummerIndex = 1;
     private String navn;
     private Fad fad;
-    private String UUID;
+    private String batchID;
 
     public WhiskeyFlaske(double kapacitet, String navn, String UUID) {
         this.navn = navn;
         this.kapacitet = kapacitet;
-        this.UUID = UUID;
+        this.batchID = UUID;
         this.nummer = whiskyNummerIndex++;
     }
 
@@ -26,6 +26,10 @@ public class WhiskeyFlaske {
     public int getNummer() {
         return nummer;
     }
+    public String getBatchID() {
+        return batchID;
+    }
+
 
     public static void resetIndex() {
         WhiskeyFlaske.whiskyNummerIndex = 1;
@@ -53,4 +57,6 @@ public class WhiskeyFlaske {
     public String toString() {
         return navn + " - " + "Fadtype: " + fad.getType() + " " + nummer;
     }
+
+
 }

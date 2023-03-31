@@ -37,8 +37,10 @@ public class FlaskePane extends GridPane {
         ChangeListener<WhiskeyFlaske> listener = (ov, oldItem, newItem) -> this.flaskeInformation();
         lvwFlaske.getSelectionModel().selectedItemProperty().addListener(listener);
 
-        txaInfo.setPrefSize(200,220);
-        this.add(txaInfo,1,2);
+
+        txaInfo.setPrefWidth(200);
+        txaInfo.setPrefHeight(311.2);
+        this.add(txaInfo,1,2, 1, 10);
 
         this.add(lblError, 1, 3);
         lblError.setStyle("-fx-text-fill: red");
@@ -50,30 +52,36 @@ public class FlaskePane extends GridPane {
         String str = txfSearchBar.getText().trim();
 
         lvwFlaske.getItems().setAll(Controller.getWhiskyflaskerSearch(str));
-
-        System.out.println(str);
     }
 
     private void flaskeInformation() {
-        WhiskeyFlaske flaske = lvwFlaske.getSelectionModel().getSelectedItem();
+            WhiskeyFlaske flaske = lvwFlaske.getSelectionModel().getSelectedItem();
+            if (flaske != null) {
 
-            txaInfo.setText("Type: " + flaske.getFad().getType());
-            txaInfo.setText(txaInfo.getText() + "\n" + "Kapacitet: " + flaske.getFad().getKapacitet());
-            txaInfo.setText(txaInfo.getText() + "\n" + "Oprindelse: " + flaske.getFad().getOprindelse());
-            txaInfo.setText(txaInfo.getText() + "\n" + "Fadnummer: " + flaske.getFad().getFadNummer());
-            for(Tap tap : flaske.getFad().getTaps()) {
-                txaInfo.setText(txaInfo.getText() + "\n" + "Startdato: " + tap.getDestillering().getStartDato());
-                txaInfo.setText(txaInfo.getText() + "\n" + "Slutdato: " + tap.getDestillering().getSlutDato());
-                txaInfo.setText(txaInfo.getText() + "\n" + "Maltbatch: " + tap.getDestillering().getMaltbatch());
-                txaInfo.setText(txaInfo.getText() + "\n" + "Kornsort: " + tap.getDestillering().getKornsort());
-                txaInfo.setText(txaInfo.getText() + "\n" + "Medarbejder: " + tap.getDestillering().getMedarbejder());
-                txaInfo.setText(txaInfo.getText() + "\n" + "Alkoholprocent: " + tap.getDestillering().getAlkoholProcent());
-                txaInfo.setText(txaInfo.getText() + "\n" + "Rygemateriale: " + tap.getDestillering().getRygemateriale());
-                txaInfo.setText(txaInfo.getText() + "\n" + "Kommentar: " + tap.getDestillering().getKommentar());
 
+                txaInfo.setText("Type: " + flaske.getFad().getType());
+                txaInfo.setText(txaInfo.getText() + "\n" + "Kapacitet: " + flaske.getFad().getKapacitet());
+                txaInfo.setText(txaInfo.getText() + "\n" + "Oprindelse: " + flaske.getFad().getOprindelse());
+                txaInfo.setText(txaInfo.getText() + "\n" + "Fadnummer: " + flaske.getFad().getFadNummer());
+                txaInfo.setText(txaInfo.getText() + "\n" + "BatchID: " + flaske.getBatchID());
+
+                for (Tap tap : flaske.getFad().getTaps()) {
+                    txaInfo.setText(txaInfo.getText() + "\n" + "Startdato: " + tap.getDestillering().getStartDato());
+                    txaInfo.setText(txaInfo.getText() + "\n" + "Slutdato: " + tap.getDestillering().getSlutDato());
+                    txaInfo.setText(txaInfo.getText() + "\n" + "Maltbatch: " + tap.getDestillering().getMaltbatch());
+                    txaInfo.setText(txaInfo.getText() + "\n" + "Kornsort: " + tap.getDestillering().getKornsort());
+                    txaInfo.setText(txaInfo.getText() + "\n" + "Medarbejder: " + tap.getDestillering().getMedarbejder());
+                    txaInfo.setText(txaInfo.getText() + "\n" + "Alkoholprocent: " + tap.getDestillering().getAlkoholProcent());
+                    txaInfo.setText(txaInfo.getText() + "\n" + "Rygemateriale: " + tap.getDestillering().getRygemateriale());
+                    txaInfo.setText(txaInfo.getText() + "\n" + "Kommentar: " + tap.getDestillering().getKommentar());
+
+
+                }
             }
     }
     public void updateControls() {
         lvwFlaske.getItems().setAll(Controller.getWhiskyflasker());
     }
+
+
 }

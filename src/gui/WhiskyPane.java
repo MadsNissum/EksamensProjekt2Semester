@@ -18,6 +18,7 @@ public class WhiskyPane extends GridPane {
     private final ListView<Fad> lvwFade = new ListView<>();
     private final TextField txfMængde = new TextField();
     private final TextField txfAntal = new TextField();
+    private final TextField txfNavn = new TextField();
     private final Button btnOk = new Button("Ok");
     private final Button btnCancel = new Button("Cancel");
     private final Label lblError = new Label();
@@ -48,15 +49,19 @@ public class WhiskyPane extends GridPane {
 
         this.add(txfAntal, 1, 3,2,1);
 
-        this.add(btnCancel, 1, 4);
+        this.add(new Label("Navn"), 1, 4);
+
+        this.add(txfNavn, 1, 5,2,1);
+
+        this.add(btnCancel, 1, 6);
         btnCancel.setPrefWidth(75);
 
-        this.add(btnOk, 2, 4);
+        this.add(btnOk, 2, 6);
         btnOk.setPrefWidth(75);
         GridPane.setHalignment(btnOk, HPos.RIGHT);
         btnOk.setOnAction(actionEvent -> okAction());
 
-        this.add(lblError, 1, 5, 2, 1);
+        this.add(lblError, 1, 7, 2, 1);
         lblError.setStyle("-fx-text-fill: red");
 
 
@@ -70,6 +75,7 @@ public class WhiskyPane extends GridPane {
         if (fad != null) {
             double liter = Number.checkerDouble(txfMængde.getText().trim());
             int antal = Number.checkerInt(txfAntal.getText().trim());
+            String navn = txfNavn.getText().trim();
 
 
             if (liter <= 0) {
@@ -77,7 +83,7 @@ public class WhiskyPane extends GridPane {
             } else if (antal <= 0) {
                 lblError.setText("Indtast et korrekt nummer");
             } else {
-                Controller.createFlasker(fad, antal, liter);
+                Controller.createFlasker(fad, antal, liter, navn);
                 updateControls();
                 Utility.message("Flasker Oprettet" , antal + " flasker er nu blevet oprettet på fadet");
             }

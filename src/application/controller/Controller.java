@@ -1,6 +1,8 @@
 package application.controller;
 
 import application.model.*;
+import application.utility.Utility;
+import jdk.jshell.execution.Util;
 import storage.Storage;
 
 import java.time.LocalDate;
@@ -133,6 +135,7 @@ public class Controller {
         destillering.setKommentar(kommentar);
     }
 
+
     public static int checkWhiskyTid(Fad fad, Destillering destillering) {
        return (int) ChronoUnit.YEARS.between(destillering.getStartDato(), destillering.getSlutDato());
     }
@@ -155,13 +158,16 @@ public class Controller {
         return fade;
     }
 
-    public static void createFlasker(Fad fad, int antal, double liter) {
-        for (int i = 0; i <= antal; i++) {
-            WhiskeyFlaske whiskeyFlaske = new WhiskeyFlaske(liter);
+    public static void createFlasker(Fad fad, int antal, double liter, String navn) {
+        String UUID = Utility.randomUUID(16);
+        //TODO daos check data base uuid bombombmo
+        for (int i = 0; i < antal; i++) {
+            WhiskeyFlaske whiskeyFlaske = new WhiskeyFlaske(liter, navn, UUID);
             whiskeyFlaske.setFad(fad);
             Storage.addWhiskyflasker(whiskeyFlaske);
 
         }
+        WhiskeyFlaske.resetIndex();
     }
 
     public static void initController() {
@@ -185,9 +191,11 @@ public class Controller {
         createDestillering(LocalDate.of(2023, 3, 27), LocalDate.of(2023, 4, 5), "Single malt", "Byg", "Snævar aka Sniper", 500, 80, "Birk", "God whisky");
         createDestillering(LocalDate.of(2023, 3, 28), LocalDate.of(2027, 3, 29), "Single malt", "Hvede", "Adam", 800, 90, "Eg", "Smager er jord");
         Destillering destillering1 = createDestillering(LocalDate.of(2019, 1, 1), LocalDate.of(2022, 4, 5), "Single malt", "Byg", "Snævar aka Sniper", 500, 80, "Birk", "God whisky");
+        Destillering destillering2 = createDestillering(LocalDate.of(2018,1,1), LocalDate.of(2023,1,1), "Single malt", "Hvede", "Adam", 800, 80, "Eg", "Banger");
 
         Tap tap1 = createTap(60,destillering1,fad4);
-        System.out.println(Storage.getTaps());
+        Tap tap2 = createTap(64,destillering2,fad2);
+
     }
 
 }

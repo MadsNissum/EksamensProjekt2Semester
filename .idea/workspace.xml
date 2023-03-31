@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="Fixed small things">
+    <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="&#10;:DDD">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/FlaskePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FlaskePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/model/WhiskeyFlaske.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/model/WhiskeyFlaske.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/WhiskyPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/WhiskyPane.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,8 +103,7 @@
     <MESSAGE value="Edited fad" />
     <MESSAGE value="Added create lagerplads" />
     <MESSAGE value="Added classes" />
-    <MESSAGE value="Added liters to Fad and Destillering" />
-    <MESSAGE value="Fixed small things" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed small things" />
+    <MESSAGE value="&#10;:DDD" />
+    <option name="LAST_COMMIT_MESSAGE" value="&#10;:DDD" />
   </component>
 </project>

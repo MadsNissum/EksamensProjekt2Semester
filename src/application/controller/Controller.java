@@ -35,11 +35,6 @@ public class Controller {
         return tap;
     }
 
-    public static void createWhiskyflaske(double liter) {
-        WhiskeyFlaske whiskeyFlaske = new WhiskeyFlaske(liter);
-        Storage.addWhiskyflasker(whiskeyFlaske);
-    }
-
     //--------------------------------------------------
 
     public static void addLager(Lager lager) {
@@ -166,6 +161,15 @@ public class Controller {
             }
         }
         return fade;
+    }
+
+    public static void createFlasker(Fad fad, int antal, double liter) {
+        for (int i = 0; i <= antal; i++) {
+            WhiskeyFlaske whiskeyFlaske = new WhiskeyFlaske(liter);
+            whiskeyFlaske.setFad(fad);
+            Storage.addWhiskyflasker(whiskeyFlaske);
+
+        }
     }
 
     public static void initController() {

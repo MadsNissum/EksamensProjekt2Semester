@@ -1,5 +1,6 @@
 package gui;
 
+import application.controller.Controller;
 import application.model.WhiskeyFlaske;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
@@ -29,6 +30,7 @@ public class FlaskePane extends GridPane {
         lvwFlaske.setPrefWidth(200);
         lvwFlaske.setPrefHeight(200);
 
+
         TextArea txaInfo = new TextArea();
         txaInfo.setPrefSize(150,200);
         this.add(txaInfo,1,2);
@@ -50,6 +52,6 @@ public class FlaskePane extends GridPane {
     }
 
     public void updateControls() {
-        lvwFlaske.getSelectionModel().getSelectedItem();
+        lvwFlaske.getItems().setAll(Controller.getWhiskyflasker());
     }
 }

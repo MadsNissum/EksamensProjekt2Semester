@@ -40,6 +40,8 @@ public class WhiskyPane extends GridPane {
 
         this.add(new Label("Mængde"), 1, 0);
 
+        this.add(new Label("ml"), 3, 1);
+
         this.add(txfMængde, 1, 1,2,1);
 
         this.add(new Label("Antal"), 1, 2);
@@ -54,27 +56,34 @@ public class WhiskyPane extends GridPane {
         GridPane.setHalignment(btnOk, HPos.RIGHT);
         btnOk.setOnAction(actionEvent -> okAction());
 
-        this.add(lblError, 2, 5);
+        this.add(lblError, 1, 5, 2, 1);
         lblError.setStyle("-fx-text-fill: red");
+
 
 
 
     }
 
     private void okAction() {
-        double liter = Number.checkerDouble(txfMængde.getText().trim());
-        int antal = Number.checkerInt(txfAntal.getText().trim());
+        Fad fad = lvwFade.getSelectionModel().getSelectedItem();
+
+        if (fad != null) {
+            double liter = Number.checkerDouble(txfMængde.getText().trim());
+            int antal = Number.checkerInt(txfAntal.getText().trim());
 
 
-        if (liter <= 0) {
-            lblError.setText("Indtast en korrekt mængde");
-        } else if (antal <= 0) {
-            lblError.setText("Indtast et korrekt nummer");
+            if (liter <= 0) {
+                lblError.setText("Indtast en korrekt mængde");
+            } else if (antal <= 0) {
+                lblError.setText("Indtast et korrekt nummer");
+            } else {
+                Controller.createFlasker(fad, antal, liter);
+                updateControls();
+                Utility.message("Flasker Oprettet" , antal + " flasker er nu blevet oprettet på fadet");
+            }
         } else {
-            Controller.createWhiskyflaske(liter);
-            updateControls();
+            Utility.alert("Ugyldigt input", "Der er ikke valgt et fad");
         }
-
     }
 
     private void selectedFad() {

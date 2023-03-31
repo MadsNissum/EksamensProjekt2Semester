@@ -3,12 +3,12 @@ package application.model;
 public class WhiskeyFlaske {
     private double kapacitet;
     private final int nummer;
-    private static int whiskeyNummerIndex = 1;
+    private static int whiskyNummerIndex = 1;
     private Fad fad;
 
     public WhiskeyFlaske(double kapacitet) {
         this.kapacitet = kapacitet;
-        this.nummer = whiskeyNummerIndex++;
+        this.nummer = whiskyNummerIndex++;
     }
 
     public double getKapacitet() {
@@ -42,6 +42,6 @@ public class WhiskeyFlaske {
 
     @Override
     public String toString() {
-        return kapacitet + " " + nummer + " " + fad;
+        return fad.getType() + " " + nummer;
     }
 }

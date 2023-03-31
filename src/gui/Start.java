@@ -72,6 +72,7 @@ public class Start extends Application {
         flaskeTab.setContent(flaskePane);
         tabPane.getTabs().add(flaskeTab);
         flaskePane.setAlignment(Pos.BASELINE_CENTER);
+        flaskeTab.setOnSelectionChanged(event -> flaskePane.updateControls());
     }
 
     private void setup() {

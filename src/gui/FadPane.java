@@ -6,22 +6,26 @@ import application.model.Lager;
 import application.model.Tap;
 import application.utility.Utility;
 import javafx.beans.value.ChangeListener;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 
 public class FadPane extends GridPane {
-    private final ListView<Fad> lvFad = new ListView<>();
-    private final ListView<Tap> lvTap = new ListView<>();
+    private final ListView<Fad> lvwFad = new ListView<>();
+    private final ListView<Tap> lvwTaps = new ListView<>();
     private final TextField txfReol = new TextField();
     private final TextField txfHylde = new TextField();
     private final TextField txfPlads = new TextField();
     private final Label lblError = new Label();
     private final ComboBox<Lager> lagerComboBox = new ComboBox<>();
     private HBox hBox = new HBox();
+
     private Button btnOpret = new Button("+");
     private Button btnSlet = new Button("-");
     private Button btnOpdater = new Button("✎");
@@ -38,20 +42,21 @@ public class FadPane extends GridPane {
 
         this.add(new Label("Tappe"), 4, 0);
 
-        this.add(lvTap, 4, 1, 1, 10);
-        lvTap.setPrefWidth(250);
-        lvTap.setPrefHeight(324);
+        this.add(lvwTaps, 4, 1, 1, 10);
+        lvwTaps.setPrefWidth(250);
+        lvwTaps.setPrefHeight(324);
 
         this.add(hBox, 1, 0);
         hBox.setSpacing(10);
         hBox.setAlignment(Pos.BASELINE_RIGHT);
 
-        this.add(lvFad, 0, 1, 2, 10);
-        lvFad.setPrefWidth(250);
-        lvFad.setPrefHeight(324);
+        this.add(lvwFad, 0, 1, 2, 10);
+        lvwFad.setPrefWidth(250);
+        lvwFad.setPrefHeight(324);
+        updateControls();
 
         ChangeListener<Fad> listener = (ov, oldCompny, newCompany) -> this.selectedFad();
-        lvFad.getSelectionModel().selectedItemProperty().addListener(listener);
+        lvwFad.getSelectionModel().selectedItemProperty().addListener(listener);
 
         this.add(lagerComboBox, 3, 1);
         lagerComboBox.setPromptText("Adresser");
@@ -91,21 +96,23 @@ public class FadPane extends GridPane {
     }
 
     private void selectedFad() {
-        Fad fad = lvFad.getSelectionModel().getSelectedItem();
+        Fad fad = lvwFad.getSelectionModel().getSelectedItem();
         if (fad != null) {
+
             Lager lager = fad.getLager();
+
             if (lager != null) {
                 lagerComboBox.getSelectionModel().select(lager);
                 txfReol.setText(fad.getLagerPlads().getReol());
                 txfHylde.setText(fad.getLagerPlads().getHylde());
                 txfPlads.setText(fad.getLagerPlads().getPlads());
-                lvTap.getItems().setAll(fad.getTaps());
+                lvwTaps.getItems().setAll(fad.getTaps());
             } else {
                 lagerComboBox.getSelectionModel().clearSelection();
                 txfReol.clear();
                 txfHylde.clear();
                 txfPlads.clear();
-                lvTap.getItems().setAll(fad.getTaps());
+                lvwTaps.getItems().setAll(fad.getTaps());
             }
         }
     }
@@ -114,7 +121,7 @@ public class FadPane extends GridPane {
         String reol = txfReol.getText().trim();
         String hylde = txfHylde.getText().trim();
         String plads = txfPlads.getText().trim();
-        Fad fad = lvFad.getSelectionModel().getSelectedItem();
+        Fad fad = lvwFad.getSelectionModel().getSelectedItem();
         Lager lager = lagerComboBox.getSelectionModel().getSelectedItem();
         if (lagerComboBox.getSelectionModel().isEmpty()) {
             lblError.setText("Vælg adresse");
@@ -124,7 +131,7 @@ public class FadPane extends GridPane {
             lblError.setText("Indtast en hylde");
         } else if (plads.isEmpty()) {
             lblError.setText("Indtast en plads");
-        } else if (lvFad.getSelectionModel().getSelectedItem() == null) {
+        } else if (lvwFad.getSelectionModel().getSelectedItem() == null) {
             Utility.message("Vælg fad", "Vælg et fad fra listen");
         } else {
             Controller.createLagerPlads(fad, reol, hylde, plads);
@@ -148,7 +155,7 @@ public class FadPane extends GridPane {
     }
 
     private void opdater() {
-        Fad fad = lvFad.getSelectionModel().getSelectedItem();
+        Fad fad = lvwFad.getSelectionModel().getSelectedItem();
 
         if (fad != null) {
 
@@ -160,7 +167,7 @@ public class FadPane extends GridPane {
     }
 
     private void slet() {
-        Fad fad = lvFad.getSelectionModel().getSelectedItem();
+        Fad fad = lvwFad.getSelectionModel().getSelectedItem();
         if (fad != null) {
             if (Utility.alert("Slet fad", "Er du sikker på, at du vil slette fadet?")) {
                 Controller.removeFad(fad);
@@ -170,8 +177,9 @@ public class FadPane extends GridPane {
     }
 
     public void updateControls() {
+        lvwFad.getItems().setAll(Controller.getFade());
         lagerComboBox.getItems().setAll(Controller.getLager());
-        lvFad.getItems().setAll(Controller.getFade());
+
     }
 
 }

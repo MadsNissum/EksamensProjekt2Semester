@@ -1,12 +1,10 @@
 package application.controller;
 
-import application.model.Destillering;
-import application.model.Fad;
-import application.model.Lager;
-import application.model.Tap;
+import application.model.*;
 import storage.Storage;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Controller {
@@ -29,12 +27,17 @@ public class Controller {
         return destillering;
     }
 
-    public static Tap createTap(double mængde, Destillering destillering, Fad fad) {
-        Tap tap = new Tap(mængde);
+    public static Tap createTap(double liter, Destillering destillering, Fad fad) {
+        Tap tap = new Tap(liter);
         tap.setDestillering(destillering);
         tap.setFad(fad);
         Storage.addTap(tap);
         return tap;
+    }
+
+    public static void createWhiskyflaske(double liter) {
+        WhiskeyFlaske whiskeyFlaske = new WhiskeyFlaske(liter);
+        Storage.addWhiskyflasker(whiskeyFlaske);
     }
 
     //--------------------------------------------------
@@ -54,6 +57,10 @@ public class Controller {
     public static void addTap(Tap tap) {
         Storage.addTap(tap);
     }
+
+    public static void addWhiskyflaske(WhiskeyFlaske whiskeyFlaske) {
+        Storage.addWhiskyflasker(whiskeyFlaske);
+    }
     //--------------------------------------------------
 
     public static void removeLager(Lager lager) {
@@ -70,6 +77,9 @@ public class Controller {
 
     public static void removeTap(Tap tap) {
         Storage.removeTap(tap);
+    }
+    public static void removeWhiskyflaske(WhiskeyFlaske whiskeyFlaske) {
+        Storage.removeWhiskyflaske(whiskeyFlaske);
     }
     //--------------------------------------------------
 
@@ -89,6 +99,9 @@ public class Controller {
         return Storage.getTaps();
     }
 
+    public static ArrayList<WhiskeyFlaske> getWhiskyflasker() {
+        return Storage.getWhiskyFlasker();
+    }
     //--------------------------------------------------
 
     public static void updateFad(Fad fad, String type, double kapacitet, String oprindelse) {
@@ -133,6 +146,28 @@ public class Controller {
         return fad.getKapacitet() - mængde;
     }
 
+    public static int checkWhiskyTid(Fad fad, Destillering destillering) {
+       return (int) ChronoUnit.YEARS.between(destillering.getStartDato(), destillering.getSlutDato());
+    }
+
+    public static ArrayList<Fad> getFadeWhisky() {
+        ArrayList<Fad> fade = new ArrayList<>();
+        for (Fad fad : Storage.getFade()) {
+            LocalDate nyesteDato = null;
+            if (!fad.getTaps().isEmpty()) {
+                for (Tap tap : fad.getTaps()) {
+                    if (nyesteDato == null || nyesteDato.isBefore(tap.getDestillering().getSlutDato())) {
+                        nyesteDato = tap.getDestillering().getSlutDato();
+                    }
+                }
+            }
+            if (nyesteDato != null && nyesteDato.isBefore(LocalDate.now())) {
+                fade.add(fad);
+            }
+        }
+        return fade;
+    }
+
     public static void initController() {
         Fad fad1 = createFad("Burbon", 32, "Texas");
         Fad fad2 = createFad("Sherry", 64, "England");
@@ -150,9 +185,13 @@ public class Controller {
         addFadTilLager(fad3, lager2);
         fad3.createLagerPlads("Y", "5", "80H");
 
-        Destillering destillering1 = createDestillering(LocalDate.of(2023, 3, 27), LocalDate.of(2023, 4, 5), "Single malt", "Byg", "Snævar aka Sniper", 500, 80, "Birk", "God whisky");
+
+        createDestillering(LocalDate.of(2023, 3, 27), LocalDate.of(2023, 4, 5), "Single malt", "Byg", "Snævar aka Sniper", 500, 80, "Birk", "God whisky");
+        createDestillering(LocalDate.of(2023, 3, 28), LocalDate.of(2027, 3, 29), "Single malt", "Hvede", "Adam", 800, 90, "Eg", "Smager er jord");
+        Destillering destillering1 = createDestillering(LocalDate.of(2019, 1, 1), LocalDate.of(2022, 4, 5), "Single malt", "Byg", "Snævar aka Sniper", 500, 80, "Birk", "God whisky");
 
         Tap tap1 = createTap(60,destillering1,fad4);
         System.out.println(Storage.getTaps());
     }
+
 }

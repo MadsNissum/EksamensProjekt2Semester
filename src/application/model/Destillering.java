@@ -120,6 +120,6 @@ public class Destillering {
     }
 
     @Override
-    public String toString() {return "Kornsort: " + kornsort + " Mængde: " + totalLiter;}
+    public String toString() {return "Kornsort: " + kornsort + " Mængde: " +  + totalLiter;}
 
 }

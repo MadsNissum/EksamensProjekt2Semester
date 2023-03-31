@@ -47,7 +47,11 @@ public class FlaskePane extends GridPane {
     }
 
     private void selectedSearchBar() {
+        String str = txfSearchBar.getText().trim();
 
+        lvwFlaske.getItems().setAll(Controller.getWhiskyflaskerSearch(str));
+
+        System.out.println(str);
     }
 
     private void flaskeInformation() {

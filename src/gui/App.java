@@ -10,10 +10,7 @@ import java.util.stream.Collectors;
 
 public class App {
     public static void main(String[] args) {
-
-        System.out.println(Utility.randomUUID(16));
-
-        //Application.launch(Start.class);
+        Application.launch(Start.class);
     }
 
 

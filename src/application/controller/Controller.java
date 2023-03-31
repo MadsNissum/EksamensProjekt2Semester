@@ -164,6 +164,14 @@ public class Controller {
         }
     }
 
+    public static ArrayList<WhiskeyFlaske> getWhiskyflaskerSearch(String str) {
+        ArrayList<WhiskeyFlaske> flasker = new ArrayList<>();
+
+        flasker = Storage.getWhiskyFlasker();
+
+        return flasker;
+    }
+
     public static void initController() {
         Fad fad1 = createFad("Burbon", 32, "Texas");
         Fad fad2 = createFad("Sherry", 64, "England");
@@ -186,8 +194,7 @@ public class Controller {
         createDestillering(LocalDate.of(2023, 3, 28), LocalDate.of(2027, 3, 29), "Single malt", "Hvede", "Adam", 800, 90, "Eg", "Smager er jord");
         Destillering destillering1 = createDestillering(LocalDate.of(2019, 1, 1), LocalDate.of(2022, 4, 5), "Single malt", "Byg", "Snævar aka Sniper", 500, 80, "Birk", "God whisky");
 
-        Tap tap1 = createTap(60,destillering1,fad4);
+        Tap tap1 = createTap(60, destillering1, fad4);
         System.out.println(Storage.getTaps());
     }
-
 }

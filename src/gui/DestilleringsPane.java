@@ -46,7 +46,7 @@ public class DestilleringsPane extends GridPane {
 
         // Tap listview
         this.add(lvwTap, 3, 1, 1, 11);
-        lvwTap.setPrefWidth(175);
+        lvwTap.setPrefWidth(200);
         lvwTap.setPrefHeight(150);
         //ChangeListener<Tap> listener1 = (ov, oldItem, newItem) -> this.selectedTap();
         //lvwTap.getSelectionModel().selectedItemProperty().addListener(listener1);
@@ -161,6 +161,7 @@ public class DestilleringsPane extends GridPane {
             DestilleringsTapWindow destilleringsTapWindow = new DestilleringsTapWindow("Aftap destillat", destillering, fad);
             destilleringsTapWindow.showAndWait();
 
+            selectDestillering();
             updateControls();
             updateTapControls();
         } else {
@@ -182,7 +183,6 @@ public class DestilleringsPane extends GridPane {
             txfAlkoholProcent.setText("" + destillering.getAlkoholProcent());
             txfRygeMateriale.setText("" + destillering.getRygemateriale());
             txfKommentar.setText(destillering.getKommentar());
-
         }
     }
 

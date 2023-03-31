@@ -34,13 +34,9 @@ public class DestilleringsTapWindow extends Stage {
 
     }
 
-    public DestilleringsTapWindow(String title) {
-        this(title, null, null);
-    }
-
-    private ListView <Fad>lvwFade;
-    private TextField txfMængde;
-    private Label lblError;
+    private final ListView <Fad>lvwFade = new ListView<>();
+    private final TextField txfMaengde = new TextField();
+    private final Label lblError = new Label();
 
     private void initContent(GridPane pane) {
 
@@ -53,33 +49,25 @@ public class DestilleringsTapWindow extends Stage {
 
         pane.add(new Label("Mængde"), 0, 0);
 
-        txfMængde = new TextField();
-        pane.add(txfMængde, 0, 1);
-        txfMængde.setEditable(true);
+        pane.add(txfMaengde, 0, 1);
+        txfMaengde.setEditable(true);
 
-        lvwFade = new ListView<>();
-        pane.add(lvwFade, 0, 2, 1, 10);
+        pane.add(lvwFade, 0, 2, 2, 10);
         lvwFade.setPrefWidth(250);
         lvwFade.setPrefHeight(324);
         updateControls();
-        ChangeListener<Fad> listener = (ov, oldItem, newItem) -> this.selectFade();
-        lvwFade.getSelectionModel().selectedItemProperty().addListener(listener);
 
         Button btnTapFad = new Button("Tap");
         pane.add(btnTapFad, 1, 1);
         btnTapFad.setPrefWidth(100);
         btnTapFad.setOnAction(actionEvent -> this.tapFad());
 
-        lblError = new Label();
         pane.add(lblError, 0 , 13);
         lblError.setStyle("-fx-text-fill: red");
-
-
-        this.initControls();
     }
 
     private void tapFad() {
-        double mængde = Number.checkerDouble(txfMængde.getText().trim());
+        double mængde = Number.checkerDouble(txfMaengde.getText().trim());
         Fad fad = lvwFade.getSelectionModel().getSelectedItem();
 
 
@@ -100,29 +88,10 @@ public class DestilleringsTapWindow extends Stage {
 
             hide();
         }
-
-
     }
 
-    private void selectFade() {
-       Fad fad = lvwFade.getSelectionModel().getSelectedItem();
-
-       if (fad != null) {
-
-       }
-    }
-
-    private void initControls() {
-        lvwFade.getSelectionModel().getSelectedItem();
-
-
-    }
     public void updateControls() {
         lvwFade.getItems().setAll(Controller.getFade());
     }
-
-
-
-
 }
 

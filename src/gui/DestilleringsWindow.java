@@ -108,7 +108,7 @@ public class DestilleringsWindow extends Stage {
             txfMaltBatch.setText(destillering.getMaltbatch());
             txfKornSort.setText(destillering.getKornsort());
             txfMedarbejder.setText(destillering.getMedarbejder());
-            txfMængde.setText("" + destillering.getTotalLiter());
+            txfMængde.setText("" + destillering.getKapacitet());
             txfAlkoholProcent.setText("" + destillering.getAlkoholProcent());
             txfRygeMateriale.setText((destillering.getRygemateriale()));
             txfKommentar.setText(destillering.getKommentar());

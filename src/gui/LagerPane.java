@@ -81,7 +81,6 @@ public class LagerPane extends GridPane {
             LagerWindow lagerWindow = new LagerWindow("Opdatere Lager", lager);
             lagerWindow.showAndWait();
 
-
             updateControls();
         }
     }

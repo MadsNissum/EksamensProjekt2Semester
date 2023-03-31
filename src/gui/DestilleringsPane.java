@@ -20,6 +20,7 @@ public class DestilleringsPane extends GridPane {
     private final TextField txfKornSort = new TextField();
     private final TextField txfMedarbejder = new TextField();
     private final TextField txfLiter = new TextField();
+    private final TextField txfLiterTilbage = new TextField();
     private final TextField txfAlkoholProcent = new TextField();
     private final TextField txfRygeMateriale = new TextField();
     private final TextField txfKommentar = new TextField();
@@ -36,7 +37,7 @@ public class DestilleringsPane extends GridPane {
         this.add(new Label("Tappe"), 3, 0);
 
         // Destillering listview
-        this.add(lvwDestillering, 0, 1, 1, 10);
+        this.add(lvwDestillering, 0, 1, 1, 11);
         lvwDestillering.setPrefWidth(200);
         lvwDestillering.setPrefHeight(150);
         updateControls();
@@ -44,7 +45,7 @@ public class DestilleringsPane extends GridPane {
         lvwDestillering.getSelectionModel().selectedItemProperty().addListener(listener);
 
         // Tap listview
-        this.add(lvwTap, 3, 1, 1, 10);
+        this.add(lvwTap, 3, 1, 1, 11);
         lvwTap.setPrefWidth(175);
         lvwTap.setPrefHeight(150);
         //ChangeListener<Tap> listener1 = (ov, oldItem, newItem) -> this.selectedTap();
@@ -76,16 +77,20 @@ public class DestilleringsPane extends GridPane {
         this.add(txfLiter, 2, 6);
         txfLiter.setEditable(false);
 
-        this.add(new Label("Alkoholprocent: "), 1, 7);
-        this.add(txfAlkoholProcent, 2, 7);
+        this.add(new Label("Liter tilbage: "), 1, 7);
+        this.add(txfLiterTilbage, 2, 7);
+        txfLiterTilbage.setEditable(false);
+
+        this.add(new Label("Alkoholprocent: "), 1, 8);
+        this.add(txfAlkoholProcent, 2, 8);
         txfAlkoholProcent.setEditable(false);
 
-        this.add(new Label("Rygemateriale: "), 1, 8);
-        this.add(txfRygeMateriale, 2, 8);
+        this.add(new Label("Rygemateriale: "), 1, 9);
+        this.add(txfRygeMateriale, 2, 9);
         txfRygeMateriale.setEditable(false);
 
-        this.add(new Label("Kommentar: "), 1, 9);
-        this.add(txfKommentar, 2, 9);
+        this.add(new Label("Kommentar: "), 1, 10);
+        this.add(txfKommentar, 2, 10);
         txfKommentar.setEditable(false);
 
         // Opret knap
@@ -172,7 +177,8 @@ public class DestilleringsPane extends GridPane {
             txfMaltBatch.setText(destillering.getMaltbatch());
             txfKornSort.setText(destillering.getKornsort());
             txfMedarbejder.setText(destillering.getMedarbejder());
-            txfLiter.setText("" + destillering.getTotalLiter());
+            txfLiter.setText("" + destillering.getKapacitet());
+            txfLiterTilbage.setText("" + destillering.getLiterTilbageIDestillering());
             txfAlkoholProcent.setText("" + destillering.getAlkoholProcent());
             txfRygeMateriale.setText("" + destillering.getRygemateriale());
             txfKommentar.setText(destillering.getKommentar());
@@ -194,11 +200,11 @@ public class DestilleringsPane extends GridPane {
 
 
 
-    private void updateControls() {
+    public void updateControls() {
         lvwDestillering.getItems().setAll(Controller.getDestilleringer());
     }
 
-    private void updateTapControls() {
+    public void updateTapControls() {
         lvwTap.getItems().setAll(Controller.getTaps());
     }
 

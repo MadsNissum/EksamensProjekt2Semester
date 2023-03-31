@@ -83,17 +83,13 @@ public class DestilleringsTapWindow extends Stage {
         Fad fad = lvwFade.getSelectionModel().getSelectedItem();
 
 
-        if (mængde < 0 || mængde > destillering.getTotalLiter()) {
+        if (mængde < 0 || mængde > destillering.getKapacitet()) {
             lblError.setText("Indtast en korrekt mængde");
         } else if (fad == null) {
             lblError.setText("Vælg et fad at fylde på");
-        } else if (fad.getKapacitet() < mængde) {
+        } else if (fad.getLedigPladsIFad() < mængde) {
             lblError.setText("Der er ikke plads på fadet");
         } else {
-            destillering.setTotalLiter(Controller.destillatAftap(destillering, mængde));
-
-            fad.setKapacitet(Controller.aftapFad(fad, mængde));
-
             updateControls();
 
             Controller.createTap(mængde, destillering, fad);

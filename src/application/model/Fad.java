@@ -88,6 +88,18 @@ public class Fad {
         return fadNummer;
     }
 
+    public double getLedigPladsIFad() {
+        return kapacitet - getLiterIFad();
+    }
+
+    public double getLiterIFad() {
+        double sum = 0;
+        for (Tap tap : taps) {
+            sum += tap.getLiter();
+        }
+        return sum;
+    }
+
     //------------------------------------------------------- Linkattribut til Tap
 
 
@@ -97,7 +109,7 @@ public class Fad {
 
     public void addTap(Tap tap) {
         if (!taps.contains(tap) && tap != null) {
-            if (tap.getLiter() <= getKapacitet()) {
+            if (tap.getLiter() <= getLedigPladsIFad()) {
                 taps.add(tap);
                 tap.setFad(this);
             } else {
@@ -133,7 +145,7 @@ public class Fad {
 
     @Override
     public String toString() {
-        return fadNummer + " " + type + " Liter: " + kapacitet + " Oprindelse: " + oprindelse;
+        return fadNummer + " " + type + " Liter: " + getLiterIFad() + "/" + kapacitet + " Oprindelse: " + oprindelse;
 
     }
 }

@@ -9,8 +9,7 @@ public class Destillering {
     private String maltbatch;
     private String kornsort;
     private String medarbejder;
-    private double totalLiter;
-    private double restLiter;
+    private double kapacitet;
     private double alkoholProcent;
     private String rygemateriale;
     private String kommentar;
@@ -25,8 +24,7 @@ public class Destillering {
         this.maltbatch = maltbatch;
         this.kornsort = kornsort;
         this.medarbejder = medarbejder;
-        this.totalLiter = liter;
-        this.restLiter = liter;
+        this.kapacitet = liter;
         this.alkoholProcent = alkoholProcent;
         this.rygemateriale = rygemateriale;
         this.kommentar = kommentar;
@@ -72,12 +70,12 @@ public class Destillering {
         this.medarbejder = medarbejder;
     }
 
-    public double getTotalLiter() {
-        return totalLiter;
+    public double getKapacitet() {
+        return kapacitet;
     }
 
-    public void setTotalLiter(double totalLiter) {
-        this.totalLiter = totalLiter;
+    public void setKapacitet(double kapacitet) {
+        this.kapacitet = kapacitet;
     }
 
     public double getAlkoholProcent() {
@@ -119,7 +117,21 @@ public class Destillering {
         tap.setDestillering(null);
     }
 
+    public double getLiterTilbageIDestillering() {
+        return kapacitet - getLedigLiterIDestillering();
+    }
+
+    public double getLedigLiterIDestillering() {
+        double sum = 0;
+
+        for (Tap tap : taps) {
+            sum += tap.getLiter();
+        }
+
+        return sum;
+    }
+
     @Override
-    public String toString() {return "Kornsort: " + kornsort + " Mængde: " +  + totalLiter;}
+    public String toString() {return "Kornsort: " + kornsort + " Mængde: " +  +kapacitet;}
 
 }

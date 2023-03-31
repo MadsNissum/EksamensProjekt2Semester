@@ -1,7 +1,7 @@
 package gui;
 
 import application.controller.Controller;
-import application.model.WhiskeyFlaske;
+import application.model.*;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
@@ -10,7 +10,11 @@ import javafx.scene.layout.GridPane;
 public class FlaskePane extends GridPane {
     private ListView<WhiskeyFlaske> lvwFlaske = new ListView<>();
     private TextField txfSearchBar = new TextField();
+    private TextArea txaInfo = new TextArea();
     private Label lblError = new Label();
+    private Destillering destillering;
+    private Fad fad;
+    private WhiskeyFlaske whiskeyFlaske;
 
     public FlaskePane() {
         this.setHgap(10);
@@ -30,27 +34,41 @@ public class FlaskePane extends GridPane {
         lvwFlaske.setPrefWidth(200);
         lvwFlaske.setPrefHeight(200);
 
-
-        TextArea txaInfo = new TextArea();
-        txaInfo.setPrefSize(150,200);
-        this.add(txaInfo,1,2);
-
-        ChangeListener<WhiskeyFlaske> listener = (ov, oldItem, newItem) -> this.selectedFlaske();
+        ChangeListener<WhiskeyFlaske> listener = (ov, oldItem, newItem) -> this.flaskeInformation();
         lvwFlaske.getSelectionModel().selectedItemProperty().addListener(listener);
+
+        txaInfo.setPrefSize(200,220);
+        this.add(txaInfo,1,2);
 
         this.add(lblError, 1, 3);
         lblError.setStyle("-fx-text-fill: red");
 
+        updateControls();
     }
 
     private void selectedSearchBar() {
 
     }
 
-    private void selectedFlaske() {
-        updateControls();
-    }
+    private void flaskeInformation() {
+        WhiskeyFlaske flaske = lvwFlaske.getSelectionModel().getSelectedItem();
 
+            txaInfo.setText("Type: " + flaske.getFad().getType());
+            txaInfo.setText(txaInfo.getText() + "\n" + "Kapacitet: " + flaske.getFad().getKapacitet());
+            txaInfo.setText(txaInfo.getText() + "\n" + "Oprindelse: " + flaske.getFad().getOprindelse());
+            txaInfo.setText(txaInfo.getText() + "\n" + "Fadnummer: " + flaske.getFad().getFadNummer());
+            for(Tap tap : flaske.getFad().getTaps()) {
+                txaInfo.setText(txaInfo.getText() + "\n" + "Startdato: " + tap.getDestillering().getStartDato());
+                txaInfo.setText(txaInfo.getText() + "\n" + "Slutdato: " + tap.getDestillering().getSlutDato());
+                txaInfo.setText(txaInfo.getText() + "\n" + "Maltbatch: " + tap.getDestillering().getMaltbatch());
+                txaInfo.setText(txaInfo.getText() + "\n" + "Kornsort: " + tap.getDestillering().getKornsort());
+                txaInfo.setText(txaInfo.getText() + "\n" + "Medarbejder: " + tap.getDestillering().getMedarbejder());
+                txaInfo.setText(txaInfo.getText() + "\n" + "Alkoholprocent: " + tap.getDestillering().getAlkoholProcent());
+                txaInfo.setText(txaInfo.getText() + "\n" + "Rygemateriale: " + tap.getDestillering().getRygemateriale());
+                txaInfo.setText(txaInfo.getText() + "\n" + "Kommentar: " + tap.getDestillering().getKommentar());
+
+            }
+    }
     public void updateControls() {
         lvwFlaske.getItems().setAll(Controller.getWhiskyflasker());
     }

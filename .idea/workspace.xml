@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="FlaskePane">
-      <change afterPath="$PROJECT_DIR$/test/controller/ControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/model/DestilleringTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/model/FadTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="Test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EksamensProjekt2Semester.iml" beforeDir="false" afterPath="$PROJECT_DIR$/EksamensProjekt2Semester.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/model/Destillering.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/model/Destillering.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/model/Fad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/model/Fad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/model/Tap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/model/Tap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/FlaskePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FlaskePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controller/ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/ControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/DestilleringTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/DestilleringTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,13 +77,13 @@
       <recent name="application.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ControllerTest">
-    <configuration name="gui.App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gui.App" />
       <module name="EksamensProjekt2Semester" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="application.model.*" />
+          <option name="PATTERN" value="gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -119,17 +121,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DestilleringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DestilleringTest.getLiterTilbageIDestillering" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EksamensProjekt2Semester" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="application.model.*" />
+          <option name="PATTERN" value="model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="application.model" />
-      <option name="MAIN_CLASS_NAME" value="application.model.DestilleringTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.DestilleringTest" />
+      <option name="METHOD_NAME" value="getLiterTilbageIDestillering" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -151,11 +154,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ControllerTest" />
+        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.DestilleringTest (1)" />
+        <item itemvalue="JUnit.DestilleringTest.getLiterTilbageIDestillering" />
+        <item itemvalue="JUnit.ControllerTest" />
         <item itemvalue="JUnit.FadTest" />
-        <item itemvalue="JUnit.DestilleringTest" />
-        <item itemvalue="Application.gui.App" />
       </list>
     </recent_temporary>
   </component>
@@ -180,6 +183,7 @@
     <MESSAGE value="Added create lagerplads" />
     <MESSAGE value="Added classes" />
     <MESSAGE value="&#10;:DDD" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;:DDD" />
+    <MESSAGE value="Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test" />
   </component>
 </project>

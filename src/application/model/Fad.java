@@ -88,10 +88,18 @@ public class Fad {
         return fadNummer;
     }
 
+    /**
+     * getLedigPladsIFad - Antal liter tilbage efter der er aftappet
+     * @return antal liter efter aftapning
+     */
     public double getLedigPladsIFad() {
         return kapacitet - getLiterIFad();
     }
 
+    /**
+     * getLiterIFad - Antal liter der tappes i fadet
+     * @return antal liter der aftappes
+     */
     public double getLiterIFad() {
         double sum = 0;
         for (Tap tap : taps) {

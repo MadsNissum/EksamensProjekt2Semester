@@ -117,10 +117,21 @@ public class Destillering {
         tap.setDestillering(null);
     }
 
+    /**
+     * getLiterTilbageIDestllering returnerer hvor mange liter der
+     *  er tilbage i destilleringen
+     *
+     * @return antal liter
+     */
     public double getLiterTilbageIDestillering() {
         return kapacitet - getLedigLiterIDestillering();
     }
 
+    /**
+     * getLedigLiterIDestillering returnerer det antal liter, der er aftappet
+     *
+     * @return aftappet liter
+     */
     public double getLedigLiterIDestillering() {
         double sum = 0;
 

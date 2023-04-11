@@ -9,23 +9,63 @@ import java.util.ArrayList;
 
 public class Controller {
 
+    /**
+     * createFad opretter et fad
+     *
+     * @param type - Navnet på fadtypen
+     * @param kapacitet - Mængden af, hvor meget der kan være i fadet
+     * @param oprindelse - Naavnet på, hvor fadet er fra
+     * @return fad
+     */
     public static Fad createFad(String type, double kapacitet, String oprindelse) {
         Fad fad = new Fad(type, kapacitet, oprindelse);
         Storage.addFad(fad);
         return fad;
     }
 
+    /**
+     * createLager opretter et lager
+     *
+     * @param adresse - Adresse på lageret
+     * @param kvm - Størrelsen af lageret angivet i kvadratmeter
+     * @param fadKapacitet - Antal pladser til fade på lageret
+     * @return lager
+     */
     public static Lager createLager(String adresse, double kvm, int fadKapacitet) {
         Lager lager = new Lager(adresse, kvm, fadKapacitet);
         Storage.addLager(lager);
         return lager;
     }
 
-    public static Destillering createDestillering(LocalDate startDato, LocalDate slutDato, String maltbatch, String kornsort, String medarbejder, double mændge, double alkoholProcent, String rygemateriale, String kommentar) {
-        Destillering destillering = new Destillering(startDato, slutDato, maltbatch, kornsort, medarbejder, mændge, alkoholProcent, rygemateriale, kommentar);
+    /**
+     * createDestillering opretter en destillering
+     *
+     * @param startDato - Startdatoen for, hvornår destilleringen startede
+     * @param slutDato - Slutdatoen for, hvornår destillering er slut
+     * @param maltbatch - Maltbatchen af destilleringen
+     * @param kornsort - Kornsorten af destilleringen
+     * @param medarbejder - Medarbejderen der har ansvaret for destilleringen
+     * @param mængde - Mængden af destilleringen
+     * @param alkoholProcent - Alkoholprocenten angives
+     * @param rygemateriale - Rygemateriale af destilleringen
+     * @param kommentar - En kommentar om destilleringen
+     * @return destillering
+     */
+
+    public static Destillering createDestillering(LocalDate startDato, LocalDate slutDato, String maltbatch, String kornsort, String medarbejder, double mængde, double alkoholProcent, String rygemateriale, String kommentar) {
+        Destillering destillering = new Destillering(startDato, slutDato, maltbatch, kornsort, medarbejder, mængde, alkoholProcent, rygemateriale, kommentar);
         Storage.addDestilleringer(destillering);
         return destillering;
     }
+
+    /**
+     * createTap opretter et tap
+     *
+     * @param liter - Antal liter der kan aftappes
+     * @param destillering - Destilleringen, der skal aftappes fra
+     * @param fad - Fadet, der skal aftappes fra
+     * @return tap
+     */
 
     public static Tap createTap(double liter, Destillering destillering, Fad fad) {
         Tap tap = new Tap(liter);
@@ -57,7 +97,6 @@ public class Controller {
         Storage.addWhiskyflasker(whiskeyFlaske);
     }
     //--------------------------------------------------
-
     public static void removeLager(Lager lager) {
         Storage.removeLager(lager);
     }
@@ -73,6 +112,7 @@ public class Controller {
     public static void removeTap(Tap tap) {
         Storage.removeTap(tap);
     }
+
     public static void removeWhiskyflaske(WhiskeyFlaske whiskeyFlaske) {
         Storage.removeWhiskyflaske(whiskeyFlaske);
     }
@@ -99,25 +139,68 @@ public class Controller {
     }
     //--------------------------------------------------
 
+    /**
+     * updateFad opdaterer et fad
+     *
+     * @param type - Navnet på fadtypen
+     * @param kapacitet - Mængden af, hvor meget der kan være i fadet
+     * @param oprindelse - Naavnet på, hvor fadet er fra
+     */
     public static void updateFad(Fad fad, String type, double kapacitet, String oprindelse) {
         fad.setType(type);
         fad.setKapacitet(kapacitet);
         fad.setOprindelse(oprindelse);
     }
 
+    /**
+     * createLagerPlads opretter et lagerplads
+     *
+     * @param fad - Fad angives
+     * @param reol - Navn/nummer på reolen
+     * @param hylde - Navn/nummer på hylden
+     * @param plads - Navn/nummer på pladsen
+     */
     public static void createLagerPlads(Fad fad, String reol, String hylde, String plads) {
         fad.createLagerPlads(reol, hylde, plads);
     }
+
+    /**
+     * addFadTilLager tilføjer et fad til et lager
+     *
+     * @param fad - Fad angives
+     * @param lager - Lager angives
+     */
 
     public static void addFadTilLager(Fad fad, Lager lager) {
         fad.setLager(lager);
     }
 
+    /**
+     * updateLager opdaterer et lager
+     *
+     * @param adresse - Adresse på lageret
+     * @param kvm - Størrelsen af lageret angivet i kvadratmeter
+     * @param kapacitet - Antal pladser til fade på lageret
+     */
     public static void updateLager(Lager lager, String adresse, double kvm, int kapacitet) {
         lager.setAdresse(adresse);
         lager.setKvm(kvm);
         lager.setFadKapacitet(kapacitet);
     }
+
+    /**
+     * updateDestillering opdaterer en destillering
+     *
+     * @param startDato - Startdatoen for, hvornår destilleringen startede
+     * @param slutDato - Slutdatoen for, hvornår destillering er slut
+     * @param maltbatch - Maltbatchen af destilleringen
+     * @param kornsort - Kornsorten af destilleringen
+     * @param medarbejder - Medarbejderen der har ansvaret for destilleringen
+     * @param mængde - Mængden af destilleringen
+     * @param alkoholProcent - Alkoholprocenten angives
+     * @param rygemateriale - Rygemateriale af destilleringen
+     * @param kommentar - En kommentar om destilleringen
+     */
 
     public static void updateDestillering(Destillering destillering, LocalDate startDato, LocalDate slutDato, String maltbatch,
                                           String kornsort, String medarbejder, double mængde, double alkoholProcent,
@@ -133,10 +216,26 @@ public class Controller {
         destillering.setKommentar(kommentar);
     }
 
-    public static int checkWhiskyTid(Fad fad, Destillering destillering) {
+    /**
+     * checkWhiskyTid checker perioden mellem start- og slutdatoen af en destillering
+     *
+     * @param destillering - Destillering angives
+     * @return antal år
+     */
+    public static int checkWhiskyTid(Destillering destillering) {
        return (int) ChronoUnit.YEARS.between(destillering.getStartDato(), destillering.getSlutDato());
     }
 
+    /**
+     * getFadeWhisky checker alle fade
+     * nyesteDato sættes til null
+     * Hvis taps på fadet ikke er tomt, checkes alle taps på fadet
+     * nyesteDato checkes for lige med null eller at datoen ikke er før destilleringens slutdato
+     * nyesteDato cheskes for ikke lige med null, og om nyesteDato er før i dag
+     * Fadet tilføjes
+     *
+     * @return liste af fade
+     */
     public static ArrayList<Fad> getFadeWhisky() {
         ArrayList<Fad> fade = new ArrayList<>();
         for (Fad fad : Storage.getFade()) {
@@ -155,6 +254,14 @@ public class Controller {
         return fade;
     }
 
+    /**
+     * createFlasker opretter flasker
+     *
+     * @param fad - Fad angives
+     * @param antal - Antallet af flasker der skal oprettes
+     * @param liter - Antal liter, der skal være i hver flaske
+     * @param navn - Navnet på flasken
+     */
     public static void createFlasker(Fad fad, int antal, double liter, String navn) {
         String batchID = Utility.randomUUID(16);
         //TODO daos check data base uuid bombombmo
@@ -167,7 +274,15 @@ public class Controller {
         WhiskeyFlaske.resetIndex();
     }
 
-    public static ArrayList<WhiskeyFlaske> getWhiskyflaskerSearch(String str) {
+    /**
+     * getWhiskyFlaskerSearch er en søgefunktion der bruges til at søge efter flasker
+     * Der løbes igennem alle flasker og checkes at store og små bogstaver ikke har nogen betydning
+     * BatchID checkes også, så der også kan søges efter den
+     *
+     * @param str - String værdi
+     * @return liste af whiskyflasker
+     */
+    public static ArrayList<WhiskeyFlaske> getWhiskyFlaskerSearch(String str) {
         ArrayList<WhiskeyFlaske> flasker = new ArrayList<>();
 
         ArrayList<WhiskeyFlaske> alleFlasker = Storage.getWhiskyFlasker();

@@ -15,10 +15,11 @@ class DestilleringTest {
     @Test
     void getLiterTilbageIDestillering(){
         Destillering destillering = new Destillering(startDato, slutDato, "Single malt", "Byg", "Snævar aka Sniper", 100, 80, "Birk", "God whisky");
-
+        Tap tap = new Tap(40);
+        destillering.addTap(tap);
         double faktiskTilbageLiter = destillering.getLiterTilbageIDestillering();
 
-        double forventetTilbageLiter = 100;
+        double forventetTilbageLiter = 60;
         assertEquals(forventetTilbageLiter, faktiskTilbageLiter);
     }
 
@@ -27,12 +28,12 @@ class DestilleringTest {
     void getLedigLiterIDestillering() {
 
         Destillering destillering = new Destillering(startDato, slutDato, "Single malt", "Byg", "Snævar aka Sniper", 100, 80, "Birk", "God whisky");
-        Tap tap = new Tap(50);
+        Tap tap = new Tap(40);
         destillering.addTap(tap);
 
         double faktiskLedigLiter = destillering.getLedigLiterIDestillering();
 
-        double forventetLedigLiter = 50;
+        double forventetLedigLiter = 40;
         assertEquals(forventetLedigLiter, faktiskLedigLiter);
     }
 }

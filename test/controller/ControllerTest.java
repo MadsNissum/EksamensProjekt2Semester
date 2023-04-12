@@ -12,7 +12,7 @@ import static org.mockito.Mockito.*;
 
 class ControllerTest {
     Fad fade;
-    Controller controller;
+
     @Test
     void checkWhiskyTid_3_Aar() {
         Destillering destillering = new Destillering(LocalDate.of(2020, 3, 27), LocalDate.of(2023, 3, 27), "Single malt", "Byg", "Snævar aka Sniper", 500, 80, "Birk", "God whisky");

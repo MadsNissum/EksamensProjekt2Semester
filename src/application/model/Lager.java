@@ -1,19 +1,17 @@
 package application.model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 
 public class Lager {
     private String adresse;
     private double kvm;
-    private int fadKapacitet;
+    private int kapacitet;
     private final ArrayList<Fad> fade = new ArrayList<>();
 
-    public Lager(String adresse, double kvm, int fadKapacitet) {
+    public Lager(String adresse, double kvm, int kapacitet) {
         this.adresse = adresse;
         this.kvm = kvm;
-        this.fadKapacitet = fadKapacitet;
+        this.kapacitet = kapacitet;
     }
 
     public String getAdresse() {
@@ -32,12 +30,12 @@ public class Lager {
         this.kvm = kvm;
     }
 
-    public int getFadKapacitet() {
-        return fadKapacitet;
+    public int getKapacitet() {
+        return kapacitet;
     }
 
-    public void setFadKapacitet(int fadKapacitet) {
-        this.fadKapacitet = fadKapacitet;
+    public void setKapacitet(int kapacitet) {
+        this.kapacitet = kapacitet;
     }
 
     public ArrayList<Fad> getFade() {
@@ -46,7 +44,7 @@ public class Lager {
 
     public void addFad(Fad fad) {
         if (!fade.contains(fad) && fad != null) {
-            if (fade.size() < fadKapacitet) {
+            if (fade.size() < kapacitet) {
                 fad.setLager(this);
                 fade.add(fad);
             } else {
@@ -59,7 +57,6 @@ public class Lager {
         fade.remove(fad);
         fad.setLager(null);
     }
-
 
     @Override
     public String toString() {

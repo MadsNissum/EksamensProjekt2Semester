@@ -5,7 +5,6 @@ public class LagerPlads {
     private String hylde;
     private String plads;
 
-
     public LagerPlads(String reol, String hylde, String plads) {
         this.reol = reol;
         this.hylde = hylde;

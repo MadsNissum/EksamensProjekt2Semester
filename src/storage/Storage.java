@@ -13,7 +13,7 @@ public class Storage {
     private static final ArrayList<Destillering> destilleringer = new ArrayList<>();
     private static final ArrayList<Tap> taps = new ArrayList<>();
 
-    private static final ArrayList<WhiskeyFlaske> whiskyFlasker = new ArrayList<>();
+    private static final ArrayList<WhiskyFlaske> whiskyFlasker = new ArrayList<>();
 
 
     public static void addLager(Lager lager) {
@@ -40,7 +40,7 @@ public class Storage {
         }
     }
 
-    public static void addWhiskyflasker(WhiskeyFlaske whiskeyFlaske) {
+    public static void addWhiskyflasker(WhiskyFlaske whiskeyFlaske) {
         if (!whiskyFlasker.contains(whiskeyFlaske)) {
             whiskyFlasker.add(whiskeyFlaske);
         }
@@ -61,7 +61,7 @@ public class Storage {
         taps.remove(tap);
     }
 
-    public static void removeWhiskyflaske(WhiskeyFlaske whiskeyFlaske) {
+    public static void removeWhiskyflaske(WhiskyFlaske whiskeyFlaske) {
         whiskyFlasker.remove(whiskeyFlaske);
     }
     //--------------------------------------------------
@@ -80,7 +80,7 @@ public class Storage {
         return taps;
     }
 
-    public static ArrayList<WhiskeyFlaske> getWhiskyFlasker() {
+    public static ArrayList<WhiskyFlaske> getWhiskyFlasker() {
         return whiskyFlasker;
     }
 }

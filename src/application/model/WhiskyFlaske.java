@@ -1,17 +1,17 @@
 package application.model;
 
-public class WhiskeyFlaske {
+public class WhiskyFlaske {
     private double kapacitet;
     private final int nummer;
     private static int whiskyNummerIndex = 1;
     private String navn;
-    private Fad fad;
     private String batchID;
+    private Fad fad;
 
-    public WhiskeyFlaske(double kapacitet, String navn, String UUID) {
+    public WhiskyFlaske(double kapacitet, String navn, String batchID) {
         this.navn = navn;
         this.kapacitet = kapacitet;
-        this.batchID = UUID;
+        this.batchID = batchID;
         this.nummer = whiskyNummerIndex++;
     }
 
@@ -30,10 +30,8 @@ public class WhiskeyFlaske {
         return batchID;
     }
 
-
     public static void resetIndex() {
-        WhiskeyFlaske.whiskyNummerIndex = 1;
-
+        WhiskyFlaske.whiskyNummerIndex = 1;
     }
 
     //----------------------------------------------------------- Linkattribut til Fad

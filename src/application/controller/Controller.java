@@ -235,7 +235,7 @@ public class Controller {
      * nyesteDato sættes til null
      * Hvis taps på fadet ikke er tomt, checkes alle taps på fadet
      * nyesteDato checkes for lige med null eller at datoen ikke er før destilleringens slutdato
-     * nyesteDato cheskes for ikke lige med null, og om nyesteDato er før i dag
+     * nyesteDato checkes for ikke lige med null, og om nyesteDato er før i dag
      * Fadet tilføjes
      *
      * @return liste af fade

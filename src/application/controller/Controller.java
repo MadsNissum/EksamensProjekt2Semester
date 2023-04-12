@@ -231,12 +231,7 @@ public class Controller {
     }
 
     /**
-     * getFadeWhisky checker alle fade
-     * nyesteDato sættes til null
-     * Hvis taps på fadet ikke er tomt, checkes alle taps på fadet
-     * nyesteDato checkes for lige med null eller at datoen ikke er før destilleringens slutdato
-     * nyesteDato checkes for ikke lige med null, og om nyesteDato er før i dag
-     * Fadet tilføjes
+     * getFadeWhisky returnerer alle færdiglavede fade med whiskyer
      *
      * @return liste af fade
      */

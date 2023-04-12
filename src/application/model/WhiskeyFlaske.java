@@ -41,11 +41,6 @@ public class WhiskeyFlaske {
         return fad;
     }
 
-    //TODO
-    /**
-     *
-     * @param fad
-     */
     public void setFad(Fad fad) {
         if (fad == null) {
             this.fad.removeWhiskeyFlaske(this);

@@ -60,7 +60,7 @@ public class Tap {
 
     @Override
     public String toString() {
-        return "Mængde: " + liter + " Fadnummer: " + fad.getFadNummer();
+        return "Mængde: " + liter + " Fadnummer: " + fad.getNummer();
     }
 }
 

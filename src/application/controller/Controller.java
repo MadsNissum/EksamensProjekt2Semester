@@ -68,9 +68,13 @@ public class Controller {
      */
 
     public static Tap createTap(double liter, Destillering destillering, Fad fad) {
+        System.out.println(liter);
+        System.out.println(fad.getLedigPladsIFad());
+
         Tap tap = new Tap(liter);
         tap.setDestillering(destillering);
         tap.setFad(fad);
+        fad.setLiterIFad(fad.getLiterIFad() + liter);
         Storage.addTap(tap);
         return tap;
     }
@@ -93,7 +97,7 @@ public class Controller {
         Storage.addTap(tap);
     }
 
-    public static void addWhiskyflaske(WhiskeyFlaske whiskeyFlaske) {
+    public static void addWhiskyflaske(WhiskyFlaske whiskeyFlaske) {
         Storage.addWhiskyflasker(whiskeyFlaske);
     }
     //--------------------------------------------------
@@ -113,7 +117,7 @@ public class Controller {
         Storage.removeTap(tap);
     }
 
-    public static void removeWhiskyflaske(WhiskeyFlaske whiskeyFlaske) {
+    public static void removeWhiskyflaske(WhiskyFlaske whiskeyFlaske) {
         Storage.removeWhiskyflaske(whiskeyFlaske);
     }
     //--------------------------------------------------
@@ -134,7 +138,7 @@ public class Controller {
         return Storage.getTaps();
     }
 
-    public static ArrayList<WhiskeyFlaske> getWhiskyflasker() {
+    public static ArrayList<WhiskyFlaske> getWhiskyflasker() {
         return Storage.getWhiskyFlasker();
     }
     //--------------------------------------------------
@@ -185,7 +189,7 @@ public class Controller {
     public static void updateLager(Lager lager, String adresse, double kvm, int kapacitet) {
         lager.setAdresse(adresse);
         lager.setKvm(kvm);
-        lager.setFadKapacitet(kapacitet);
+        lager.setKapacitet(kapacitet);
     }
 
     /**
@@ -259,19 +263,25 @@ public class Controller {
      *
      * @param fad - Fad angives
      * @param antal - Antallet af flasker der skal oprettes
-     * @param liter - Antal liter, der skal være i hver flaske
+     * @param milliliter - Antal milliliter, der skal være i hver flaske
      * @param navn - Navnet på flasken
      */
-    public static void createFlasker(Fad fad, int antal, double liter, String navn) {
+    public static void createFlasker(Fad fad, int antal, double milliliter, String navn) {
         String batchID = Utility.randomUUID(16);
         //TODO daos check data base uuid bombombmo
+
+        if ((milliliter/1000) * antal > fad.getLiterIFad()) {
+            throw new RuntimeException("Der er ikke nok væske til at lave flasker!");
+        }
+
+        fad.setLiterIFad(fad.getLiterIFad() - (milliliter/1000) * antal);
+
         for (int i = 0; i < antal; i++) {
-            WhiskeyFlaske whiskeyFlaske = new WhiskeyFlaske(liter, navn, batchID);
+            WhiskyFlaske whiskeyFlaske = new WhiskyFlaske(milliliter, navn, batchID);
             whiskeyFlaske.setFad(fad);
             Storage.addWhiskyflasker(whiskeyFlaske);
-
         }
-        WhiskeyFlaske.resetIndex();
+        WhiskyFlaske.resetIndex();
     }
 
     /**
@@ -282,12 +292,12 @@ public class Controller {
      * @param str - String værdi
      * @return liste af whiskyflasker
      */
-    public static ArrayList<WhiskeyFlaske> getWhiskyFlaskerSearch(String str) {
-        ArrayList<WhiskeyFlaske> flasker = new ArrayList<>();
+    public static ArrayList<WhiskyFlaske> getWhiskyFlaskerSearch(String str) {
+        ArrayList<WhiskyFlaske> flasker = new ArrayList<>();
 
-        ArrayList<WhiskeyFlaske> alleFlasker = Storage.getWhiskyFlasker();
+        ArrayList<WhiskyFlaske> alleFlasker = Storage.getWhiskyFlasker();
 
-        for (WhiskeyFlaske whiskeyFlaske : alleFlasker) {
+        for (WhiskyFlaske whiskeyFlaske : alleFlasker) {
             if (whiskeyFlaske.toString().toLowerCase().contains(str.toLowerCase()) || whiskeyFlaske.getBatchID().toLowerCase().contains(str.toLowerCase())) {
                 flasker.add(whiskeyFlaske);
             }

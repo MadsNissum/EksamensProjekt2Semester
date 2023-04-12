@@ -7,7 +7,6 @@ import application.utility.Utility;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.VPos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -16,7 +15,7 @@ import javafx.scene.layout.GridPane;
 
 public class WhiskyPane extends GridPane {
     private final ListView<Fad> lvwFade = new ListView<>();
-    private final TextField txfMængde = new TextField();
+    private final TextField txfMilliliter = new TextField();
     private final TextField txfAntal = new TextField();
     private final TextField txfNavn = new TextField();
     private final Button btnOk = new Button("Ok");
@@ -43,7 +42,7 @@ public class WhiskyPane extends GridPane {
 
         this.add(new Label("ml"), 3, 1);
 
-        this.add(txfMængde, 1, 1,2,1);
+        this.add(txfMilliliter, 1, 1,2,1);
 
         this.add(new Label("Antal"), 1, 2);
 
@@ -63,29 +62,30 @@ public class WhiskyPane extends GridPane {
 
         this.add(lblError, 1, 7, 2, 1);
         lblError.setStyle("-fx-text-fill: red");
-
-
-
-
     }
 
     private void okAction() {
         Fad fad = lvwFade.getSelectionModel().getSelectedItem();
 
         if (fad != null) {
-            double liter = Number.checkerDouble(txfMængde.getText().trim());
+            double milliliter = Number.checkerDouble(txfMilliliter.getText().trim());
             int antal = Number.checkerInt(txfAntal.getText().trim());
             String navn = txfNavn.getText().trim();
 
 
-            if (liter <= 0) {
+            if (milliliter <= 0) {
                 lblError.setText("Indtast en korrekt mængde");
             } else if (antal <= 0) {
                 lblError.setText("Indtast et korrekt nummer");
             } else {
-                Controller.createFlasker(fad, antal, liter, navn);
-                updateControls();
-                Utility.message("Flasker Oprettet" , antal + " flasker er nu blevet oprettet på fadet");
+                try {
+                    Controller.createFlasker(fad, antal, milliliter, navn);
+                    updateControls();
+                    Utility.message("Flasker Oprettet" , antal + " flasker er nu blevet oprettet på fadet");
+                } catch (RuntimeException e) {
+                    lblError.setText(e.getMessage());
+                }
+                
             }
         } else {
             Utility.alert("Ugyldigt input", "Der er ikke valgt et fad");

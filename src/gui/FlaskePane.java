@@ -8,13 +8,13 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 public class FlaskePane extends GridPane {
-    private ListView<WhiskeyFlaske> lvwFlaske = new ListView<>();
+    private ListView<WhiskyFlaske> lvwFlaske = new ListView<>();
     private TextField txfSearchBar = new TextField();
     private TextArea txaInfo = new TextArea();
     private Label lblError = new Label();
     private Destillering destillering;
     private Fad fad;
-    private WhiskeyFlaske whiskeyFlaske;
+    private WhiskyFlaske whiskeyFlaske;
 
     public FlaskePane() {
         this.setHgap(10);
@@ -34,7 +34,7 @@ public class FlaskePane extends GridPane {
         lvwFlaske.setPrefWidth(200);
         lvwFlaske.setPrefHeight(200);
 
-        ChangeListener<WhiskeyFlaske> listener = (ov, oldItem, newItem) -> this.flaskeInformation();
+        ChangeListener<WhiskyFlaske> listener = (ov, oldItem, newItem) -> this.flaskeInformation();
         lvwFlaske.getSelectionModel().selectedItemProperty().addListener(listener);
 
 
@@ -55,14 +55,14 @@ public class FlaskePane extends GridPane {
     }
 
     private void flaskeInformation() {
-            WhiskeyFlaske flaske = lvwFlaske.getSelectionModel().getSelectedItem();
+            WhiskyFlaske flaske = lvwFlaske.getSelectionModel().getSelectedItem();
             if (flaske != null) {
 
 
                 txaInfo.setText("Type: " + flaske.getFad().getType());
                 txaInfo.setText(txaInfo.getText() + "\n" + "Kapacitet: " + flaske.getFad().getKapacitet());
                 txaInfo.setText(txaInfo.getText() + "\n" + "Oprindelse: " + flaske.getFad().getOprindelse());
-                txaInfo.setText(txaInfo.getText() + "\n" + "Fadnummer: " + flaske.getFad().getFadNummer());
+                txaInfo.setText(txaInfo.getText() + "\n" + "Fadnummer: " + flaske.getFad().getNummer());
                 txaInfo.setText(txaInfo.getText() + "\n" + "BatchID: " + flaske.getBatchID());
 
                 for (Tap tap : flaske.getFad().getTaps()) {

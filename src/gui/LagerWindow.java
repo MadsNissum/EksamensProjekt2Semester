@@ -85,7 +85,7 @@ public class LagerWindow extends Stage {
         if (lager != null) {
             txfAdresse.setText(lager.getAdresse());
             txfkvm.setText("" + lager.getKvm());
-            txfKapacitet.setText("" + lager.getFadKapacitet());
+            txfKapacitet.setText("" + lager.getKapacitet());
         } else {
             txfAdresse.clear();
             txfkvm.clear();

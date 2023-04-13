@@ -113,7 +113,6 @@ public class Fad {
     public void removeTab(Tap tap) {
         taps.remove(tap);
         tap.setFad(null);
-
     }
 
     //---------------------------------------------------- Linkattribut til WhiskeyFlask

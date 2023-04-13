@@ -67,33 +67,27 @@ public class DestilleringsTapWindow extends Stage {
     }
 
     private void tapFad() {
-        double mængde = Number.checkerDouble(txfMaengde.getText().trim());
+        double liter = Number.checkerDouble(txfMaengde.getText().trim());
         Fad fad = lvwFade.getSelectionModel().getSelectedItem();
 
 
-        if (mængde < 0 || mængde > destillering.getKapacitet()) {
-            lblError.setText("Indtast en korrekt mængde");
+        if (liter < 0 || liter > destillering.getKapacitet()) {
+            lblError.setText("Indtast en korrekt liter");
         } else if (fad == null) {
             lblError.setText("Vælg et fad at fylde på");
         } else {
             updateControls();
             try {
-                Controller.createTap(mængde, destillering, fad);
+                Controller.createTap(liter, destillering, fad);
                 hide();
             } catch (RuntimeException e) {
                 lblError.setText(e.getMessage());
             }
-
-            if (fad.getKapacitet()==0) {
-                Controller.removeFad(fad);
-            }
-
-
         }
     }
 
     public void updateControls() {
-        lvwFade.getItems().setAll(Controller.getFade());
+        lvwFade.getItems().setAll(Controller.getIkkeFyldteFade());
     }
 }
 

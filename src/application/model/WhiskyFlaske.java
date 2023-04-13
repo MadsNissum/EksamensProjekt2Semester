@@ -4,8 +4,8 @@ public class WhiskyFlaske {
     private double kapacitet;
     private final int nummer;
     private static int whiskyNummerIndex = 1;
-    private String navn;
-    private String batchID;
+    private final String navn;
+    private final String batchID;
     private Fad fad;
 
     public WhiskyFlaske(double kapacitet, String navn, String batchID) {

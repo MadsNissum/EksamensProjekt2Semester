@@ -68,9 +68,6 @@ public class Controller {
      */
 
     public static Tap createTap(double liter, Destillering destillering, Fad fad) {
-        System.out.println(liter);
-        System.out.println(fad.getLedigPladsIFad());
-
         Tap tap = new Tap(liter);
         tap.setDestillering(destillering);
         tap.setFad(fad);
@@ -128,6 +125,18 @@ public class Controller {
 
     public static ArrayList<Fad> getFade() {
         return Storage.getFade();
+    }
+
+    public static ArrayList<Fad> getIkkeFyldteFade() {
+        ArrayList<Fad> fade = new ArrayList<>();
+
+        for (Fad fad : Storage.getFade()) {
+            if (fad.getLedigPladsIFad() > 0) {
+                fade.add(fad);
+            }
+        }
+
+        return fade;
     }
 
     public static ArrayList<Destillering> getDestilleringer() {
@@ -218,16 +227,6 @@ public class Controller {
         destillering.setAlkoholProcent(alkoholProcent);
         destillering.setRygemateriale(rygemateriale);
         destillering.setKommentar(kommentar);
-    }
-
-    /**
-     * checkWhiskyTid checker perioden mellem start- og slutdatoen af en destillering
-     *
-     * @param destillering - Destillering angives
-     * @return antal år
-     */
-    public static int checkWhiskyTid(Destillering destillering) {
-       return (int) ChronoUnit.YEARS.between(destillering.getStartDato(), destillering.getSlutDato());
     }
 
     /**

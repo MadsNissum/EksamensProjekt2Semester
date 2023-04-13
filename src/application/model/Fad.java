@@ -95,19 +95,6 @@ public class Fad {
         return kapacitet - literIFad;
     }
 
-    /**
-     * getLiterIFad - Antal liter der tappes i fadet
-     * @return antal liter der aftappes
-     */
-    /*
-    public double getLiterIFad() {
-        double sum = 0;
-        for (Tap tap : taps) {
-            sum += tap.getLiter();
-        }
-        return sum;
-    }
-     */
 
     //------------------------------------------------------- Linkattribut til Tap
 

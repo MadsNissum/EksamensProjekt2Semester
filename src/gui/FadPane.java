@@ -179,7 +179,9 @@ public class FadPane extends GridPane {
     public void updateControls() {
         lvwFad.getItems().setAll(Controller.getFade());
         lagerComboBox.getItems().setAll(Controller.getLager());
-
+        txfPlads.clear();
+        txfHylde.clear();
+        txfReol.clear();
     }
 
 }

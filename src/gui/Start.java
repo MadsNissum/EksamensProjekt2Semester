@@ -62,7 +62,6 @@ public class Start extends Application {
         destilleringsPane.setAlignment(Pos.BASELINE_CENTER);
         destilleringTab.setOnSelectionChanged(event -> {
             destilleringsPane.updateControls();
-            destilleringsPane.updateTapControls();
         });
 
         WhiskyPane whiskyPane = new WhiskyPane();

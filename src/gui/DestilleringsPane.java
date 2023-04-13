@@ -135,8 +135,6 @@ public class DestilleringsPane extends GridPane {
             lvwDestillering.getSelectionModel().select(destillering);
             selectDestillering();
             updateControls();
-
-
         }
     }
 
@@ -163,7 +161,6 @@ public class DestilleringsPane extends GridPane {
 
             selectDestillering();
             updateControls();
-            updateTapControls();
         } else {
             Utility.message("Ugyldigt input", "Der er ikke valgt et destillat");
         }
@@ -173,6 +170,8 @@ public class DestilleringsPane extends GridPane {
         Destillering destillering = lvwDestillering.getSelectionModel().getSelectedItem();
 
         if (destillering != null) {
+            lvwTap.getItems().setAll(destillering.getTaps());
+
             txfStartDato.setText("" + destillering.getStartDato());
             txfSlutDato.setText("" + destillering.getSlutDato());
             txfMaltBatch.setText(destillering.getMaltbatch());
@@ -198,14 +197,8 @@ public class DestilleringsPane extends GridPane {
         txfLiter.clear();
     }
 
-
-
     public void updateControls() {
         lvwDestillering.getItems().setAll(Controller.getDestilleringer());
-    }
-
-    public void updateTapControls() {
-        lvwTap.getItems().setAll(Controller.getTaps());
     }
 
 }

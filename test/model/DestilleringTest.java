@@ -57,20 +57,22 @@ class DestilleringTest {
     }
 
     @Test
-    void getLedigLiterIDestillering_0_Liter() {
+    void getLedigLiterIDestillering_30_Liter_2_Taps() {
 
         Destillering destillering = new Destillering(startDato, slutDato, "Single malt", "Byg", "Snævar aka Sniper", 100, 80, "Birk", "God whisky");
-        Tap tap = new Tap(0);
+        Tap tap = new Tap(10);
+        Tap tap2 = new Tap(20);
         destillering.addTap(tap);
+        destillering.addTap(tap2);
 
         double faktiskLedigLiter = destillering.getLedigLiterIDestillering();
 
-        double forventetLedigLiter = 0;
+        double forventetLedigLiter = 30;
         assertEquals(forventetLedigLiter, faktiskLedigLiter);
     }
 
     @Test
-    void getLedigLiterIDestillering_0_Liter_0_Taps() {
+    void getLedigLiterIDestillering_0_Taps() {
 
         Destillering destillering = new Destillering(startDato, slutDato, "Single malt", "Byg", "Snævar aka Sniper", 100, 80, "Birk", "God whisky");
 

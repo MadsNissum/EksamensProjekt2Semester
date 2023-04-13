@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="Controller">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/model/Fad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/model/Fad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/controller/ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/ControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/DestilleringTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/DestilleringTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="ControllerTest" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -183,10 +178,10 @@
     <MESSAGE value="&#10;:DDD" />
     <MESSAGE value="Test" />
     <MESSAGE value="Ændret i Test, Controller JavaDocs kommentar, model JavaDocs kommentar" />
-    <MESSAGE value="ControllerTest" />
     <MESSAGE value="Fixed small things" />
     <MESSAGE value="ControllerTest, DestilleringTest, FadTest" />
     <MESSAGE value="Controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Controller" />
+    <MESSAGE value="ControllerTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="ControllerTest" />
   </component>
 </project>

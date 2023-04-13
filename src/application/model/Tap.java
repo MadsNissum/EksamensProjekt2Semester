@@ -38,12 +38,6 @@ public class Tap {
         }
     }
 
-    //TODO
-    /**
-     * setFad
-     *
-     * @param fad - Fad angives
-     */
 
     public void setFad(Fad fad) {
         if (this.fad != fad) {

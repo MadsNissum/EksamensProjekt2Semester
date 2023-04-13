@@ -280,8 +280,6 @@ public class Controller {
 
     /**
      * getWhiskyFlaskerSearch er en søgefunktion der bruges til at søge efter flasker
-     * Der løbes igennem alle flasker og checkes at store og små bogstaver ikke har nogen betydning
-     * BatchID checkes også, så der også kan søges efter den
      *
      * @param str - String værdi
      * @return liste af whiskyflasker

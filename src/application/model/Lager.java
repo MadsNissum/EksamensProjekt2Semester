@@ -53,6 +53,10 @@ public class Lager {
         }
     }
 
+    public int antalFadePaaLager() {
+        return fade.size();
+    }
+
     public void removeFad(Fad fad) {
         fade.remove(fad);
         fad.setLager(null);
@@ -60,7 +64,7 @@ public class Lager {
 
     @Override
     public String toString() {
-        return "Adresse: " + adresse;
+        return String.format("Adresse: %-20sAntal fade: %4o / %4o", adresse, antalFadePaaLager(), kapacitet);
     }
 }
 

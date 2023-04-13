@@ -1,7 +1,7 @@
 package application.utility;
+
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-
 import java.security.SecureRandom;
 import java.util.Optional;
 import java.util.Random;

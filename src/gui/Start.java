@@ -69,6 +69,7 @@ public class Start extends Application {
         whiskyTab.setContent(whiskyPane);
         tabPane.getTabs().add(whiskyTab);
         whiskyPane.setAlignment(Pos.BASELINE_CENTER);
+        whiskyTab.setOnSelectionChanged(event -> whiskyPane.updateControls());
 
         FlaskePane flaskePane = new FlaskePane();
         Tab flaskeTab = new Tab("Flasker");

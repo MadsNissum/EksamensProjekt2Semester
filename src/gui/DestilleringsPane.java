@@ -2,7 +2,6 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Destillering;
-import application.model.Fad;
 import application.model.Tap;
 import application.utility.Utility;
 import javafx.beans.value.ChangeListener;
@@ -11,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 public class DestilleringsPane extends GridPane {
-    private Fad fad;
     private final ListView<Destillering> lvwDestillering = new ListView<>();
     private final ListView<Tap> lvwTap = new ListView<>();
     private final TextField txfStartDato = new TextField();
@@ -38,16 +36,18 @@ public class DestilleringsPane extends GridPane {
 
         // Destillering listview
         this.add(lvwDestillering, 0, 1, 1, 11);
-        lvwDestillering.setPrefWidth(200);
+        lvwDestillering.setPrefWidth(300);
         lvwDestillering.setPrefHeight(150);
         updateControls();
         ChangeListener<Destillering> listener = (ov, oldItem, newItem) -> this.selectDestillering();
         lvwDestillering.getSelectionModel().selectedItemProperty().addListener(listener);
+        lvwDestillering.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
 
         // Tap listview
         this.add(lvwTap, 3, 1, 1, 11);
-        lvwTap.setPrefWidth(200);
+        lvwTap.setPrefWidth(300);
         lvwTap.setPrefHeight(150);
+        lvwTap.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
         //ChangeListener<Tap> listener1 = (ov, oldItem, newItem) -> this.selectedTap();
         //lvwTap.getSelectionModel().selectedItemProperty().addListener(listener1);
 
@@ -156,7 +156,7 @@ public class DestilleringsPane extends GridPane {
         Destillering destillering = lvwDestillering.getSelectionModel().getSelectedItem();
 
         if (destillering != null) {
-            DestilleringsTapWindow destilleringsTapWindow = new DestilleringsTapWindow("Aftap destillat", destillering, fad);
+            DestilleringsTapWindow destilleringsTapWindow = new DestilleringsTapWindow("Aftap destillat", destillering);
             destilleringsTapWindow.showAndWait();
 
             selectDestillering();

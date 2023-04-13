@@ -98,23 +98,15 @@ public class LagerWindow extends Stage {
         double kvm = Number.checkerDouble(txfkvm.getText().trim());
         int kapacitet = Number.checkerInt(txfKapacitet.getText().trim());
 
-
-        if (adresse.length() == 0) {
-            lblError.setText("Intast en Adresse");
-        } else if (kvm < 0) {
-            lblError.setText("Indtast et tal i Kvm");
-        } else if (kapacitet < 0) {
-            lblError.setText("Intast et tal i Kapacitet");
-        } else {
+        try {
             if (lager != null) {
                 Controller.updateLager(lager, adresse, kvm, kapacitet);
             } else {
                 Controller.createLager(adresse, kvm, kapacitet);
             }
             hide();
+        } catch (IllegalArgumentException e) {
+            lblError.setText(e.getMessage());
         }
-
     }
-
-
 }

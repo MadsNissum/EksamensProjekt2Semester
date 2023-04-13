@@ -45,14 +45,16 @@ public class FadPane extends GridPane {
         this.add(lvwTaps, 4, 1, 1, 10);
         lvwTaps.setPrefWidth(250);
         lvwTaps.setPrefHeight(324);
+        lvwTaps.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
 
         this.add(hBox, 1, 0);
         hBox.setSpacing(10);
         hBox.setAlignment(Pos.BASELINE_RIGHT);
 
         this.add(lvwFad, 0, 1, 2, 10);
-        lvwFad.setPrefWidth(250);
+        lvwFad.setPrefWidth(400);
         lvwFad.setPrefHeight(324);
+        lvwFad.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
         updateControls();
 
         ChangeListener<Fad> listener = (ov, oldCompny, newCompany) -> this.selectedFad();

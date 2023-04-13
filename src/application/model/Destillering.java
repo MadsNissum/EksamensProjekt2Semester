@@ -143,6 +143,7 @@ public class Destillering {
     }
 
     @Override
-    public String toString() {return "Kornsort: " + kornsort + " Mængde: " +  +kapacitet;}
-
+    public String toString() {
+        return String.format("Kornsort: %-10s Mængde: %s", kornsort, kapacitet);
+    }
 }

@@ -31,16 +31,18 @@ public class FlaskePane extends GridPane {
         txfSearchBar.textProperty().addListener((ov, oldItem, newItem) -> this.selectedSearchBar());
 
         this.add(lvwFlaske, 0, 2, 1, 10);
-        lvwFlaske.setPrefWidth(200);
+        lvwFlaske.setPrefWidth(500);
         lvwFlaske.setPrefHeight(200);
+        lvwFlaske.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
 
         ChangeListener<WhiskyFlaske> listener = (ov, oldItem, newItem) -> this.flaskeInformation();
         lvwFlaske.getSelectionModel().selectedItemProperty().addListener(listener);
 
 
-        txaInfo.setPrefWidth(200);
+        txaInfo.setPrefWidth(300);
         txaInfo.setPrefHeight(311.2);
         this.add(txaInfo,1,2, 1, 10);
+        txaInfo.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
 
         this.add(lblError, 1, 3);
         lblError.setStyle("-fx-text-fill: red");

@@ -1,9 +1,9 @@
 package application.model;
 
 public class LagerPlads {
-    private String reol;
-    private String hylde;
-    private String plads;
+    private final String reol;
+    private final String hylde;
+    private final String plads;
 
     public LagerPlads(String reol, String hylde, String plads) {
         this.reol = reol;
@@ -15,23 +15,11 @@ public class LagerPlads {
         return reol;
     }
 
-    public void setReol(String reol) {
-        this.reol = reol;
-    }
-
     public String getHylde() {
         return hylde;
     }
 
-    public void setHylde(String hylde) {
-        this.hylde = hylde;
-    }
-
     public String getPlads() {
         return plads;
-    }
-
-    public void setPlads(String plads) {
-        this.plads = plads;
     }
 }

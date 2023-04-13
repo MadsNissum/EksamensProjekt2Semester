@@ -32,11 +32,10 @@ public class WhiskyPane extends GridPane {
         this.add(new Label("Fade"), 0, 0);
 
         this.add(lvwFade, 0, 1,1, 10);
-        lvwFade.setPrefWidth(250);
+        lvwFade.setPrefWidth(500);
         lvwFade.setPrefHeight(324);
         updateControls();
-        ChangeListener<Fad> listener = (ov, oldCompny, newCompany) -> this.selectedFad();
-        lvwFade.getSelectionModel().selectedItemProperty().addListener(listener);
+        lvwFade.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
 
         this.add(new Label("Mængde"), 1, 0);
 
@@ -85,16 +84,10 @@ public class WhiskyPane extends GridPane {
                 } catch (RuntimeException e) {
                     lblError.setText(e.getMessage());
                 }
-                
             }
         } else {
             Utility.alert("Ugyldigt input", "Der er ikke valgt et fad");
         }
-    }
-
-    private void selectedFad() {
-        Fad fad = lvwFade.getSelectionModel().getSelectedItem();
-
     }
 
     public void updateControls() {

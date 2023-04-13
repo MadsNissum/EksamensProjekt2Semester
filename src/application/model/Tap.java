@@ -1,7 +1,7 @@
 package application.model;
 
 public class Tap {
-    private double liter;
+    private final double liter;
     private Destillering destillering;
     private Fad fad;
 
@@ -11,10 +11,6 @@ public class Tap {
 
     public double getLiter() {
         return liter;
-    }
-
-    public void setLiter(double liter) {
-        this.liter = liter;
     }
 
     public Destillering getDestillering() {
@@ -54,7 +50,7 @@ public class Tap {
 
     @Override
     public String toString() {
-        return "Mængde: " + liter + " Fadnummer: " + fad.getNummer();
+        return String.format("%-7s %-5s liter på Fadnummer: %s", destillering.getKornsort(), liter, fad.getNummer());
     }
 }
 

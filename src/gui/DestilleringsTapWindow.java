@@ -3,9 +3,7 @@ package gui;
 import application.controller.Controller;
 import application.model.Destillering;
 import application.model.Fad;
-import application.model.Tap;
 import application.utility.Number;
-import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,14 +12,11 @@ import javafx.stage.Stage;
 
 public class DestilleringsTapWindow extends Stage {
 
-    private Destillering destillering;
-    private Tap tap;
-    private Fad fad;
+    private final Destillering destillering;
 
-    public DestilleringsTapWindow(String title, Destillering destillering, Fad fad) {
+    public DestilleringsTapWindow(String title, Destillering destillering) {
         GridPane pane = new GridPane();
         this.destillering = destillering;
-        this.fad = fad;
 
         initContent(pane);
 
@@ -31,7 +26,6 @@ public class DestilleringsTapWindow extends Stage {
 
         this.setScene(scene);
         pane.setPrefWidth(400);
-
     }
 
     private final ListView <Fad>lvwFade = new ListView<>();

@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
-import storage.Storage;
 
 public class LagerPane extends GridPane {
     private final ListView<Lager> lvwLager;
@@ -28,10 +27,11 @@ public class LagerPane extends GridPane {
         lvwLager = new ListView<>();
         this.add(lvwLager, 0, 1, 1, 10);
         lvwLager.setPrefHeight(324);
-        lvwLager.setPrefWidth(300);
+        lvwLager.setPrefWidth(400);
         lvwLager.getItems().setAll(Controller.getLager());
         ChangeListener<Lager> listener = (ov, oldItem, newItem) -> this.selectedLager();
         lvwLager.getSelectionModel().selectedItemProperty().addListener(listener);
+        lvwLager.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
 
 
         Label lblFade = new Label("Fade");
@@ -40,7 +40,8 @@ public class LagerPane extends GridPane {
         lvwFade = new ListView<>();
         this.add(lvwFade, 1, 1, 1, 10);
         lvwFade.setPrefHeight(324);
-        lvwFade.setPrefWidth(300);
+        lvwFade.setPrefWidth(400);
+        lvwFade.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
 
 
 

@@ -38,10 +38,6 @@ public class Fad {
         return lagerPlads;
     }
 
-    public void setLagerPlads(LagerPlads lagerPlads) {
-        this.lagerPlads = lagerPlads;
-    }
-
     public String getType() {
         return type;
     }
@@ -122,10 +118,6 @@ public class Fad {
 
     //---------------------------------------------------- Linkattribut til WhiskeyFlask
 
-    public ArrayList<WhiskyFlaske> getWhiskyFlasker() {
-        return whiskyFlasker;
-    }
-
     public void addWhiskeyFlaske(WhiskyFlaske whiskeyFlaske) {
         if (!whiskyFlasker.contains(whiskeyFlaske) && whiskeyFlaske != null) {
             whiskyFlasker.add(whiskeyFlaske);
@@ -141,7 +133,9 @@ public class Fad {
 
     @Override
     public String toString() {
-        return nummer + " " + type + " Liter: " + getLiterIFad() + "/" + kapacitet + " Oprindelse: " + oprindelse;
+        //String.format("Adresse: " + "%-20s" + "Antal fade: "  +"%4o" + " / " + "%4o", adresse, antalFadePaaLager(), kapacitet);
+
+        return String.format("%-2s %-11s Liter: %-5s/%-5s Oprindelse: %s", nummer, type, getLiterIFad(), kapacitet, oprindelse);
 
     }
 }

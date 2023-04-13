@@ -4,7 +4,6 @@ import application.model.*;
 import application.utility.Utility;
 import storage.Storage;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Controller {
@@ -12,9 +11,9 @@ public class Controller {
     /**
      * createFad opretter et fad
      *
-     * @param type - Navnet på fadtypen
-     * @param kapacitet - Mængden af, hvor meget der kan være i fadet
-     * @param oprindelse - Naavnet på, hvor fadet er fra
+     * @param type       - Navnet på fad typen
+     * @param kapacitet  - Mængden af, hvor meget der kan være i fadet
+     * @param oprindelse - Navnet på, hvor fadet er fra
      * @return fad
      */
     public static Fad createFad(String type, double kapacitet, String oprindelse) {
@@ -26,34 +25,42 @@ public class Controller {
     /**
      * createLager opretter et lager
      *
-     * @param adresse - Adresse på lageret
-     * @param kvm - Størrelsen af lageret angivet i kvadratmeter
+     * @param adresse      - Adresse på lageret
+     * @param kvm          - Størrelsen af lageret angivet i kvadratmeter
      * @param fadKapacitet - Antal pladser til fade på lageret
      * @return lager
      */
     public static Lager createLager(String adresse, double kvm, int fadKapacitet) {
-        Lager lager = new Lager(adresse, kvm, fadKapacitet);
-        Storage.addLager(lager);
-        return lager;
+        if (adresse.length() == 0) {
+            throw new IllegalArgumentException("Indtast en Adresse");
+        } else if (kvm < 0) {
+            throw new IllegalArgumentException("Indtast et tal i Kvm");
+        } else if (fadKapacitet < 0) {
+            throw new IllegalArgumentException("Indtast et tal i Kapacitet");
+        } else {
+            Lager lager = new Lager(adresse, kvm, fadKapacitet);
+            Storage.addLager(lager);
+            return lager;
+        }
     }
 
     /**
      * createDestillering opretter en destillering
      *
-     * @param startDato - Startdatoen for, hvornår destilleringen startede
-     * @param slutDato - Slutdatoen for, hvornår destillering er slut
-     * @param maltbatch - Maltbatchen af destilleringen
-     * @param kornsort - Kornsorten af destilleringen
-     * @param medarbejder - Medarbejderen der har ansvaret for destilleringen
-     * @param mængde - Mængden af destilleringen
+     * @param startDato      - Startdatoen for, hvornår destilleringen startede
+     * @param slutDato       - Slutdatoen for, hvornår destillering er slut
+     * @param maltbatch      - Maltbatchen af destilleringen
+     * @param kornsort       - Kornsorten af destilleringen
+     * @param medarbejder    - Medarbejderen der har ansvaret for destilleringen
+     * @param liter          - Mængden af destilleringen
      * @param alkoholProcent - Alkoholprocenten angives
-     * @param rygemateriale - Rygemateriale af destilleringen
-     * @param kommentar - En kommentar om destilleringen
+     * @param rygemateriale  - Rygemateriale af destilleringen
+     * @param kommentar      - En kommentar om destilleringen
      * @return destillering
      */
 
-    public static Destillering createDestillering(LocalDate startDato, LocalDate slutDato, String maltbatch, String kornsort, String medarbejder, double mængde, double alkoholProcent, String rygemateriale, String kommentar) {
-        Destillering destillering = new Destillering(startDato, slutDato, maltbatch, kornsort, medarbejder, mængde, alkoholProcent, rygemateriale, kommentar);
+    public static Destillering createDestillering(LocalDate startDato, LocalDate slutDato, String maltbatch, String kornsort, String medarbejder, double liter, double alkoholProcent, String rygemateriale, String kommentar) {
+        Destillering destillering = new Destillering(startDato, slutDato, maltbatch, kornsort, medarbejder, liter, alkoholProcent, rygemateriale, kommentar);
         Storage.addDestilleringer(destillering);
         return destillering;
     }
@@ -61,42 +68,18 @@ public class Controller {
     /**
      * createTap opretter et tap
      *
-     * @param liter - Antal liter der kan aftappes
+     * @param liter        - Antal liter der kan aftappes
      * @param destillering - Destilleringen, der skal aftappes fra
-     * @param fad - Fadet, der skal aftappes fra
-     * @return tap
+     * @param fad          - Fadet, der skal aftappes fra
      */
-
-    public static Tap createTap(double liter, Destillering destillering, Fad fad) {
+    public static void createTap(double liter, Destillering destillering, Fad fad) {
         Tap tap = new Tap(liter);
         tap.setDestillering(destillering);
         tap.setFad(fad);
         fad.setLiterIFad(fad.getLiterIFad() + liter);
         Storage.addTap(tap);
-        return tap;
     }
 
-    //--------------------------------------------------
-
-    public static void addLager(Lager lager) {
-        Storage.addLager(lager);
-    }
-
-    public static void addFad(Fad fad) {
-        Storage.addFad(fad);
-    }
-
-    public static void addDestilleringer(Destillering destillering) {
-        Storage.addDestilleringer(destillering);
-    }
-
-    public static void addTap(Tap tap) {
-        Storage.addTap(tap);
-    }
-
-    public static void addWhiskyflaske(WhiskyFlaske whiskeyFlaske) {
-        Storage.addWhiskyflasker(whiskeyFlaske);
-    }
     //--------------------------------------------------
     public static void removeLager(Lager lager) {
         Storage.removeLager(lager);
@@ -110,13 +93,6 @@ public class Controller {
         Storage.removeDestilleringer(destillering);
     }
 
-    public static void removeTap(Tap tap) {
-        Storage.removeTap(tap);
-    }
-
-    public static void removeWhiskyflaske(WhiskyFlaske whiskeyFlaske) {
-        Storage.removeWhiskyflaske(whiskeyFlaske);
-    }
     //--------------------------------------------------
 
     public static ArrayList<Lager> getLager() {
@@ -143,10 +119,6 @@ public class Controller {
         return Storage.getDestilleringer();
     }
 
-    public static ArrayList<Tap> getTaps() {
-        return Storage.getTaps();
-    }
-
     public static ArrayList<WhiskyFlaske> getWhiskyflasker() {
         return Storage.getWhiskyFlasker();
     }
@@ -155,9 +127,9 @@ public class Controller {
     /**
      * updateFad opdaterer et fad
      *
-     * @param type - Navnet på fadtypen
-     * @param kapacitet - Mængden af, hvor meget der kan være i fadet
-     * @param oprindelse - Naavnet på, hvor fadet er fra
+     * @param type       - Navnet på fad typen
+     * @param kapacitet  - Mængden af, hvor meget der kan være i fadet
+     * @param oprindelse - Navnet på, hvor fadet er fra
      */
     public static void updateFad(Fad fad, String type, double kapacitet, String oprindelse) {
         fad.setType(type);
@@ -168,8 +140,8 @@ public class Controller {
     /**
      * createLagerPlads opretter et lagerplads
      *
-     * @param fad - Fad angives
-     * @param reol - Navn/nummer på reolen
+     * @param fad   - Fad angives
+     * @param reol  - Navn/nummer på reolen
      * @param hylde - Navn/nummer på hylden
      * @param plads - Navn/nummer på pladsen
      */
@@ -180,7 +152,7 @@ public class Controller {
     /**
      * addFadTilLager tilføjer et fad til et lager
      *
-     * @param fad - Fad angives
+     * @param fad   - Fad angives
      * @param lager - Lager angives
      */
 
@@ -191,39 +163,47 @@ public class Controller {
     /**
      * updateLager opdaterer et lager
      *
-     * @param adresse - Adresse på lageret
-     * @param kvm - Størrelsen af lageret angivet i kvadratmeter
+     * @param adresse   - Adresse på lageret
+     * @param kvm       - Størrelsen af lageret angivet i kvadratmeter
      * @param kapacitet - Antal pladser til fade på lageret
      */
     public static void updateLager(Lager lager, String adresse, double kvm, int kapacitet) {
-        lager.setAdresse(adresse);
-        lager.setKvm(kvm);
-        lager.setKapacitet(kapacitet);
+        if (adresse.length() == 0) {
+            throw new IllegalArgumentException("Indtast en Adresse");
+        } else if (kvm < 0) {
+            throw new IllegalArgumentException("Indtast et tal i Kvm");
+        } else if (kapacitet < 0) {
+            throw new IllegalArgumentException("Indtast et tal i Kapacitet");
+        } else {
+            lager.setAdresse(adresse);
+            lager.setKvm(kvm);
+            lager.setKapacitet(kapacitet);
+        }
     }
 
     /**
      * updateDestillering opdaterer en destillering
      *
-     * @param startDato - Startdatoen for, hvornår destilleringen startede
-     * @param slutDato - Slutdatoen for, hvornår destillering er slut
-     * @param maltbatch - Maltbatchen af destilleringen
-     * @param kornsort - Kornsorten af destilleringen
-     * @param medarbejder - Medarbejderen der har ansvaret for destilleringen
-     * @param mængde - Mængden af destilleringen
+     * @param startDato      - Startdatoen for, hvornår destilleringen startede
+     * @param slutDato       - Slutdatoen for, hvornår destillering er slut
+     * @param maltbatch      - Maltbatchen af destilleringen
+     * @param kornsort       - Kornsorten af destilleringen
+     * @param medarbejder    - Medarbejderen der har ansvaret for destilleringen
+     * @param liter          - Mængden af destilleringen
      * @param alkoholProcent - Alkoholprocenten angives
-     * @param rygemateriale - Rygemateriale af destilleringen
-     * @param kommentar - En kommentar om destilleringen
+     * @param rygemateriale  - Rygemateriale af destilleringen
+     * @param kommentar      - En kommentar om destilleringen
      */
 
     public static void updateDestillering(Destillering destillering, LocalDate startDato, LocalDate slutDato, String maltbatch,
-                                          String kornsort, String medarbejder, double mængde, double alkoholProcent,
+                                          String kornsort, String medarbejder, double liter, double alkoholProcent,
                                           String rygemateriale, String kommentar) {
         destillering.setStartDato(startDato);
         destillering.setSlutDato(slutDato);
         destillering.setMaltbatch(maltbatch);
         destillering.setKornsort(kornsort);
         destillering.setMedarbejder(medarbejder);
-        destillering.setKapacitet(mængde);
+        destillering.setKapacitet(liter);
         destillering.setAlkoholProcent(alkoholProcent);
         destillering.setRygemateriale(rygemateriale);
         destillering.setKommentar(kommentar);
@@ -255,20 +235,31 @@ public class Controller {
     /**
      * createFlasker opretter flasker
      *
-     * @param fad - Fad angives
-     * @param antal - Antallet af flasker der skal oprettes
+     * @param fad        - Fad angives
+     * @param antal      - Antallet af flasker der skal oprettes
      * @param milliliter - Antal milliliter, der skal være i hver flaske
-     * @param navn - Navnet på flasken
+     * @param navn       - Navnet på flasken
      */
     public static void createFlasker(Fad fad, int antal, double milliliter, String navn) {
-        String batchID = Utility.randomUUID(16);
-        //TODO daos check data base uuid bombombmo
+        String batchID = null;
+        boolean batchIDExist = true;
 
-        if ((milliliter/1000) * antal > fad.getLiterIFad()) {
+        while (batchIDExist) {
+            batchID = Utility.randomUUID(16);
+
+            for (WhiskyFlaske flaske : Storage.getWhiskyFlasker()) {
+                if (!flaske.getBatchID().equals(batchID)) {
+                    batchIDExist = false;
+                    break;
+                }
+            }
+        }
+
+        if ((milliliter / 1000) * antal > fad.getLiterIFad()) {
             throw new RuntimeException("Der er ikke nok væske til at lave flasker!");
         }
 
-        fad.setLiterIFad(fad.getLiterIFad() - (milliliter/1000) * antal);
+        fad.setLiterIFad(fad.getLiterIFad() - (milliliter / 1000) * antal);
 
         for (int i = 0; i < antal; i++) {
             WhiskyFlaske whiskeyFlaske = new WhiskyFlaske(milliliter, navn, batchID);
@@ -317,13 +308,14 @@ public class Controller {
         fad3.createLagerPlads("Y", "5", "80H");
 
 
-        createDestillering(LocalDate.of(2023, 3, 27), LocalDate.of(2023, 4, 5), "Single malt", "Byg", "Snævar aka Sniper", 500, 80, "Birk", "God whisky");
-        createDestillering(LocalDate.of(2023, 3, 28), LocalDate.of(2027, 3, 29), "Single malt", "Hvede", "Adam", 800, 90, "Eg", "Smager er jord");
-        Destillering destillering1 = createDestillering(LocalDate.of(2019, 1, 1), LocalDate.of(2022, 4, 5), "Single malt", "Byg", "Snævar aka Sniper", 500, 80, "Birk", "God whisky");
-        Destillering destillering2 = createDestillering(LocalDate.of(2018,1,1), LocalDate.of(2023,1,1), "Single malt", "Hvede", "Adam", 800, 80, "Eg", "Banger");
+        createDestillering(LocalDate.of(2023, 3, 27), LocalDate.of(2023, 4, 5), "Single malt", "Byg", "Sniper", 500, 60, "Birk", "God whisky");
+        createDestillering(LocalDate.of(2023, 3, 28), LocalDate.of(2027, 3, 29), "Single malt", "Hvede", "Adam", 700, 55.5, "Ingen", "Smagen er god");
+        Destillering destillering1 = createDestillering(LocalDate.of(2019, 1, 1), LocalDate.of(2022, 4, 5), "Single malt", "Rug", "Mads", 550, 45.6, "Ingen", "Smager lidt af rugbrød");
+        Destillering destillering2 = createDestillering(LocalDate.of(2018, 1, 1), LocalDate.of(2023, 1, 1), "Single malt", "Majs", "Tayyip", 800, 61, "Eg", "Lidt for stærk");
 
-        Tap tap1 = createTap(60,destillering1,fad4);
-        Tap tap2 = createTap(64,destillering2,fad2);
+        createTap(60, destillering1, fad4);
+        createTap(64, destillering2, fad2);
 
+        createFlasker(fad2, 10, 1000, "Golden Whisky");
     }
 }

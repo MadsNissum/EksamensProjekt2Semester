@@ -1,7 +1,7 @@
 package application.model;
 
 public class WhiskyFlaske {
-    private double kapacitet;
+    private final double kapacitet;
     private final int nummer;
     private static int whiskyNummerIndex = 1;
     private final String navn;
@@ -15,17 +15,6 @@ public class WhiskyFlaske {
         this.nummer = whiskyNummerIndex++;
     }
 
-    public double getKapacitet() {
-        return kapacitet;
-    }
-
-    public void setKapacitet(double kapacitet) {
-        this.kapacitet = kapacitet;
-    }
-
-    public int getNummer() {
-        return nummer;
-    }
     public String getBatchID() {
         return batchID;
     }
@@ -53,8 +42,6 @@ public class WhiskyFlaske {
 
     @Override
     public String toString() {
-        return navn + " - " + "Fadtype: " + fad.getType() + " " + nummer;
+        return String.format("%-15s ml: %5.0f Fadtype: %-7s %s", navn, kapacitet, fad.getType(), nummer);
     }
-
-
 }

@@ -16,7 +16,7 @@ import java.time.LocalDate;
 
 public class DestilleringsWindow extends Stage {
 
-    private Destillering destillering;
+    private final Destillering destillering;
 
     public DestilleringsWindow(String title, Destillering destillering) {
         GridPane pane = new GridPane();

@@ -8,13 +8,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
 public class FlaskePane extends GridPane {
-    private ListView<WhiskyFlaske> lvwFlaske = new ListView<>();
-    private TextField txfSearchBar = new TextField();
-    private TextArea txaInfo = new TextArea();
-    private Label lblError = new Label();
-    private Destillering destillering;
-    private Fad fad;
-    private WhiskyFlaske whiskeyFlaske;
+    private final ListView<WhiskyFlaske> lvwFlaske = new ListView<>();
+    private final TextField txfSearchBar = new TextField();
+    private final TextArea txaInfo = new TextArea();
 
     public FlaskePane() {
         this.setHgap(10);
@@ -38,14 +34,10 @@ public class FlaskePane extends GridPane {
         ChangeListener<WhiskyFlaske> listener = (ov, oldItem, newItem) -> this.flaskeInformation();
         lvwFlaske.getSelectionModel().selectedItemProperty().addListener(listener);
 
-
         txaInfo.setPrefWidth(300);
         txaInfo.setPrefHeight(311.2);
         this.add(txaInfo,1,2, 1, 10);
         txaInfo.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
-
-        this.add(lblError, 1, 3);
-        lblError.setStyle("-fx-text-fill: red");
 
         updateControls();
     }
@@ -59,7 +51,6 @@ public class FlaskePane extends GridPane {
     private void flaskeInformation() {
             WhiskyFlaske flaske = lvwFlaske.getSelectionModel().getSelectedItem();
             if (flaske != null) {
-
 
                 txaInfo.setText("Type: " + flaske.getFad().getType());
                 txaInfo.setText(txaInfo.getText() + "\n" + "Kapacitet: " + flaske.getFad().getKapacitet());
@@ -76,14 +67,10 @@ public class FlaskePane extends GridPane {
                     txaInfo.setText(txaInfo.getText() + "\n" + "Alkoholprocent: " + tap.getDestillering().getAlkoholProcent());
                     txaInfo.setText(txaInfo.getText() + "\n" + "Rygemateriale: " + tap.getDestillering().getRygemateriale());
                     txaInfo.setText(txaInfo.getText() + "\n" + "Kommentar: " + tap.getDestillering().getKommentar());
-
-
                 }
             }
     }
     public void updateControls() {
         lvwFlaske.getItems().setAll(Controller.getWhiskyflasker());
     }
-
-
 }

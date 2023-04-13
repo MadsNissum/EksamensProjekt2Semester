@@ -25,7 +25,6 @@ public class DestilleringsTapWindow extends Stage {
         Scene scene = new Scene(pane);
 
         this.setScene(scene);
-        pane.setPrefWidth(400);
     }
 
     private final ListView <Fad>lvwFade = new ListView<>();
@@ -33,7 +32,6 @@ public class DestilleringsTapWindow extends Stage {
     private final Label lblError = new Label();
 
     private void initContent(GridPane pane) {
-
         pane.setGridLinesVisible(false);
 
         pane.setPadding(new Insets(20));
@@ -46,9 +44,10 @@ public class DestilleringsTapWindow extends Stage {
         pane.add(txfMaengde, 0, 1);
         txfMaengde.setEditable(true);
 
-        pane.add(lvwFade, 0, 2, 2, 10);
-        lvwFade.setPrefWidth(250);
+        pane.add(lvwFade, 0, 2, 2, 1);
+        lvwFade.setPrefWidth(400);
         lvwFade.setPrefHeight(324);
+        lvwFade.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
         updateControls();
 
         Button btnTapFad = new Button("Tap");
@@ -56,7 +55,7 @@ public class DestilleringsTapWindow extends Stage {
         btnTapFad.setPrefWidth(100);
         btnTapFad.setOnAction(actionEvent -> this.tapFad());
 
-        pane.add(lblError, 0 , 13);
+        pane.add(lblError, 0 , 3);
         lblError.setStyle("-fx-text-fill: red");
     }
 

@@ -6,14 +6,11 @@ import application.model.Lager;
 import application.model.Tap;
 import application.utility.Utility;
 import javafx.beans.value.ChangeListener;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 
 public class FadPane extends GridPane {
@@ -24,11 +21,6 @@ public class FadPane extends GridPane {
     private final TextField txfPlads = new TextField();
     private final Label lblError = new Label();
     private final ComboBox<Lager> lagerComboBox = new ComboBox<>();
-    private HBox hBox = new HBox();
-
-    private Button btnOpret = new Button("+");
-    private Button btnSlet = new Button("-");
-    private Button btnOpdater = new Button("✎");
 
     public FadPane() {
         this.setHgap(10);
@@ -47,6 +39,7 @@ public class FadPane extends GridPane {
         lvwTaps.setPrefHeight(324);
         lvwTaps.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
 
+        HBox hBox = new HBox();
         this.add(hBox, 1, 0);
         hBox.setSpacing(10);
         hBox.setAlignment(Pos.BASELINE_RIGHT);
@@ -63,11 +56,12 @@ public class FadPane extends GridPane {
         this.add(lagerComboBox, 3, 1);
         lagerComboBox.setPromptText("Adresser");
         lagerComboBox.setPrefWidth(182);
+        lagerComboBox.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
 
-        Button btnTilføj = new Button("Tilføj / Opdater");
-        btnTilføj.setPrefWidth(182);
-        this.add(btnTilføj, 3, 5);
-        btnTilføj.setOnAction(event -> this.tilføj());
+        Button btnTilOpdater = new Button("Tilføj / Opdater");
+        btnTilOpdater.setPrefWidth(182);
+        this.add(btnTilOpdater, 3, 5);
+        btnTilOpdater.setOnAction(event -> this.tilOpdater());
 
         this.add(txfReol, 3, 2);
         txfReol.setPromptText("Reol");
@@ -78,12 +72,15 @@ public class FadPane extends GridPane {
         this.add(txfPlads, 3, 4);
         txfPlads.setPromptText("Plads");
 
+        Button btnOpret = new Button("+");
         btnOpret.setPrefWidth(29);
         btnOpret.setOnAction(event -> this.opret());
 
         btnOpret.setPrefWidth(29);
+        Button btnOpdater = new Button("✎");
         btnOpdater.setOnAction(event -> this.opdater());
 
+        Button btnSlet = new Button("-");
         btnSlet.setPrefWidth(29);
         btnSlet.setOnAction(event -> this.slet());
 
@@ -119,12 +116,13 @@ public class FadPane extends GridPane {
         }
     }
 
-    private void tilføj() {
+    private void tilOpdater() {
         String reol = txfReol.getText().trim();
         String hylde = txfHylde.getText().trim();
         String plads = txfPlads.getText().trim();
         Fad fad = lvwFad.getSelectionModel().getSelectedItem();
         Lager lager = lagerComboBox.getSelectionModel().getSelectedItem();
+
         if (lagerComboBox.getSelectionModel().isEmpty()) {
             lblError.setText("Vælg adresse");
         } else if (reol.isEmpty()) {

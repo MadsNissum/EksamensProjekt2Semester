@@ -2,7 +2,6 @@ package gui;
 
 import application.controller.Controller;
 import application.model.Fad;
-import application.model.Lager;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -13,7 +12,7 @@ import javafx.stage.Stage;
 import application.utility.Number;
 
 public class FadWindow extends Stage {
-    private Fad fad;
+    private final Fad fad;
     public FadWindow(String title, Fad fad) {
         GridPane pane = new GridPane();
         this.fad = fad;

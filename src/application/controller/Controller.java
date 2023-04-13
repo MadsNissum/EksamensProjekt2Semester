@@ -247,7 +247,12 @@ public class Controller {
         while (batchIDExist) {
             batchID = Utility.randomUUID(16);
 
+            if (Storage.getWhiskyFlasker().size() == 0) {
+                batchIDExist = false;
+            }
+
             for (WhiskyFlaske flaske : Storage.getWhiskyFlasker()) {
+                System.out.println(!flaske.getBatchID().equals(batchID));
                 if (!flaske.getBatchID().equals(batchID)) {
                     batchIDExist = false;
                     break;
@@ -277,7 +282,6 @@ public class Controller {
      */
     public static ArrayList<WhiskyFlaske> getWhiskyFlaskerSearch(String str) {
         ArrayList<WhiskyFlaske> flasker = new ArrayList<>();
-
         ArrayList<WhiskyFlaske> alleFlasker = Storage.getWhiskyFlasker();
 
         for (WhiskyFlaske whiskeyFlaske : alleFlasker) {
@@ -285,7 +289,6 @@ public class Controller {
                 flasker.add(whiskeyFlaske);
             }
         }
-
 
         return flasker;
     }

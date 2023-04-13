@@ -4,27 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="ControllerTest, DestilleringTest, FadTest">
+    <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="Fixed small things and added stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/model/Destillering.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/model/Destillering.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/model/Fad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/model/Fad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/model/Lager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/model/Lager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/model/LagerPlads.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/model/LagerPlads.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/model/Tap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/model/Tap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/model/WhiskyFlaske.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/model/WhiskyFlaske.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/utility/Date.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/utility/Number.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/utility/Number.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/application/utility/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/utility/Utility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/DestilleringsPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/DestilleringsPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/DestilleringsTapWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/DestilleringsTapWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/DestilleringsWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/DestilleringsWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/FadPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FadPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/FadWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FadWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/FlaskePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FlaskePane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/LagerPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LagerPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/LagerWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/LagerWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/Start.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/WhiskyPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/WhiskyPane.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,6 +188,7 @@
     <MESSAGE value="ControllerTest" />
     <MESSAGE value="Fixed small things" />
     <MESSAGE value="ControllerTest, DestilleringTest, FadTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="ControllerTest, DestilleringTest, FadTest" />
+    <MESSAGE value="Fixed small things and added stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed small things and added stuff" />
   </component>
 </project>

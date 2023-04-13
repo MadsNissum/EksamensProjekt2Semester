@@ -4,7 +4,6 @@ import application.controller.Controller;
 import application.model.Fad;
 import application.utility.Number;
 import application.utility.Utility;
-import javafx.beans.value.ChangeListener;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -18,8 +17,6 @@ public class WhiskyPane extends GridPane {
     private final TextField txfMilliliter = new TextField();
     private final TextField txfAntal = new TextField();
     private final TextField txfNavn = new TextField();
-    private final Button btnOk = new Button("Ok");
-    private final Button btnCancel = new Button("Cancel");
     private final Label lblError = new Label();
 
 
@@ -51,9 +48,11 @@ public class WhiskyPane extends GridPane {
 
         this.add(txfNavn, 1, 5,2,1);
 
+        Button btnCancel = new Button("Cancel");
         this.add(btnCancel, 1, 6);
         btnCancel.setPrefWidth(75);
 
+        Button btnOk = new Button("Ok");
         this.add(btnOk, 2, 6);
         btnOk.setPrefWidth(75);
         GridPane.setHalignment(btnOk, HPos.RIGHT);

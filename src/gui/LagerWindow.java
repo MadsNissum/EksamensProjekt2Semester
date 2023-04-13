@@ -13,9 +13,9 @@ import javafx.stage.Stage;
 
 public class LagerWindow extends Stage {
 
-    private Lager lager;
+    private final Lager lager;
     private Label lblError;
-    private TextField txfAdresse, txfkvm, txfKapacitet;
+    private TextField txfAdresse, txfKvm, txfKapacitet;
     public LagerWindow(String str, Lager lager) {
         this.lager = lager;
         this.setTitle(str);
@@ -50,9 +50,9 @@ public class LagerWindow extends Stage {
         Label lblKvm = new Label("Kvadratmeter");
         pane.add(lblKvm, 0, 2);
 
-        txfkvm = new TextField();
-        pane.add(txfkvm, 0, 3);
-        txfkvm.setEditable(true);
+        txfKvm = new TextField();
+        pane.add(txfKvm, 0, 3);
+        txfKvm.setEditable(true);
 
         Label lblKapacitet = new Label("Kapacitet");
         pane.add(lblKapacitet, 0, 4);
@@ -84,18 +84,18 @@ public class LagerWindow extends Stage {
     private void initControls() {
         if (lager != null) {
             txfAdresse.setText(lager.getAdresse());
-            txfkvm.setText("" + lager.getKvm());
+            txfKvm.setText("" + lager.getKvm());
             txfKapacitet.setText("" + lager.getKapacitet());
         } else {
             txfAdresse.clear();
-            txfkvm.clear();
+            txfKvm.clear();
             txfKapacitet.clear();
         }
     }
 
     private void okAction() {
         String adresse = txfAdresse.getText().trim();
-        double kvm = Number.checkerDouble(txfkvm.getText().trim());
+        double kvm = Number.checkerDouble(txfKvm.getText().trim());
         int kapacitet = Number.checkerInt(txfKapacitet.getText().trim());
 
         try {

@@ -38,7 +38,7 @@ public class DestilleringsWindow extends Stage {
     }
 
     private TextField txfMaltBatch, txfKornSort,
-            txfMedarbejder, txfMængde, txfAlkoholProcent, txfRygeMateriale, txfKommentar;
+            txfMedarbejder, txfLiter, txfAlkoholProcent, txfRygeMateriale, txfKommentar;
     private Label lblError;
     private DatePicker dpStartDato, dpSlutDato;
     private void initContent(GridPane pane) {
@@ -74,8 +74,8 @@ public class DestilleringsWindow extends Stage {
         txfMedarbejder = new TextField();
         pane.add(txfMedarbejder, 1, 4);
 
-        txfMængde = new TextField();
-        pane.add(txfMængde, 1, 5);
+        txfLiter = new TextField();
+        pane.add(txfLiter, 1, 5);
 
         txfAlkoholProcent = new TextField();
         pane.add(txfAlkoholProcent, 1, 6);
@@ -108,7 +108,7 @@ public class DestilleringsWindow extends Stage {
             txfMaltBatch.setText(destillering.getMaltbatch());
             txfKornSort.setText(destillering.getKornsort());
             txfMedarbejder.setText(destillering.getMedarbejder());
-            txfMængde.setText("" + destillering.getKapacitet());
+            txfLiter.setText("" + destillering.getKapacitet());
             txfAlkoholProcent.setText("" + destillering.getAlkoholProcent());
             txfRygeMateriale.setText((destillering.getRygemateriale()));
             txfKommentar.setText(destillering.getKommentar());
@@ -121,7 +121,7 @@ public class DestilleringsWindow extends Stage {
             txfAlkoholProcent.clear();
             txfRygeMateriale.clear();
             txfKommentar.clear();
-            txfMængde.clear();
+            txfLiter.clear();
         }
     }
 
@@ -135,7 +135,7 @@ public class DestilleringsWindow extends Stage {
         String maltBatch = txfMaltBatch.getText().trim();
         String kornSort = txfKornSort.getText().trim();
         String medarbejder = txfMedarbejder.getText().trim();
-        double mængde = Number.checkerDouble(txfMængde.getText().trim());
+        double liter = Number.checkerDouble(txfLiter.getText().trim());
         double alkoholProcent = Number.checkerDouble(txfAlkoholProcent.getText().trim());
         String rygeMateriale = txfRygeMateriale.getText().trim();
         String kommentar = txfKommentar.getText().trim();
@@ -149,8 +149,8 @@ public class DestilleringsWindow extends Stage {
             lblError.setText("Indtast kornsort");
         } else if (medarbejder.isEmpty()) {
             lblError.setText("Indtast medarbejder");
-        } else if (mængde < 0) {
-            lblError.setText("Indtast mængde");
+        } else if (liter < 0) {
+            lblError.setText("Indtast liter");
         } else if (alkoholProcent < 0) {
             lblError.setText("Indtast alkoholprocent");
         } else if (rygeMateriale.isEmpty()) {
@@ -159,9 +159,9 @@ public class DestilleringsWindow extends Stage {
             lblError.setText("Indtast kommentar");
                 } else {
                     if (destillering != null) {
-                        Controller.updateDestillering(destillering, startDato, slutDato, maltBatch, kornSort, medarbejder, mængde, alkoholProcent, rygeMateriale, kommentar);
+                        Controller.updateDestillering(destillering, startDato, slutDato, maltBatch, kornSort, medarbejder, liter, alkoholProcent, rygeMateriale, kommentar);
                     } else {
-                        Controller.createDestillering(startDato,slutDato,maltBatch,kornSort,medarbejder,mængde,alkoholProcent,rygeMateriale,kommentar);
+                        Controller.createDestillering(startDato,slutDato,maltBatch,kornSort,medarbejder,liter,alkoholProcent,rygeMateriale,kommentar);
                     }
                     this.hide();
                 }

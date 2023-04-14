@@ -7,12 +7,9 @@
     <list default="true" id="faf012dc-1abf-4f27-a724-94f46f9db463" name="Changes" comment="Fixed small things and added stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/application/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/DestilleringsTapWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/DestilleringsTapWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/DestilleringsWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/DestilleringsWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/FadPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FadPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/FadWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FadWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/FlaskePane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FlaskePane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/storage/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/storage/Storage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controller/ControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/controller/ControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/FadTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/FadTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,48 +103,50 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DestilleringTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ControllerTest.TC2_Create_Lager_Forkert_Adresse_NullInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EksamensProjekt2Semester" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.DestilleringTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DestilleringTest.getLiterTilbageIDestillering" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="EksamensProjekt2Semester" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.DestilleringTest" />
-      <option name="METHOD_NAME" value="getLiterTilbageIDestillering" />
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ControllerTest" />
+      <option name="METHOD_NAME" value="TC2_Create_Lager_Forkert_Adresse_NullInput" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FadTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ControllerTest.create_Lager_Forkert_FadKapacitet_Input" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EksamensProjekt2Semester" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.FadTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ControllerTest" />
+      <option name="METHOD_NAME" value="create_Lager_Forkert_FadKapacitet_Input" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ControllerTest.create_Lager_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EksamensProjekt2Semester" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ControllerTest" />
+      <option name="METHOD_NAME" value="create_Lager_Success" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -155,10 +154,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.ControllerTest.TC2_Create_Lager_Forkert_Adresse_NullInput" />
         <item itemvalue="JUnit.ControllerTest" />
-        <item itemvalue="JUnit.DestilleringTest (1)" />
-        <item itemvalue="JUnit.DestilleringTest.getLiterTilbageIDestillering" />
-        <item itemvalue="JUnit.FadTest" />
+        <item itemvalue="JUnit.ControllerTest.create_Lager_Success" />
+        <item itemvalue="JUnit.ControllerTest.create_Lager_Forkert_FadKapacitet_Input" />
       </list>
     </recent_temporary>
   </component>

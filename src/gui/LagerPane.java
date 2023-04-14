@@ -31,7 +31,7 @@ public class LagerPane extends GridPane {
         lvwLager.getItems().setAll(Controller.getLager());
         ChangeListener<Lager> listener = (ov, oldItem, newItem) -> this.selectedLager();
         lvwLager.getSelectionModel().selectedItemProperty().addListener(listener);
-        lvwLager.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
+        lvwLager.setStyle("-fx-font-family: 'monospace';" + "-fx-font-size: 11px;");
 
 
         Label lblFade = new Label("Fade");
@@ -41,7 +41,7 @@ public class LagerPane extends GridPane {
         this.add(lvwFade, 1, 1, 1, 10);
         lvwFade.setPrefHeight(324);
         lvwFade.setPrefWidth(400);
-        lvwFade.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
+        lvwFade.setStyle("-fx-font-family: 'monospace';" + "-fx-font-size: 11px;");
 
 
 

@@ -1,6 +1,5 @@
 package model;
 
-import application.controller.Controller;
 import application.model.Fad;
 import application.model.Tap;
 import org.junit.jupiter.api.Test;

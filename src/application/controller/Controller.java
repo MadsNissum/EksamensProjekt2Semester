@@ -31,7 +31,7 @@ public class Controller {
      * @return lager
      */
     public static Lager createLager(String adresse, double kvm, int fadKapacitet) {
-        if (adresse.length() == 0) {
+        if (adresse == null || adresse.length() == 0) {
             throw new IllegalArgumentException("Indtast en Adresse");
         } else if (kvm < 0) {
             throw new IllegalArgumentException("Indtast et tal i Kvm");

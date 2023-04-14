@@ -37,7 +37,7 @@ public class FadPane extends GridPane {
         this.add(lvwTaps, 4, 1, 1, 10);
         lvwTaps.setPrefWidth(250);
         lvwTaps.setPrefHeight(324);
-        lvwTaps.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
+        lvwTaps.setStyle("-fx-font-family: 'monospace';" + "-fx-font-size: 11px;");
 
         HBox hBox = new HBox();
         this.add(hBox, 1, 0);
@@ -47,7 +47,7 @@ public class FadPane extends GridPane {
         this.add(lvwFad, 0, 1, 2, 10);
         lvwFad.setPrefWidth(400);
         lvwFad.setPrefHeight(324);
-        lvwFad.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
+        lvwFad.setStyle("-fx-font-family: 'monospace';" + "-fx-font-size: 11px;");
         updateControls();
 
         ChangeListener<Fad> listener = (ov, oldCompny, newCompany) -> this.selectedFad();
@@ -56,7 +56,7 @@ public class FadPane extends GridPane {
         this.add(lagerComboBox, 3, 1);
         lagerComboBox.setPromptText("Adresser");
         lagerComboBox.setPrefWidth(182);
-        lagerComboBox.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
+        lagerComboBox.setStyle("-fx-font-family: 'monospace';" + "-fx-font-size: 11px;");
 
         Button btnTilOpdater = new Button("Tilføj / Opdater");
         btnTilOpdater.setPrefWidth(182);

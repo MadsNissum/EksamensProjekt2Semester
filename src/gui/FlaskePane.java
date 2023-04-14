@@ -29,7 +29,7 @@ public class FlaskePane extends GridPane {
         this.add(lvwFlaske, 0, 2, 1, 10);
         lvwFlaske.setPrefWidth(500);
         lvwFlaske.setPrefHeight(200);
-        lvwFlaske.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
+        lvwFlaske.setStyle("-fx-font-family: 'monospace';" + "-fx-font-size: 11px;");
 
         ChangeListener<WhiskyFlaske> listener = (ov, oldItem, newItem) -> this.flaskeInformation();
         lvwFlaske.getSelectionModel().selectedItemProperty().addListener(listener);
@@ -37,7 +37,7 @@ public class FlaskePane extends GridPane {
         txaInfo.setPrefWidth(300);
         txaInfo.setPrefHeight(311.2);
         this.add(txaInfo,1,2, 1, 10);
-        txaInfo.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
+        txaInfo.setStyle("-fx-font-family: 'monospace';" + "-fx-font-size: 11px;");
 
         updateControls();
     }

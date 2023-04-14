@@ -47,7 +47,7 @@ public class DestilleringsTapWindow extends Stage {
         pane.add(lvwFade, 0, 2, 2, 1);
         lvwFade.setPrefWidth(400);
         lvwFade.setPrefHeight(324);
-        lvwFade.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
+        lvwFade.setStyle("-fx-font-family: 'monospace';" + "-fx-font-size: 11px;");
         updateControls();
 
         Button btnTapFad = new Button("Tap");

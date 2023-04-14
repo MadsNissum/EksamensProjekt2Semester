@@ -57,13 +57,6 @@ public class Storage {
 
     public static void removeDestilleringer(Destillering destillering) { destilleringer.remove(destillering); }
 
-    public static void removeTap(Tap tap) {
-        taps.remove(tap);
-    }
-
-    public static void removeWhiskyflaske(WhiskyFlaske whiskeyFlaske) {
-        whiskyFlasker.remove(whiskeyFlaske);
-    }
     //--------------------------------------------------
 
     public static ArrayList<Lager> getLagerer() {
@@ -75,10 +68,6 @@ public class Storage {
     }
 
     public static ArrayList<Destillering> getDestilleringer() {return destilleringer; }
-
-    public static ArrayList<Tap> getTaps() {
-        return taps;
-    }
 
     public static ArrayList<WhiskyFlaske> getWhiskyFlasker() {
         return whiskyFlasker;

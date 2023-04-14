@@ -41,13 +41,13 @@ public class DestilleringsPane extends GridPane {
         updateControls();
         ChangeListener<Destillering> listener = (ov, oldItem, newItem) -> this.selectDestillering();
         lvwDestillering.getSelectionModel().selectedItemProperty().addListener(listener);
-        lvwDestillering.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
+        lvwDestillering.setStyle("-fx-font-family: 'monospace';" + "-fx-font-size: 11px;");
 
         // Tap listview
         this.add(lvwTap, 3, 1, 1, 11);
         lvwTap.setPrefWidth(300);
         lvwTap.setPrefHeight(150);
-        lvwTap.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
+        lvwTap.setStyle("-fx-font-family: 'monospace';" + "-fx-font-size: 11px;");
         //ChangeListener<Tap> listener1 = (ov, oldItem, newItem) -> this.selectedTap();
         //lvwTap.getSelectionModel().selectedItemProperty().addListener(listener1);
 

@@ -32,7 +32,7 @@ public class WhiskyPane extends GridPane {
         lvwFade.setPrefWidth(500);
         lvwFade.setPrefHeight(324);
         updateControls();
-        lvwFade.setStyle("-fx-font-family: 'DejaVu Sans Mono';" + "-fx-font-size: 11px;");
+        lvwFade.setStyle("-fx-font-family: 'monospace';" + "-fx-font-size: 11px;");
 
         this.add(new Label("Mængde"), 1, 0);
 
